@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" width="800" height="280">
+  <defs>
+    <linearGradient id="tsbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="280" rx="12" fill="url(#tsbg)"/>
+
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#a1a1aa" font-weight="600">Traffic Simulation — 100K req/s</text>
+
+  <!-- Nodes -->
+  <!-- Client -->
+  <rect x="30" y="110" width="80" height="40" rx="6" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+  <text x="70" y="134" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">Client</text>
+
+  <!-- LB -->
+  <rect x="160" y="110" width="80" height="40" rx="6" fill="#27272a" stroke="#22d3ee" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="200" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">Load</text>
+  <text x="200" y="142" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">Balancer</text>
+  <text x="200" y="165" text-anchor="middle" font-family="monospace" font-size="9" fill="#22d3ee">10% util</text>
+
+  <!-- App 1 -->
+  <rect x="300" y="60" width="80" height="40" rx="6" fill="#27272a" stroke="#eab308" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="340" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">App Srv 1</text>
+  <text x="340" y="115" text-anchor="middle" font-family="monospace" font-size="9" fill="#eab308">67% util</text>
+  <!-- Status dot -->
+  <circle cx="370" cy="65" r="3" fill="#eab308">
+    <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- App 2 -->
+  <rect x="300" y="160" width="80" height="40" rx="6" fill="#27272a" stroke="#eab308" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="340" y="184" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">App Srv 2</text>
+  <text x="340" y="215" text-anchor="middle" font-family="monospace" font-size="9" fill="#eab308">67% util</text>
+  <circle cx="370" cy="165" r="3" fill="#eab308">
+    <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+  </circle>
+
+  <!-- Cache -->
+  <rect x="440" y="60" width="80" height="40" rx="6" fill="#27272a" stroke="#22c55e" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="480" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">Cache</text>
+  <text x="480" y="115" text-anchor="middle" font-family="monospace" font-size="9" fill="#22c55e">35% util</text>
+  <circle cx="510" cy="65" r="3" fill="#22c55e"/>
+
+  <!-- DB -->
+  <rect x="440" y="160" width="80" height="40" rx="6" fill="#27272a" stroke="#ef4444" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="480" y="184" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">Database</text>
+  <text x="480" y="215" text-anchor="middle" font-family="monospace" font-size="9" fill="#ef4444">125% util</text>
+  <circle cx="510" cy="165" r="3" fill="#ef4444">
+    <animate attributeName="r" values="3;5;3" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.5;1" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Bottleneck label -->
+  <rect x="447" y="210" width="66" height="16" rx="3" fill="#ef4444" fill-opacity="0.15"/>
+  <text x="480" y="222" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#ef4444" font-weight="600">BOTTLENECK</text>
+
+  <!-- Queue -->
+  <rect x="580" y="110" width="80" height="40" rx="6" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+  <text x="620" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">Message</text>
+  <text x="620" y="142" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">Queue</text>
+
+  <!-- Workers -->
+  <rect x="700" y="110" width="70" height="40" rx="6" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+  <text x="735" y="134" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e4e4e7">Workers</text>
+
+  <!-- Edges -->
+  <line x1="110" y1="130" x2="160" y2="130" stroke="#3f3f46" stroke-width="1.5"/>
+  <line x1="240" y1="125" x2="300" y2="80" stroke="#3f3f46" stroke-width="1.5"/>
+  <line x1="240" y1="135" x2="300" y2="180" stroke="#3f3f46" stroke-width="1.5"/>
+  <line x1="380" y1="80" x2="440" y2="80" stroke="#3f3f46" stroke-width="1.5"/>
+  <line x1="380" y1="180" x2="440" y2="180" stroke="#3f3f46" stroke-width="1.5"/>
+  <line x1="520" y1="180" x2="580" y2="130" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <line x1="660" y1="130" x2="700" y2="130" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="5 3"/>
+
+  <!-- Animated traffic dots — path 1 (top) -->
+  <circle r="3.5" fill="#22d3ee" opacity="0.9">
+    <animate attributeName="cx" values="110;200;300;340;440;480" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="130;130;80;80;80;80" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle r="3" fill="#22d3ee" opacity="0.6">
+    <animate attributeName="cx" values="110;200;300;340;440;480" dur="2.5s" repeatCount="indefinite" begin="0.8s"/>
+    <animate attributeName="cy" values="130;130;80;80;80;80" dur="2.5s" repeatCount="indefinite" begin="0.8s"/>
+  </circle>
+
+  <!-- Animated traffic dots — path 2 (bottom) -->
+  <circle r="3.5" fill="#22d3ee" opacity="0.9">
+    <animate attributeName="cx" values="110;200;300;340;440;580;700" dur="3s" repeatCount="indefinite" begin="0.4s"/>
+    <animate attributeName="cy" values="130;130;180;180;180;130;130" dur="3s" repeatCount="indefinite" begin="0.4s"/>
+  </circle>
+  <circle r="2.5" fill="#22d3ee" opacity="0.5">
+    <animate attributeName="cx" values="110;200;300;340;440;580;700" dur="3s" repeatCount="indefinite" begin="1.4s"/>
+    <animate attributeName="cy" values="130;130;180;180;180;130;130" dur="3s" repeatCount="indefinite" begin="1.4s"/>
+  </circle>
+
+  <!-- Legend -->
+  <g transform="translate(30, 255)">
+    <circle cx="8" cy="4" r="4" fill="#22c55e"/><text x="18" y="8" font-family="system-ui, sans-serif" font-size="10" fill="#71717a">Healthy</text>
+    <circle cx="88" cy="4" r="4" fill="#eab308"/><text x="98" y="8" font-family="system-ui, sans-serif" font-size="10" fill="#71717a">Warning</text>
+    <circle cx="168" cy="4" r="4" fill="#ef4444"/><text x="178" y="8" font-family="system-ui, sans-serif" font-size="10" fill="#71717a">Critical</text>
+    <line x1="248" y1="4" x2="268" y2="4" stroke="#3f3f46" stroke-width="1.5"/><text x="275" y="8" font-family="system-ui, sans-serif" font-size="10" fill="#71717a">Sync</text>
+    <line x1="318" y1="4" x2="338" y2="4" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="4 3"/><text x="345" y="8" font-family="system-ui, sans-serif" font-size="10" fill="#71717a">Async</text>
+    <circle cx="408" cy="4" r="3.5" fill="#22d3ee"/><text x="418" y="8" font-family="system-ui, sans-serif" font-size="10" fill="#71717a">Traffic flow</text>
+  </g>
+</svg>
