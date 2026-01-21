@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#0f0d14"/>
+  <path
+    fill="url(#sysdes-grad)"
+    d="M8 8h6.5v6.5H8V8Zm9.25 0H24v6.5h-6.75V8ZM8 17.5h6.5V24H8v-6.5Zm9.25 0H24V24h-6.75v-6.5Z"
+  />
+  <defs>
+    <linearGradient id="sysdes-grad" x1="8" y1="8" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7c5cfc"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+</svg>
