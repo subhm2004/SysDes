@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4">
+        <animate attributeName="stop-color" values="#06b6d4;#8b5cf6;#06b6d4" dur="4s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#8b5cf6">
+        <animate attributeName="stop-color" values="#8b5cf6;#06b6d4;#8b5cf6" dur="4s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <linearGradient id="dotGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#06b6d4" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="300" rx="16" fill="url(#bg)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.04" stroke="#a1a1aa" stroke-width="0.5">
+    <line x1="0" y1="50" x2="900" y2="50"/><line x1="0" y1="100" x2="900" y2="100"/>
+    <line x1="0" y1="150" x2="900" y2="150"/><line x1="0" y1="200" x2="900" y2="200"/>
+    <line x1="0" y1="250" x2="900" y2="250"/>
+    <line x1="100" y1="0" x2="100" y2="300"/><line x1="200" y1="0" x2="200" y2="300"/>
+    <line x1="300" y1="0" x2="300" y2="300"/><line x1="400" y1="0" x2="400" y2="300"/>
+    <line x1="500" y1="0" x2="500" y2="300"/><line x1="600" y1="0" x2="600" y2="300"/>
+    <line x1="700" y1="0" x2="700" y2="300"/><line x1="800" y1="0" x2="800" y2="300"/>
+  </g>
+
+  <!-- Animated architecture diagram (left side) -->
+  <g transform="translate(80, 80)" opacity="0.15">
+    <!-- Nodes -->
+    <rect x="0" y="40" width="60" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="30" y="59" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">DNS</text>
+
+    <rect x="90" y="40" width="60" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="120" y="59" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">LB</text>
+
+    <rect x="180" y="10" width="60" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="210" y="29" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">App 1</text>
+
+    <rect x="180" y="70" width="60" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="210" y="89" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">App 2</text>
+
+    <rect x="280" y="10" width="60" height="30" rx="4" fill="#27272a" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.3"/>
+    <text x="310" y="29" text-anchor="middle" font-family="monospace" font-size="8" fill="#06b6d4">Cache</text>
+
+    <rect x="280" y="70" width="60" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="310" y="89" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">DB</text>
+
+    <!-- Edges -->
+    <line x1="60" y1="55" x2="90" y2="55" stroke="#3f3f46" stroke-width="1"/>
+    <line x1="150" y1="50" x2="180" y2="25" stroke="#3f3f46" stroke-width="1"/>
+    <line x1="150" y1="60" x2="180" y2="85" stroke="#3f3f46" stroke-width="1"/>
+    <line x1="240" y1="25" x2="280" y2="25" stroke="#3f3f46" stroke-width="1"/>
+    <line x1="240" y1="85" x2="280" y2="85" stroke="#3f3f46" stroke-width="1"/>
+
+    <!-- Animated traffic dots -->
+    <circle r="3" fill="#06b6d4" opacity="0.8">
+      <animate attributeName="cx" values="60;90;150;180;240;280;340" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="55;55;50;25;25;25;25" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="3" fill="#06b6d4" opacity="0.5">
+      <animate attributeName="cx" values="60;90;150;180;240;280;340" dur="3s" repeatCount="indefinite" begin="1s"/>
+      <animate attributeName="cy" values="55;55;60;85;85;85;85" dur="3s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+
+  <!-- Animated architecture (right side) -->
+  <g transform="translate(520, 80)" opacity="0.15">
+    <rect x="0" y="30" width="60" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="30" y="49" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">API GW</text>
+
+    <rect x="90" y="30" width="60" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="120" y="49" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">Queue</text>
+
+    <rect x="180" y="0" width="70" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="215" y="19" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">Workers</text>
+
+    <rect x="180" y="60" width="70" height="30" rx="4" fill="#27272a" stroke="#3f3f46" stroke-width="1"/>
+    <text x="215" y="79" text-anchor="middle" font-family="monospace" font-size="8" fill="#a1a1aa">Search</text>
+
+    <line x1="60" y1="45" x2="90" y2="45" stroke="#3f3f46" stroke-width="1"/>
+    <line x1="150" y1="40" x2="180" y2="15" stroke="#3f3f46" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="150" y1="50" x2="180" y2="75" stroke="#3f3f46" stroke-width="1" stroke-dasharray="4 3"/>
+
+    <circle r="2.5" fill="#8b5cf6" opacity="0.7">
+      <animate attributeName="cx" values="60;120;180;215" dur="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="45;45;15;15" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Title -->
+  <text x="450" y="120" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="52" font-weight="800" fill="#fafafa" letter-spacing="-1">
+    SysDes
+  </text>
+
+  <!-- Subtitle -->
+  <text x="450" y="155" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#71717a" font-weight="400">
+    System Design Interview Simulator
+  </text>
+
+  <!-- Animated accent line -->
+  <rect x="300" y="175" width="300" height="2.5" rx="1.25" fill="url(#accentLine)"/>
+
+  <!-- Scanning light effect on the line -->
+  <rect x="0" y="175" width="80" height="2.5" rx="1.25" fill="url(#dotGlow)">
+    <animate attributeName="x" values="280;520;280" dur="3s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Tagline -->
+  <text x="450" y="205" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#52525b">
+    Design · Simulate · Score · Ship
+  </text>
+
+  <!-- Stats row -->
+  <g transform="translate(450, 240)" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif">
+    <text x="-180" y="0" font-size="22" font-weight="700" fill="#06b6d4">25</text>
+    <text x="-180" y="16" font-size="10" fill="#52525b">Components</text>
+
+    <text x="-60" y="0" font-size="22" font-weight="700" fill="#06b6d4">20</text>
+    <text x="-60" y="16" font-size="10" fill="#52525b">Problems</text>
+
+    <text x="60" y="0" font-size="22" font-weight="700" fill="#06b6d4">5</text>
+    <text x="60" y="16" font-size="10" fill="#52525b">Score Categories</text>
+
+    <text x="180" y="0" font-size="22" font-weight="700" fill="#06b6d4">500K</text>
+    <text x="180" y="16" font-size="10" fill="#52525b">Max QPS</text>
+  </g>
+</svg>
