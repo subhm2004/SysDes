@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+  <rect width="800" height="200" rx="12" fill="#09090b"/>
+
+  <text x="400" y="28" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#a1a1aa" font-weight="600">5-Category Scoring Engine</text>
+
+  <!-- Score circle -->
+  <circle cx="100" cy="115" r="55" fill="none" stroke="#27272a" stroke-width="8"/>
+  <circle cx="100" cy="115" r="55" fill="none" stroke="#22d3ee" stroke-width="8" stroke-linecap="round"
+    stroke-dasharray="345.6 345.6" stroke-dashoffset="345.6" transform="rotate(-90 100 115)">
+    <animate attributeName="stroke-dashoffset" from="345.6" to="76" dur="2s" fill="freeze" begin="0.5s"/>
+  </circle>
+  <text x="100" y="110" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="700" fill="#fafafa" opacity="0">
+    78
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" fill="freeze" begin="2s"/>
+  </text>
+  <text x="100" y="130" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#71717a" opacity="0">
+    / 100
+    <animate attributeName="opacity" from="0" to="1" dur="0.5s" fill="freeze" begin="2s"/>
+  </text>
+
+  <!-- Category bars -->
+  <g transform="translate(200, 50)">
+    <!-- Scalability -->
+    <text x="0" y="12" font-family="system-ui, sans-serif" font-size="12" fill="#a1a1aa">Scalability</text>
+    <rect x="120" y="0" width="400" height="16" rx="4" fill="#27272a"/>
+    <rect x="120" y="0" width="0" height="16" rx="4" fill="#22d3ee">
+      <animate attributeName="width" from="0" to="320" dur="1.5s" fill="freeze" begin="0.5s"/>
+    </rect>
+    <text x="530" y="12" font-family="monospace" font-size="11" fill="#71717a" opacity="0">
+      16/20
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.5s"/>
+    </text>
+
+    <!-- Availability -->
+    <text x="0" y="40" font-family="system-ui, sans-serif" font-size="12" fill="#a1a1aa">Availability</text>
+    <rect x="120" y="28" width="400" height="16" rx="4" fill="#27272a"/>
+    <rect x="120" y="28" width="0" height="16" rx="4" fill="#22c55e">
+      <animate attributeName="width" from="0" to="360" dur="1.5s" fill="freeze" begin="0.7s"/>
+    </rect>
+    <text x="530" y="40" font-family="monospace" font-size="11" fill="#71717a" opacity="0">
+      18/20
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.7s"/>
+    </text>
+
+    <!-- Latency -->
+    <text x="0" y="68" font-family="system-ui, sans-serif" font-size="12" fill="#a1a1aa">Latency</text>
+    <rect x="120" y="56" width="400" height="16" rx="4" fill="#27272a"/>
+    <rect x="120" y="56" width="0" height="16" rx="4" fill="#22d3ee">
+      <animate attributeName="width" from="0" to="300" dur="1.5s" fill="freeze" begin="0.9s"/>
+    </rect>
+    <text x="530" y="68" font-family="monospace" font-size="11" fill="#71717a" opacity="0">
+      15/20
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.9s"/>
+    </text>
+
+    <!-- Cost -->
+    <text x="0" y="96" font-family="system-ui, sans-serif" font-size="12" fill="#a1a1aa">Cost Efficiency</text>
+    <rect x="120" y="84" width="400" height="16" rx="4" fill="#27272a"/>
+    <rect x="120" y="84" width="0" height="16" rx="4" fill="#eab308">
+      <animate attributeName="width" from="0" to="280" dur="1.5s" fill="freeze" begin="1.1s"/>
+    </rect>
+    <text x="530" y="96" font-family="monospace" font-size="11" fill="#71717a" opacity="0">
+      14/20
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.1s"/>
+    </text>
+
+    <!-- Tradeoffs -->
+    <text x="0" y="124" font-family="system-ui, sans-serif" font-size="12" fill="#a1a1aa">Trade-offs</text>
+    <rect x="120" y="112" width="400" height="16" rx="4" fill="#27272a"/>
+    <rect x="120" y="112" width="0" height="16" rx="4" fill="#22d3ee">
+      <animate attributeName="width" from="0" to="300" dur="1.5s" fill="freeze" begin="1.3s"/>
+    </rect>
+    <text x="530" y="124" font-family="monospace" font-size="11" fill="#71717a" opacity="0">
+      15/20
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.3s"/>
+    </text>
+  </g>
+</svg>
