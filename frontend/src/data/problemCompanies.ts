@@ -1,0 +1,52 @@
+/** Company tags for each problem — used for filtering in the problem browser */
+export const PROBLEM_COMPANIES: Record<string, string[]> = {
+  "url-shortener":           ["Google", "Meta", "Amazon"],
+  "twitter-feed":            ["Twitter", "Meta", "LinkedIn"],
+  "chat-system":             ["Meta", "Slack", "Microsoft"],
+  "ride-sharing":            ["Uber", "Lyft", "Google"],
+  "video-streaming":         ["Google", "Netflix", "Meta"],
+  "rate-limiter":            ["Google", "Meta", "Amazon", "Stripe"],
+  "notification-system":     ["Meta", "Google", "Amazon"],
+  "typeahead-autocomplete":  ["Google", "Meta", "LinkedIn"],
+  "web-crawler":             ["Google", "Microsoft", "Amazon"],
+  "distributed-cache":       ["Amazon", "Google", "Microsoft"],
+  "payment-system":          ["Stripe", "PayPal", "Google"],
+  "ticket-booking":          ["Amazon", "Airbnb", "Google"],
+  "collaborative-editor":    ["Google", "Microsoft", "Notion"],
+  "file-storage":            ["Dropbox", "Google", "Amazon"],
+  "parking-lot":             ["Amazon", "Google", "Uber"],
+  "instagram":               ["Meta", "Google"],
+  "music-streaming":         ["Spotify", "Apple", "Amazon"],
+  "ecommerce":               ["Amazon", "Stripe", "Google"],
+  "team-messaging":          ["Slack", "Microsoft", "Meta"],
+  "metrics-monitoring":      ["Google", "Amazon", "Stripe"],
+  "netflix":                 ["Netflix", "Amazon", "Google"],
+  "tinder":                  ["Meta", "Google"],
+  "google-maps":             ["Google", "Uber", "Airbnb"],
+  "zoom":                    ["Microsoft", "Google", "Meta"],
+  "food-delivery":           ["Uber", "Amazon", "Google"],
+  "reddit":                  ["Meta", "Google"],
+  "airbnb":                  ["Airbnb", "Amazon", "Google"],
+  "whatsapp":                ["Meta", "Google"],
+  "search-engine":           ["Google", "Microsoft", "Amazon"],
+  "location-service":        ["Google", "Uber", "Airbnb"],
+  "tiktok":                  ["Meta", "Google", "TikTok"],
+  "message-queue-design":    ["LinkedIn", "Amazon", "Microsoft"],
+  "digital-wallet":          ["Stripe", "PayPal", "Google"],
+  "code-editor":             ["GitHub", "Google", "Microsoft"],
+  "cicd-pipeline":           ["GitHub", "Google", "Microsoft"],
+};
+
+/** Top companies to show as quick-filter chips (by frequency) */
+export const TOP_COMPANIES = [
+  "Google",
+  "Meta",
+  "Amazon",
+  "Microsoft",
+  "Netflix",
+  "Stripe",
+  "Uber",
+  "Airbnb",
+] as const;
+
+export type TopCompany = (typeof TOP_COMPANIES)[number];
