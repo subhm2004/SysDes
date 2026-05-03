@@ -188,33 +188,33 @@ export function DesignCanvas({ onPickProblem, onLoadReference, onStartInterview 
       {isEmpty && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-4 pb-4 md:pb-0">
           <div className="pointer-events-auto flex w-full max-w-lg flex-col items-center gap-6 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-violet-500/25 bg-gradient-to-br from-violet-500/15 to-transparent shadow-[0_0_40px_-10px_rgba(124,92,252,0.38)] dark:border-violet-400/20 dark:from-violet-500/12 dark:shadow-[0_0_40px_-10px_rgba(167,139,250,0.28)]">
-              <Layers className="h-6 w-6 text-violet-600 dark:text-violet-400" />
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-violet-500/25 bg-gradient-to-br from-violet-500/15 to-transparent shadow-[0_0_40px_-10px_rgba(124,92,252,0.38)] dark:border-violet-400/20 dark:from-violet-500/12 dark:shadow-[0_0_40px_-10px_rgba(167,139,250,0.28)] sm:h-[4.25rem] sm:w-[4.25rem]">
+              <Layers className="h-7 w-7 text-violet-600 dark:text-violet-400 sm:h-8 sm:w-8" />
             </div>
-            <div className="space-y-1.5">
-              <h1 className="text-base font-semibold tracking-tight text-zinc-900 md:text-lg dark:text-zinc-100">
+            <div className="space-y-2">
+              <h1 className="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-100">
                 Build an architecture that scales
               </h1>
-              <p className="mx-auto max-w-sm text-xs leading-relaxed text-zinc-600 md:text-sm dark:text-zinc-400">
+              <p className="mx-auto max-w-md text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
                 Pick a problem, drop infrastructure components onto the canvas, and get scored the way an interviewer would evaluate you.
               </p>
             </div>
 
-            <div className="grid w-full gap-2 sm:grid-cols-3">
+            <div className="grid w-full gap-2.5 sm:grid-cols-3">
               <QuickStartCard
-                icon={<BookOpen className="h-3.5 w-3.5" />}
+                icon={<BookOpen className="h-4 w-4 sm:h-5 sm:w-5" />}
                 title="Pick a problem"
                 hint="35 real interview questions"
                 onClick={onPickProblem}
               />
               <QuickStartCard
-                icon={<Sparkles className="h-3.5 w-3.5" />}
+                icon={<Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />}
                 title="Load reference"
                 hint="Open a sample solution"
                 onClick={onLoadReference}
               />
               <QuickStartCard
-                icon={<GraduationCap className="h-3.5 w-3.5" />}
+                icon={<GraduationCap className="h-4 w-4 sm:h-5 sm:w-5" />}
                 title="Practice interview"
                 hint="Timed 6-phase mock"
                 onClick={onStartInterview}
@@ -222,19 +222,19 @@ export function DesignCanvas({ onPickProblem, onLoadReference, onStartInterview 
               />
             </div>
 
-            <div className="hidden flex-wrap items-center justify-center gap-3 text-[11px] text-zinc-600 md:flex dark:text-zinc-500">
-              <span className="flex items-center gap-1.5">
-                <MousePointer2 className="h-3 w-3" />
+            <div className="hidden flex-wrap items-center justify-center gap-3 text-sm text-zinc-600 md:flex dark:text-zinc-400">
+              <span className="flex items-center gap-2">
+                <MousePointer2 className="h-4 w-4 shrink-0 text-zinc-500 dark:text-zinc-500" />
                 Drag from the sidebar
               </span>
-              <span className="text-zinc-400 dark:text-zinc-700">·</span>
-              <span className="flex items-center gap-1">
-                <kbd className="rounded border border-zinc-300 bg-zinc-200 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">⌘E</kbd>
+              <span className="text-zinc-400 dark:text-zinc-600">·</span>
+              <span className="flex items-center gap-1.5">
+                <kbd className="rounded-md border border-zinc-300 bg-zinc-200 px-2 py-1 font-mono text-xs dark:border-zinc-600 dark:bg-zinc-800">⌘E</kbd>
                 export
               </span>
-              <span className="text-zinc-400 dark:text-zinc-700">·</span>
-              <span className="flex items-center gap-1">
-                <kbd className="rounded border border-zinc-300 bg-zinc-200 px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-700 dark:bg-zinc-800">⌘↵</kbd>
+              <span className="text-zinc-400 dark:text-zinc-600">·</span>
+              <span className="flex items-center gap-1.5">
+                <kbd className="rounded-md border border-zinc-300 bg-zinc-200 px-2 py-1 font-mono text-xs dark:border-zinc-600 dark:bg-zinc-800">⌘↵</kbd>
                 simulate
               </span>
             </div>
@@ -261,22 +261,23 @@ function QuickStartCard({
   if (!onClick) return null;
   return (
     <button
+      type="button"
       onClick={onClick}
-      className={`group flex flex-col items-start gap-1.5 rounded-lg border bg-white/80 p-3 text-left transition-all hover:-translate-y-0.5 hover:bg-white dark:bg-zinc-900/60 dark:hover:bg-zinc-900 ${
+      className={`group flex flex-col items-start gap-2 rounded-xl border bg-white/80 p-3.5 text-left transition-all hover:-translate-y-0.5 hover:bg-white dark:bg-zinc-900/60 dark:hover:bg-zinc-900 sm:p-4 ${
         accent
           ? "border-violet-500/35 hover:border-violet-400/55 hover:shadow-[0_0_24px_-8px_rgba(124,92,252,0.45)] dark:border-violet-400/30 dark:hover:border-violet-400/50 dark:hover:shadow-[0_0_24px_-8px_rgba(167,139,250,0.35)]"
           : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
       }`}
     >
       <span
-        className={`flex h-6 w-6 items-center justify-center rounded-md ${
+        className={`flex h-8 w-8 items-center justify-center rounded-lg sm:h-9 sm:w-9 ${
           accent ? "bg-violet-500/15 text-violet-600 dark:bg-violet-500/20 dark:text-violet-400" : "bg-zinc-200 text-zinc-600 group-hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-200"
         }`}
       >
         {icon}
       </span>
-      <span className="text-xs font-medium text-zinc-900 dark:text-zinc-200">{title}</span>
-      <span className="text-[11px] leading-tight text-zinc-600 dark:text-zinc-500">{hint}</span>
+      <span className="text-sm font-semibold text-zinc-900 sm:text-base dark:text-zinc-100">{title}</span>
+      <span className="text-xs leading-snug text-zinc-600 sm:text-sm dark:text-zinc-400">{hint}</span>
     </button>
   );
 }
