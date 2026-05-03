@@ -1,10 +1,16 @@
 <div align="center">
 
-<a href="https://github.com/vijaygupta18/system-design-simulator">
-  <img src="public/banner.svg" alt="SysDes" width="900"/>
+<!-- Banner: swap href below if you publish a portfolio or repo URL -->
+<a href="#sysdes--system-design-interview-simulator">
+  <img src="public/banner.svg" alt="SysDes — System Design Interview Simulator" width="900"/>
 </a>
 
 <br/><br/>
+
+[![SysDes](https://img.shields.io/badge/SysDes-Interview_Simulator-22d3ee?style=for-the-badge)](README.md)
+[![By Shubham](https://img.shields.io/badge/by-Shubham-7c3aed?style=for-the-badge)](README.md)
+
+<br/>
 
 [![Next.js](https://img.shields.io/badge/Next.js_16-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
 [![React](https://img.shields.io/badge/React_19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
@@ -12,20 +18,35 @@
 [![Tailwind](https://img.shields.io/badge/Tailwind_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![ReactFlow](https://img.shields.io/badge/ReactFlow_v12-FF0072?style=for-the-badge)](https://reactflow.dev)
 
-**The open-source system design interview simulator.**<br/>
-**Build architectures. Simulate traffic. Get scored. Pass interviews.**
+<br/>
 
-[Getting Started](#quick-start) &nbsp;&middot;&nbsp; [Features](#features) &nbsp;&middot;&nbsp; [35 Problems](#35-design-problems) &nbsp;&middot;&nbsp; [Contributing](#contributing)
+### SysDes — System Design Interview Simulator
+
+**Design · Simulate · Score · Ship**
+
+*Hands-on system design practice — not passive reading.*
+
+[Quick Start](#quick-start) · [Features](#features) · [At a glance](#at-a-glance) · [35 Problems](#35-design-problems) · [Tech Stack](#tech-stack) · [Contributing](#contributing)
 
 </div>
 
 ---
 
+## At a glance
+
+| | | | |
+|:---:|:---:|:---:|:---:|
+| **30** | **35** | **5** | **500K** |
+| Components | Design problems | Score categories | Max QPS (CDN tier) |
+| DNS → cache → queues → data | Easy → Expert | 100-point rubric | Configurable load |
+
+---
+
 ## Why SysDes?
 
-Most system design prep is passive — reading articles, watching videos. SysDes is **active practice**. You drag real infrastructure components onto a canvas, wire them together, simulate production-scale traffic, and get scored the way an interviewer would evaluate you.
+Most system design prep is passive — articles and videos. **SysDes is active practice.** Drag real infrastructure onto a canvas, wire dependencies, simulate production-scale traffic, and get scored the way an interviewer would.
 
-It's the flight simulator for system design interviews.
+Think of it as a **flight simulator** for system design rounds.
 
 ---
 
@@ -43,7 +64,7 @@ It's the flight simulator for system design interviews.
 
 ### 30 Infrastructure Components
 
-Every building block you need for any system design:
+Everything you need for interview-grade diagrams:
 
 **Networking** — DNS, CDN, Load Balancer, API Gateway, Rate Limiter, Reverse Proxy, Origin Shield
 
@@ -53,14 +74,14 @@ Every building block you need for any system design:
 
 **Infrastructure** — Message Queue, Service Mesh, Monitoring, Service Discovery, Distributed Lock, Circuit Breaker, Coordination Service
 
-**Special** — Custom Component (double-click to rename to anything)
+**Special** — Custom Component (double-click to rename)
 
 </td>
 <td width="50%">
 
-### Realistic Specs
+### Realistic specs
 
-Every component has **verified benchmarks**:
+Each component ships with **benchmark-backed** numbers:
 
 | Component | Max QPS | Latency |
 |-----------|---------|---------|
@@ -73,7 +94,7 @@ Every component has **verified benchmarks**:
 | Object Storage (S3) | 25,000 | 75ms |
 | CDN | 500,000 | 15ms |
 
-All values cross-checked against official docs and benchmarks.
+Values are aligned with public docs and typical benchmarks.
 
 </td>
 </tr>
@@ -81,181 +102,182 @@ All values cross-checked against official docs and benchmarks.
 
 ---
 
-### Traffic Simulation
+### Traffic simulation
 
 <div align="center">
-  <img src="public/traffic-sim.svg" alt="Animated traffic simulation" width="800"/>
+  <img src="public/traffic-sim.svg" alt="Traffic simulation" width="800"/>
 </div>
 
 <br/>
 
-- **Kahn's topological sort** for correct fan-in QPS accumulation
-- **Smart traffic splitting** — Load balancers split evenly; other components fan-out 100% to each child
-- **Per-node metrics** — QPS, utilization %, latency, status (healthy / warning / critical)
-- **Bottleneck detection** with cascading failure visualization
-- **Cycle detection** with warnings
-- **Configurable load** — 1K to 500K requests/sec
+- **Kahn’s topological sort** for correct fan-in QPS propagation  
+- **Smart fan-out** — LBs split evenly; other nodes forward per your graph  
+- **Per-node metrics** — QPS, utilization %, latency, health status  
+- **Bottleneck & cascade** visualization  
+- **Cycle detection** with warnings  
+- **Load dial** — about **1K → 500K** req/s
 
 ---
 
-### 5-Category Scoring
+### 5-category scoring
 
 <div align="center">
-  <img src="public/scoring.svg" alt="Animated scoring engine" width="800"/>
+  <img src="public/scoring.svg" alt="Scoring engine" width="800"/>
 </div>
 
 <br/>
 
-Scored like a real interview — across the 5 dimensions interviewers evaluate:
+Interview-style scoring across five axes:
 
-| Category | What it checks |
-|----------|---------------|
-| **Scalability** | Load balancing, horizontal scaling, caching, async processing |
-| **Availability** | No SPOFs, replica redundancy, monitoring, overload protection |
-| **Latency** | CDN usage, cache-before-DB patterns, minimal hop count |
-| **Cost Efficiency** | Right-sized components, polyglot persistence, no waste |
-| **Trade-offs** | Read/write separation, defense in depth, architecture breadth |
+| Category | What it rewards |
+|----------|-----------------|
+| **Scalability** | LB, horizontal scale, caching, async paths |
+| **Availability** | No obvious SPOFs, redundancy, monitoring, backpressure |
+| **Latency** | CDN, cache-before-DB, short paths |
+| **Cost efficiency** | Right-sized pieces, sensible persistence mix |
+| **Trade-offs** | Coherent choices, depth vs breadth |
 
-Verdicts: **Needs Work** < 31 | **Decent** < 51 | **Good** < 71 | **Excellent** < 86 | **Architect Level** 86+
+**Verdict bands:** Needs Work (&lt;31) · Decent (&lt;51) · Good (&lt;71) · Excellent (&lt;86) · **Architect** (86+)
 
 ---
 
-### Interview Practice Mode
+### Interview mode (~45 min)
 
 <div align="center">
-  <img src="public/interview-flow.svg" alt="6-phase interview flow" width="800"/>
+  <img src="public/interview-flow.svg" alt="Six-phase interview flow" width="800"/>
 </div>
 
 <br/>
 
-Practice like a real 45-minute interview:
+Timed, phase-based practice:
 
-1. **Requirements** (5 min) — Clarify functional and non-functional requirements
-2. **Estimation** (5 min) — Back-of-envelope calculations
-3. **API Design** (5 min) — Define core REST endpoints
-4. **Data Model** (5 min) — Design entities and relationships
-5. **High-Level Design** (15 min) — Build the architecture on canvas
-6. **Deep Dive** (10 min) — Discuss trade-offs and failure modes
+1. **Requirements** (5m) — Functional + non-functional clarity  
+2. **Estimation** (5m) — Back-of-envelope math  
+3. **API design** (5m) — Core endpoints  
+4. **Data model** (5m) — Entities + relationships  
+5. **High-level design** (15m) — Canvas architecture  
+6. **Deep dive** (10m) — Trade-offs + failure modes  
 
-Color-coded timer: green (on track) | yellow (over target) | red (significantly over)
+Timer colors: **green** on track · **yellow** over target · **red** needs pace correction.
 
 ---
 
-### Edge Labels & Protocol Types
-
-Label every connection with its protocol and communication style:
+### Edge labels & protocols
 
 | Protocol | Style | Example |
 |----------|-------|---------|
-| HTTP | Solid line | App Server -> Database |
-| gRPC | Solid + purple badge | Service -> Service |
-| WebSocket | Solid + green badge | Client -> WS Server |
-| pub/sub | Dashed + amber badge | Queue -> Consumer |
-| TCP | Solid + zinc badge | Cache -> App Server |
+| HTTP | Solid | App → DB |
+| gRPC | Solid + badge | Service → service |
+| WebSocket | Solid + badge | Client → WS tier |
+| pub/sub | Dashed + badge | Queue → consumer |
+| TCP | Solid + badge | Cache ↔ app |
 
-Click any edge to set protocol, sync/async mode, and a custom label.
-
----
-
-### Concept Library
-
-Select any component to learn:
-
-- **When to use** — concrete scenarios where this component shines
-- **When NOT to use** — common mistakes to avoid
-- **Key trade-offs** — engineering considerations
-- **Interview tips** — what to say to impress interviewers
-- **Common patterns** — Cache-aside, Write-through, etc.
-- **Real-world examples** — verified facts from Netflix, Twitter, Uber, etc.
+Click an edge to set protocol, sync/async, and a custom label.
 
 ---
 
-### Trade-off Decision Log
+### Concept library
 
-14 pre-built trade-off cards with side-by-side comparisons:
+Select any component for:
 
-SQL vs NoSQL | Push vs Pull | Sync vs Async | Strong vs Eventual Consistency | Monolith vs Microservices | REST vs gRPC | Cache-aside vs Write-through | Vertical vs Horizontal Scaling | Polling vs WebSocket | Single vs Multi-leader | Hash vs Range Partitioning | CDN Push vs Pull | Token Bucket vs Sliding Window | At-least-once vs Exactly-once
-
-Log your own decisions with rationale during practice.
+- **When to use** — strong-fit scenarios  
+- **When not to** — common misuse  
+- **Trade-offs** — engineering tension  
+- **Interview tips** — crisp talking points  
+- **Patterns** — cache-aside, write-through, …  
+- **Real systems** — grounded examples (Netflix, Uber, …)
 
 ---
 
-### Learning Path
+### Trade-off decision log
 
-Structured progression from beginner to expert:
+**14** built-in comparison cards: SQL vs NoSQL, sync vs async, monolith vs microservices, REST vs gRPC, partitioning strategies, delivery semantics, and more. Log your own calls with rationale during practice.
 
-| Tier | Problems | Focus |
-|------|----------|-------|
-| **Foundations** | URL Shortener, Rate Limiter, Parking Lot | Core building blocks |
-| **Intermediate** | Notification System, Autocomplete, Instagram, Spotify, Distributed Cache | Combining systems |
-| **Advanced** | Twitter, Chat, Web Crawler, Dropbox, E-Commerce | Complex distributed systems |
-| **Expert** | Uber, YouTube, Payment, Ticketmaster, Google Docs, Slack, Monitoring, Netflix, Zoom, Google Maps, WhatsApp, TikTok, Kafka, etc. | Multi-concern architectures |
+---
 
-Track completion with checkboxes. Concept prerequisites shown per problem.
+### Learning path
+
+| Tier | Examples | Focus |
+|------|----------|--------|
+| **Foundations** | URL shortener, rate limiter, parking lot | Core primitives |
+| **Intermediate** | Notifications, autocomplete, Instagram, Spotify, distributed cache | Combining services |
+| **Advanced** | Twitter, chat, crawler, Dropbox, e-commerce | Multi-piece systems |
+| **Expert** | Uber, YouTube, payments, Docs, Slack, Netflix, maps, WhatsApp, Kafka, … | Large, messy reality |
+
+Checkboxes for completion; prerequisites surface per problem.
 
 ---
 
 ## 35 Design Problems
 
 <details>
-<summary><strong>Click to see all 35 problems</strong></summary>
+<summary><strong>Expand — full problem list</strong></summary>
 
-| # | Problem | Difficulty | Key Concepts |
-|---|---------|-----------|-------------|
-| 1 | URL Shortener | Easy | Hashing, caching, 100:1 read/write |
+| # | Problem | Difficulty | Key concepts |
+|---|---------|------------|--------------|
+| 1 | URL Shortener | Easy | Hashing, cache, read-heavy |
 | 2 | Rate Limiter | Easy | Token bucket, sliding window, Redis |
-| 3 | Parking Lot | Easy | IoT events, availability tracking |
-| 4 | Twitter / News Feed | Hard | Fan-out, timeline, hybrid approach |
-| 5 | Chat System | Hard | WebSocket, presence, message ordering |
-| 6 | Uber / Ride Sharing | Hard | Geohash, location streaming, matching |
-| 7 | YouTube / Video Streaming | Hard | CDN, transcoding, tiered storage |
-| 8 | Notification System | Medium | Priority queues, multi-channel delivery |
-| 9 | Typeahead / Autocomplete | Medium | Trie, prefix search, offline aggregation |
-| 10 | Web Crawler | Medium | URL frontier, politeness, dedup |
-| 11 | Distributed Cache | Medium | Consistent hashing, eviction, hot keys |
-| 12 | Payment System | Hard | Idempotency, saga pattern, double-entry ledger |
-| 13 | Ticket Booking | Hard | Virtual queue, seat locking, flash sales |
-| 14 | Google Docs | Hard | OT/CRDT, WebSocket, version history |
-| 15 | Dropbox / File Storage | Hard | Block chunking, delta sync, dedup |
-| 16 | Instagram | Medium | Media pipeline, feed gen, CDN strategy |
-| 17 | Spotify | Medium | Adaptive bitrate, pre-fetch, collab filtering |
-| 18 | Amazon / E-Commerce | Hard | Microservices, inventory, event sourcing |
-| 19 | Slack / Team Messaging | Hard | Channel model, search, connection gateway |
-| 20 | Metrics / Monitoring | Hard | Time-series ingestion, downsampling, alerting |
-| 21 | Netflix | Hard | Recommendation engine, adaptive streaming, DRM |
-| 22 | Tinder / Dating App | Medium | Geospatial matching, ELO scoring, Bloom filters |
-| 23 | Google Maps | Hard | Map tiles, Dijkstra/A*, real-time traffic |
-| 24 | Zoom | Hard | WebRTC/SFU, simulcast, screen sharing |
-| 25 | DoorDash / Food Delivery | Hard | Driver dispatch, ETA prediction, order tracking |
-| 26 | Reddit | Medium | Ranking algorithms, comment trees, moderation |
-| 27 | Airbnb | Hard | Search + booking, pricing, bilateral reviews |
-| 28 | WhatsApp | Hard | E2E encryption (Signal Protocol), offline delivery |
-| 29 | Google Search | Hard | Inverted index, PageRank, query parsing |
-| 30 | Yelp / Location Service | Medium | QuadTree/Geohash, proximity search, reviews |
-| 31 | TikTok | Hard | Recommendation (two-tower), video transcoding |
-| 32 | Distributed Message Queue | Hard | Partitioning, consumer groups, exactly-once |
-| 33 | Digital Wallet / UPI | Hard | P2P transfers, idempotency, compliance |
-| 34 | Online Code Editor | Medium | Sandboxed execution, LSP, real-time collab |
-| 35 | CI/CD Pipeline | Medium | Build DAGs, artifact storage, canary deploys |
+| 3 | Parking Lot | Easy | Events, availability |
+| 4 | Twitter / News Feed | Hard | Fan-out, timelines |
+| 5 | Chat System | Hard | WebSocket, ordering |
+| 6 | Uber / Ride Sharing | Hard | Geospatial, matching |
+| 7 | YouTube / Video | Hard | CDN, transcoding |
+| 8 | Notification System | Medium | Queues, multi-channel |
+| 9 | Typeahead | Medium | Trie, prefix search |
+| 10 | Web Crawler | Medium | Frontier, dedup |
+| 11 | Distributed Cache | Medium | Consistent hashing, hot keys |
+| 12 | Payment System | Hard | Idempotency, saga |
+| 13 | Ticket Booking | Hard | Queuing, seat locks |
+| 14 | Google Docs | Hard | CRDT/OT, collaboration |
+| 15 | Dropbox / Files | Hard | Chunking, sync |
+| 16 | Instagram | Medium | Media pipeline, feed |
+| 17 | Spotify | Medium | ABR, recommendations |
+| 18 | E-Commerce | Hard | Inventory, events |
+| 19 | Slack | Hard | Channels, search |
+| 20 | Metrics / Monitoring | Hard | Time series, alerting |
+| 21 | Netflix | Hard | Recs, streaming, DRM |
+| 22 | Tinder / Dating | Medium | Geo, ranking |
+| 23 | Google Maps | Hard | Tiles, routing |
+| 24 | Zoom | Hard | WebRTC, SFU |
+| 25 | Food Delivery | Hard | Dispatch, ETA |
+| 26 | Reddit | Medium | Ranking, threads |
+| 27 | Airbnb | Hard | Search, booking |
+| 28 | WhatsApp | Hard | E2E, delivery |
+| 29 | Google Search | Hard | Index, retrieval |
+| 30 | Yelp / Local | Medium | Geo search |
+| 31 | TikTok | Hard | Recs, transcoding |
+| 32 | Message Queue | Hard | Groups, semantics |
+| 33 | Digital Wallet / UPI | Hard | Transfers, compliance |
+| 34 | Online Code Editor | Medium | Sandbox, collab |
+| 35 | CI/CD Pipeline | Medium | DAGs, canaries |
 
 </details>
 
-Each problem includes requirements (QPS, storage, latency), constraints, progressive hints, tags, and a reference architecture.
+Each problem ships with targets (QPS, storage, latency), constraints, hints, tags, and a reference shape.
 
 ---
 
 ## Quick Start
 
+From this project folder:
+
 ```bash
-git clone https://github.com/vijaygupta18/system-design-simulator.git
-cd system-design-simulator
 npm install
 npm run dev
 ```
 
-Open **http://localhost:3000** for the landing page, or go directly to **http://localhost:3000/studio** for the design canvas.
+Open **http://localhost:3000** for the landing page, or **http://localhost:3000/studio** for the canvas.
 
-### Keyboard Shortcuts
+If you clone from a remote later, use your own URL:
+
+```bash
+git clone <your-repo-url>
+cd sysdes   # or your checkout folder name
+npm install
+npm run dev
+```
+
+### Keyboard shortcuts
 
 | Shortcut | Action |
 |----------|--------|
@@ -263,7 +285,7 @@ Open **http://localhost:3000** for the landing page, or go directly to **http://
 | `Ctrl+Shift+S` | Score design |
 | `Ctrl+S` | Save design |
 | `Ctrl+O` | Load design |
-| `Ctrl+E` | Export as PNG |
+| `Ctrl+E` | Export PNG |
 | `Delete` | Remove selected node |
 | `Escape` | Deselect |
 
@@ -272,84 +294,51 @@ Open **http://localhost:3000** for the landing page, or go directly to **http://
 ## Tech Stack
 
 | Layer | Technology |
-|-------|-----------|
+|-------|------------|
 | Framework | Next.js 16 (App Router) |
 | UI | React 19 + TypeScript |
-| Canvas | @xyflow/react (ReactFlow v12) |
-| State | Zustand v5 (persisted to localStorage) |
+| Canvas | `@xyflow/react` (React Flow v12) |
+| State | Zustand v5 (persisted) |
 | Styling | Tailwind CSS v4 + shadcn/ui |
-| Animation | Framer Motion |
+| Motion | Framer Motion |
 | Icons | Lucide React |
 | Export | html-to-image |
 
-## Project Structure
+---
+
+## Project structure
 
 ```
 src/
-├── app/                    # Next.js app router
+├── app/
 ├── components/
-│   ├── canvas/             # ReactFlow canvas, nodes (Component + Text), edges
-│   ├── dialogs/            # Save/Load dialogs
-│   ├── interview/          # Interview mode (bar, phases, guides)
-│   ├── layout/             # AppShell, TopBar
-│   ├── panel/              # Right panel (props, sim, score, capacity, trade-offs)
-│   ├── sidebar/            # Left sidebar (components, problems, learning path)
-│   └── ui/                 # shadcn/ui primitives
+│   ├── canvas/
+│   ├── dialogs/
+│   ├── interview/
+│   ├── layout/
+│   ├── panel/
+│   ├── sidebar/
+│   └── ui/
 ├── data/
-│   ├── components.ts       # 30 system components with verified specs
-│   ├── problems.ts         # 35 design problems with reference architectures
-│   ├── conceptLibrary.ts   # Educational content for all 30 components
-│   ├── interviewData.ts    # Requirements, APIs, data models for all 35 problems
-│   ├── tradeoffCards.ts    # 14 pre-built trade-off comparisons
-│   └── learningPath.ts     # 4-tier progression with prerequisites
+│   ├── components.ts
+│   ├── problems.ts
+│   ├── conceptLibrary.ts
+│   ├── interviewData.ts
+│   ├── tradeoffCards.ts
+│   └── learningPath.ts
 ├── engine/
-│   └── simulator.ts        # Traffic simulation (Kahn's topological sort)
+│   └── simulator.ts
 ├── scoring/
-│   ├── scorer.ts           # Main scoring orchestrator
-│   └── rules/              # 5 scoring rule modules (20 pts each)
+│   ├── scorer.ts
+│   └── rules/
 ├── store/
-│   ├── appStore.ts         # UI state (persisted)
-│   ├── canvasStore.ts      # Nodes & edges (persisted to localStorage)
-│   ├── simulationStore.ts  # Simulation config & results
-│   ├── savedDesignsStore.ts# Named design saves
-│   ├── interviewStore.ts   # Interview mode & timer
-│   └── tradeoffStore.ts    # Trade-off decision log
-└── types/                  # TypeScript interfaces
+│   ├── appStore.ts
+│   ├── canvasStore.ts
+│   ├── simulationStore.ts
+│   ├── savedDesignsStore.ts
+│   ├── interviewStore.ts
+│   └── tradeoffStore.ts
+└── types/
 ```
 
----
-
-## ☕ Support
-
-If SysDes helped you prep for a system design interview, a chai goes a long way to keep it alive and open-source. No pressure — no ads, no paywalls.
-
-<details>
-<summary><b>Click to reveal the UPI QR</b></summary>
-
-<br/>
-
-<p align="center">
-  <img src="public/support-upi-qr.jpg" alt="UPI QR code — vijaygupta1818@ptyes" width="280"/>
-</p>
-
-<p align="center">
-  Scan with any UPI app — Paytm · PhonePe · GPay · BHIM<br/>
-  UPI ID: <code>vijaygupta1818@ptyes</code>
-</p>
-
-</details>
-
-> Prefer the in-app flow? Open the studio with <code>/studio?support=1</code> and the support popup opens automatically.
-
----
-
-## Contributing
-
-Contributions welcome. Please open an issue first to discuss.
-
-```bash
-npm run dev       # Start dev server
-npm run build     # Production build
-npm run lint      # Run ESLint
-```
 
