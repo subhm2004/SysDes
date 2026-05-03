@@ -71,8 +71,8 @@ function TextNodeInner({ data, selected, id }: NodeProps<TextNodeType>) {
         isVisible={selected}
         minWidth={140}
         minHeight={48}
-        lineClassName="!border-cyan-500/40"
-        handleClassName="!h-2 !w-2 !rounded-sm !border !border-cyan-500 !bg-cyan-500/80"
+        lineClassName="!border-violet-500/40"
+        handleClassName="!h-2 !w-2 !rounded-sm !border !border-violet-500 !bg-violet-500/80"
       />
       <div
         className={`

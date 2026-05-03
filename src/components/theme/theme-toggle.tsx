@@ -19,8 +19,10 @@ function readStoredTheme(): ThemeMode {
 }
 
 function applyTheme(mode: ThemeMode) {
-  document.documentElement.classList.toggle("dark", mode === "dark");
-  document.documentElement.style.colorScheme = mode === "dark" ? "dark" : "light";
+  const root = document.documentElement;
+  root.classList.toggle("dark", mode === "dark");
+  root.style.colorScheme = mode === "dark" ? "dark" : "light";
+  root.dataset.sysdesTheme = mode;
   try {
     localStorage.setItem(THEME_STORAGE_KEY, mode);
   } catch {

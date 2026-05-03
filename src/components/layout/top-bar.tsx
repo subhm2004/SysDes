@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -231,7 +232,11 @@ export function TopBar({
           <PanelLeft className="h-4 w-4" />
         </button>
 
-        <div className="flex min-w-0 items-center gap-2">
+        <Link
+          href="/"
+          className="flex min-w-0 items-center gap-2 rounded-lg outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-violet-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-offset-zinc-900"
+          title={`${BRAND.name} — back to home`}
+        >
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/15 to-violet-600/10 ring-1 ring-violet-500/20 dark:from-violet-400/10 dark:to-violet-600/5 dark:ring-violet-400/15">
             <LayoutGrid className="h-[18px] w-[18px] text-violet-600 dark:text-violet-300" strokeWidth={2.25} />
           </div>
@@ -243,7 +248,7 @@ export function TopBar({
               {BRAND.studioTagline}
             </span>
           </div>
-        </div>
+        </Link>
 
         <div className="mx-0.5 hidden h-6 w-px bg-zinc-200 dark:bg-zinc-700 md:block" />
 

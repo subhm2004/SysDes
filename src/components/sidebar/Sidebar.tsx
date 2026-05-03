@@ -24,14 +24,14 @@ function SidebarTabs({
   const setActiveLeftTab = useAppStore((s) => s.setActiveLeftTab);
   return (
     <Tabs value={activeLeftTab} onValueChange={(v) => setActiveLeftTab(v as typeof activeLeftTab)} className="flex flex-1 flex-col min-h-0">
-      <TabsList className="mx-2 mt-2 flex min-h-10 w-full max-w-none shrink-0 gap-0.5 p-1">
-        <TabsTrigger value="components" className="h-8 min-w-0 flex-1 px-2 text-sm font-sans after:hidden">
+      <TabsList className="mx-2 mt-2 flex min-h-11 w-full max-w-none shrink-0 gap-0.5 p-1">
+        <TabsTrigger value="components" className="h-9 min-w-0 flex-1 px-2 text-base font-sans after:hidden">
           Components
         </TabsTrigger>
-        <TabsTrigger value="problems" className="h-8 min-w-0 flex-1 px-2 text-sm font-sans after:hidden">
+        <TabsTrigger value="problems" className="h-9 min-w-0 flex-1 px-2 text-base font-sans after:hidden">
           Problems
         </TabsTrigger>
-        <TabsTrigger value="learn" className="h-8 min-w-0 flex-1 px-2 text-sm font-sans after:hidden">
+        <TabsTrigger value="learn" className="h-9 min-w-0 flex-1 px-2 text-base font-sans after:hidden">
           Learn
         </TabsTrigger>
       </TabsList>

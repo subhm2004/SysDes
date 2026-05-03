@@ -15,7 +15,7 @@ const CATEGORY_COLORS: Record<string, { icon: string }> = {
   compute: { icon: "text-violet-600 dark:text-violet-400" },
   storage: { icon: "text-amber-600 dark:text-amber-400" },
   messaging: { icon: "text-emerald-600 dark:text-emerald-400" },
-  infrastructure: { icon: "text-cyan-600 dark:text-cyan-400" },
+  infrastructure: { icon: "text-violet-500 dark:text-violet-300" },
 };
 
 const STATUS_DOT: Record<string, string> = {
@@ -67,10 +67,10 @@ function ComponentNodeInner({ id, data, selected }: NodeProps<ComponentNode>) {
   return (
     <div
       className={`
-        relative flex flex-col items-center gap-1 rounded-lg border border-border bg-card px-4 py-3
+        relative flex flex-col items-center gap-1.5 rounded-lg border border-border bg-card px-4 py-3.5
         text-card-foreground shadow-sm transition-colors
         ${isBottleneck ? "border-rose-500/60" : ""}
-        ${selected ? "border-cyan-500" : ""}
+        ${selected ? "border-violet-500 ring-1 ring-violet-500/30" : ""}
       `}
     >
       {/* Status indicator dot */}
@@ -80,9 +80,9 @@ function ComponentNodeInner({ id, data, selected }: NodeProps<ComponentNode>) {
       />
 
       {/* Icon + Label row */}
-      <div className="flex items-center gap-1.5">
-        <div className={`flex h-6 w-6 items-center justify-center rounded ${colors.icon}`}>
-          <Icon className="h-3.5 w-3.5" />
+      <div className="flex items-center gap-2">
+        <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-md ${colors.icon}`}>
+          <Icon className="h-4 w-4" />
         </div>
         {editing ? (
           <input
@@ -97,11 +97,11 @@ function ComponentNodeInner({ id, data, selected }: NodeProps<ComponentNode>) {
                 setEditing(false);
               }
             }}
-            className="max-w-[80px] border-b border-cyan-500 bg-transparent text-[11px] font-medium text-foreground outline-none"
+            className="max-w-[7.5rem] border-b border-violet-500 bg-transparent text-sm font-semibold text-foreground outline-none"
           />
         ) : (
           <span
-            className={`max-w-[96px] whitespace-normal break-words text-center text-[11px] font-medium leading-tight text-foreground ${isCustom ? "cursor-text" : ""}`}
+            className={`max-w-[7.5rem] whitespace-normal break-words text-center text-sm font-semibold leading-snug text-foreground ${isCustom ? "cursor-text" : ""}`}
             onDoubleClick={handleDoubleClick}
           >
             {nodeData.label}
@@ -110,13 +110,13 @@ function ComponentNodeInner({ id, data, selected }: NodeProps<ComponentNode>) {
       </div>
 
       {/* Stats */}
-      <span className="font-mono text-[9px] text-muted-foreground">
+      <span className="font-mono text-xs tabular-nums text-muted-foreground">
         {nodeData.maxQPS === Infinity ? '\u221e' : ((nodeData.maxQPS ?? 0)/1000).toFixed(0) + 'k'} qps
       </span>
 
       {/* Replicas badge */}
       {replicas > 1 && (
-        <span className="absolute -left-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-cyan-600 px-1 text-[8px] font-bold text-white">
+        <span className="absolute -left-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-violet-600 px-1 text-[10px] font-bold text-white dark:bg-violet-500">
           ×{replicas}
         </span>
       )}
@@ -134,7 +134,7 @@ function ComponentNodeInner({ id, data, selected }: NodeProps<ComponentNode>) {
               transition={{ duration: 0.3 }}
             />
           </div>
-          <span className={`font-mono text-[8px] ${
+          <span className={`font-mono text-xs tabular-nums ${
             utilization > 0.8 ? "text-rose-400" : utilization > 0.5 ? "text-amber-400" : "text-emerald-400"
           }`}>{(utilization * 100).toFixed(0)}%</span>
         </div>

@@ -99,7 +99,7 @@ export function LearningPath() {
 
   return (
     <ScrollArea className="h-full">
-      <div className="space-y-1 p-3">
+      <div className="space-y-1 p-3.5">
         {LEARNING_PATH.map((tier) => {
           const isExpanded = expandedTiers.has(tier.name);
           const completedCount = tier.problemIds.filter((id) => completed.has(id)).length;
@@ -112,29 +112,29 @@ export function LearningPath() {
               <button
                 type="button"
                 onClick={() => toggleTier(tier.name)}
-                className="flex w-full items-center gap-2 rounded-md px-2.5 py-2 text-left text-sidebar-foreground transition-colors hover:bg-sidebar-accent"
+                className="flex w-full items-center gap-2 rounded-md px-2.5 py-2.5 text-left text-sidebar-foreground transition-colors hover:bg-sidebar-accent"
               >
                 {isExpanded ? (
-                  <ChevronDown className="h-3.5 w-3.5 shrink-0 text-sidebar-foreground/55" />
+                  <ChevronDown className="h-4 w-4 shrink-0 text-sidebar-foreground/55" />
                 ) : (
-                  <ChevronRight className="h-3.5 w-3.5 shrink-0 text-sidebar-foreground/55" />
+                  <ChevronRight className="h-4 w-4 shrink-0 text-sidebar-foreground/55" />
                 )}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between">
                     <span
-                      className={`text-sm font-sans font-semibold ${TIER_COLORS[tier.name] ?? "text-foreground"}`}
+                      className={`text-base font-sans font-semibold ${TIER_COLORS[tier.name] ?? "text-foreground"}`}
                     >
                       {tier.name}
                     </span>
-                    <span className="text-xs tabular-nums text-sidebar-foreground/65">
+                    <span className="text-sm tabular-nums text-sidebar-foreground/65">
                       {completedCount}/{totalCount}
                     </span>
                   </div>
-                  <p className="mt-0.5 text-xs text-sidebar-foreground/70">{tier.description}</p>
+                  <p className="mt-0.5 text-sm text-sidebar-foreground/70">{tier.description}</p>
                   {/* Progress bar */}
                   <div className="mt-1.5 h-1 w-full rounded-full bg-sidebar-accent">
                     <div
-                      className={`h-1 rounded-full transition-all ${TIER_BAR_COLORS[tier.name] ?? "bg-cyan-500"}`}
+                      className={`h-1 rounded-full transition-all ${TIER_BAR_COLORS[tier.name] ?? "bg-violet-500"}`}
                       style={{ width: `${progressPct}%` }}
                     />
                   </div>
@@ -159,11 +159,11 @@ export function LearningPath() {
                         tabIndex={0}
                         onClick={() => setSelectedProblem(pid)}
                         onKeyDown={(e) => { if (e.key === "Enter") setSelectedProblem(pid); }}
-                        className={`flex w-full cursor-pointer flex-col gap-1 rounded-md px-2.5 py-2 text-left transition-colors ${
+                        className={`flex w-full cursor-pointer flex-col gap-1.5 rounded-md px-2.5 py-2.5 text-left transition-colors ${
                           isSelected
                             ? "border border-sidebar-border bg-background text-foreground shadow-sm"
                             : isRecommended
-                              ? "border border-cyan-500/25 bg-cyan-500/[0.08] hover:bg-cyan-500/15 dark:border-cyan-800/50 dark:bg-cyan-900/15 dark:hover:bg-cyan-900/25"
+                              ? "border border-violet-500/25 bg-violet-500/[0.08] hover:bg-violet-500/15 dark:border-violet-500/35 dark:bg-violet-950/30 dark:hover:bg-violet-950/45"
                               : "border border-transparent text-sidebar-foreground hover:bg-sidebar-accent"
                         }`}
                       >
@@ -173,10 +173,10 @@ export function LearningPath() {
                             <button
                               type="button"
                               onClick={(e) => toggleCompleted(pid, e)}
-                              className={`h-3.5 w-3.5 shrink-0 rounded border transition-colors ${
+                              className={`h-4 w-4 shrink-0 rounded border transition-colors ${
                                 isCompleted
-                                  ? "border-cyan-500 bg-cyan-500"
-                                  : "border-border hover:border-cyan-500/50"
+                                  ? "border-violet-600 bg-violet-600 dark:border-violet-500 dark:bg-violet-500"
+                                  : "border-border hover:border-violet-500/50"
                               }`}
                             >
                               {isCompleted && (
@@ -193,33 +193,33 @@ export function LearningPath() {
                               )}
                             </button>
                             <span
-                              className={`text-sm font-sans font-medium truncate ${
+                              className={`text-base font-sans font-medium truncate ${
                                 isCompleted
                                   ? "text-sidebar-foreground/55 line-through"
                                   : isSelected
-                                    ? "text-cyan-700 dark:text-cyan-400"
+                                    ? "text-violet-700 dark:text-violet-400"
                                     : "text-sidebar-foreground"
                               }`}
                             >
                               {problem.title}
                             </span>
                             {isRecommended && !isCompleted && (
-                              <Star className="h-3 w-3 shrink-0 text-amber-400 fill-amber-400" />
+                              <Star className="h-3.5 w-3.5 shrink-0 fill-amber-400 text-amber-400" />
                             )}
                           </div>
                           <Badge
                             variant="outline"
-                            className={`h-5 shrink-0 px-1.5 text-xs font-medium ${getDifficultyColor(problem.difficulty)}`}
+                            className={`h-6 shrink-0 px-2 text-sm font-medium ${getDifficultyColor(problem.difficulty)}`}
                           >
                             {problem.difficulty}
                           </Badge>
                         </div>
                         {concepts.length > 0 && (
-                          <div className="flex flex-wrap gap-1 ml-5">
+                          <div className="ml-5 flex flex-wrap gap-1">
                             {concepts.map((c) => (
                               <span
                                 key={c}
-                                className="rounded bg-sidebar-accent px-1 py-0.5 text-xs text-sidebar-foreground/75"
+                                className="rounded bg-sidebar-accent px-1.5 py-0.5 text-sm text-sidebar-foreground/75"
                               >
                                 {c}
                               </span>

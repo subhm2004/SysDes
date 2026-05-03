@@ -47,9 +47,9 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
         <button
           type="button"
           onClick={onCreateProblem}
-          className="flex w-full items-center gap-2 rounded-md border border-dashed border-sidebar-border px-2.5 py-2 text-left text-sm font-sans font-medium text-violet-700 transition-colors hover:border-violet-500/40 hover:bg-sidebar-accent dark:text-violet-400"
+          className="flex w-full items-center gap-2 rounded-md border border-dashed border-sidebar-border px-2.5 py-2.5 text-left text-base font-sans font-medium text-violet-700 transition-colors hover:border-violet-500/40 hover:bg-sidebar-accent dark:text-violet-400"
         >
-          <Plus className="h-3.5 w-3.5" />
+          <Plus className="h-4 w-4 shrink-0" />
           Create Custom Problem
         </button>
 
@@ -67,7 +67,7 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
               }
             }}
             aria-pressed={problem.id === selectedProblemId}
-            className={`group flex w-full cursor-pointer flex-col gap-1.5 rounded-md px-2.5 py-2 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+            className={`group flex w-full cursor-pointer flex-col gap-2 rounded-md px-2.5 py-2.5 text-left transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
               problem.id === selectedProblemId
                 ? "border border-sidebar-border bg-background text-foreground shadow-sm"
                 : "border border-transparent text-sidebar-foreground hover:bg-sidebar-accent"
@@ -75,9 +75,9 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
           >
             <div className="flex items-center justify-between gap-1">
               <span
-                className={`flex-1 truncate text-sm font-sans font-medium ${
+                className={`flex-1 truncate text-base font-sans font-medium leading-snug ${
                   problem.id === selectedProblemId
-                    ? "text-cyan-700 dark:text-cyan-400"
+                    ? "text-violet-700 dark:text-violet-400"
                     : "text-sidebar-foreground"
                 }`}
               >
@@ -86,13 +86,13 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
               <div className="flex items-center gap-1">
                 <Badge
                   variant="outline"
-                  className="h-4 shrink-0 border-violet-500/30 bg-violet-500/10 px-1.5 text-[11px] font-medium text-violet-800 dark:text-violet-400"
+                  className="h-5 shrink-0 border-violet-500/30 bg-violet-500/10 px-2 text-xs font-medium text-violet-800 dark:text-violet-400"
                 >
                   Custom
                 </Badge>
                 <Badge
                   variant="outline"
-                  className={`h-4 shrink-0 px-1.5 text-[11px] font-medium ${getDifficultyColor(
+                  className={`h-5 shrink-0 px-2 text-xs font-medium ${getDifficultyColor(
                     problem.difficulty
                   )}`}
                 >
@@ -101,16 +101,16 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
                 <button
                   type="button"
                   onClick={(e) => handleDeleteCustom(e, problem.id)}
-                  className="flex h-4 w-4 shrink-0 items-center justify-center rounded text-sidebar-foreground/50 opacity-0 transition-opacity hover:text-rose-600 group-hover:opacity-100 dark:hover:text-rose-400"
+                  className="flex h-5 w-5 shrink-0 items-center justify-center rounded text-sidebar-foreground/50 opacity-0 transition-opacity hover:text-rose-600 group-hover:opacity-100 dark:hover:text-rose-400"
                   title="Delete custom problem"
                 >
-                  <X className="h-3 w-3" />
+                  <X className="h-3.5 w-3.5" />
                 </button>
               </div>
             </div>
             <div className="flex flex-wrap gap-1">
               {problem.tags.map((tag, i) => (
-                <span key={tag} className="text-xs text-sidebar-foreground/70">
+                <span key={tag} className="text-sm text-sidebar-foreground/70">
                   {tag}{i < problem.tags.length - 1 ? " ·" : ""}
                 </span>
               ))}
@@ -130,17 +130,17 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
             key={problem.id}
             onClick={() => setSelectedProblem(problem.id)}
             aria-pressed={problem.id === selectedProblemId}
-            className={`flex w-full flex-col gap-1.5 rounded-md px-2.5 py-2 text-left transition-colors ${
+            className={`flex w-full flex-col gap-2 rounded-md px-2.5 py-2.5 text-left transition-colors ${
               problem.id === selectedProblemId
                 ? "border border-sidebar-border bg-background text-foreground shadow-sm"
                 : "border border-transparent text-sidebar-foreground hover:bg-sidebar-accent"
             }`}
           >
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-2">
               <span
-                className={`text-sm font-sans font-medium ${
+                className={`min-w-0 flex-1 text-left text-base font-sans font-medium leading-snug ${
                   problem.id === selectedProblemId
-                    ? "text-cyan-700 dark:text-cyan-400"
+                    ? "text-violet-700 dark:text-violet-400"
                     : "text-sidebar-foreground"
                 }`}
               >
@@ -148,7 +148,7 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
               </span>
               <Badge
                 variant="outline"
-                className={`h-4 px-1.5 text-[11px] font-medium ${getDifficultyColor(
+                className={`h-5 shrink-0 px-2 text-xs font-medium ${getDifficultyColor(
                   problem.difficulty
                 )}`}
               >
@@ -157,7 +157,7 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
             </div>
             <div className="flex flex-wrap gap-1">
               {problem.tags.map((tag, i) => (
-                <span key={tag} className="text-xs text-sidebar-foreground/70">
+                <span key={tag} className="text-sm text-sidebar-foreground/70">
                   {tag}{i < problem.tags.length - 1 ? " ·" : ""}
                 </span>
               ))}

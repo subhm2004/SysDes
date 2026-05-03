@@ -18,7 +18,7 @@ function CategorySection({ category }: { category: CategoryScore }) {
     pct >= 50 ? "bg-amber-500" : "bg-rose-500";
 
   return (
-    <div className="rounded-md border border-border bg-card px-3 py-2.5">
+    <div className="rounded-md border border-border bg-card px-3 py-3">
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
@@ -26,13 +26,13 @@ function CategorySection({ category }: { category: CategoryScore }) {
       >
         <div className="flex items-center gap-2">
           {expanded ? (
-            <ChevronDown className="h-3 w-3 text-muted-foreground" />
+            <ChevronDown className="h-4 w-4 text-muted-foreground" />
           ) : (
-            <ChevronRight className="h-3 w-3 text-muted-foreground" />
+            <ChevronRight className="h-4 w-4 text-muted-foreground" />
           )}
-          <span className="text-xs font-medium text-foreground">{category.category}</span>
+          <span className="text-sm font-medium text-foreground">{category.category}</span>
         </div>
-        <span className="font-mono text-xs text-muted-foreground">
+        <span className="font-mono text-sm text-muted-foreground">
           {category.score}/{category.maxScore}
         </span>
       </button>
@@ -47,17 +47,17 @@ function CategorySection({ category }: { category: CategoryScore }) {
       </div>
 
       {expanded && (
-        <div className="mt-3 space-y-1.5">
+        <div className="mt-3 space-y-2">
           {category.passed.map((item, i) => (
-            <div key={i} className="flex items-start gap-1.5">
-              <CheckCircle2 className="mt-0.5 h-3 w-3 shrink-0 text-emerald-500" />
-              <span className="text-xs text-muted-foreground">{item}</span>
+            <div key={i} className="flex items-start gap-2">
+              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+              <span className="text-sm leading-relaxed text-muted-foreground">{item}</span>
             </div>
           ))}
           {category.feedback.map((item, i) => (
-            <div key={i} className="flex items-start gap-1.5">
-              <AlertCircle className="mt-0.5 h-3 w-3 shrink-0 text-amber-500" />
-              <span className="text-xs text-muted-foreground">{item}</span>
+            <div key={i} className="flex items-start gap-2">
+              <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-500" />
+              <span className="text-sm leading-relaxed text-muted-foreground">{item}</span>
             </div>
           ))}
         </div>
@@ -98,12 +98,12 @@ export function ScoreReport() {
   if (!scoreResult) {
     return (
       <div className="flex flex-col items-center gap-3 py-10 text-center">
-        <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-muted">
-          <ClipboardCheck className="h-4 w-4 text-emerald-600/80 dark:text-emerald-400/90" strokeWidth={2.25} />
+        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-muted">
+          <ClipboardCheck className="h-5 w-5 text-emerald-600/80 dark:text-emerald-400/90" strokeWidth={2.25} />
         </div>
         <div>
-          <p className="text-xs font-medium text-foreground">Ready to evaluate</p>
-          <p className="mt-1 max-w-[220px] text-xs text-muted-foreground">
+          <p className="text-base font-medium text-foreground">Ready to evaluate</p>
+          <p className="mt-1 max-w-[240px] text-sm leading-relaxed text-muted-foreground">
             Design your system on the canvas, then click{" "}
             <span className="font-medium text-emerald-600 dark:text-emerald-400">Evaluate</span> in the toolbar to see how you did
           </p>
@@ -120,7 +120,7 @@ export function ScoreReport() {
     <ScrollArea className="h-full">
       <div className="space-y-4 p-1">
         {/* Overall score */}
-        <div className="flex flex-col items-center gap-2 py-4">
+        <div className="flex flex-col items-center gap-2 py-3">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -155,28 +155,28 @@ export function ScoreReport() {
               );
             })()}
             <div className="absolute flex flex-col items-center">
-              <span className="font-mono text-3xl font-bold text-foreground">
+              <span className="font-mono text-3xl font-bold text-foreground sm:text-4xl">
                 {scoreResult.total}
               </span>
-              <span className="text-[11px] text-muted-foreground">/ 100</span>
+              <span className="text-xs text-muted-foreground sm:text-sm">/ 100</span>
             </div>
           </motion.div>
 
           <Badge
             variant="outline"
-            className={`${scoreResult.verdictColor} ${verdictBorderClass(scoreResult.verdictColor)} ${verdictBgClass(scoreResult.verdictColor)} px-3 py-0.5 text-xs font-semibold`}
+            className={`${scoreResult.verdictColor} ${verdictBorderClass(scoreResult.verdictColor)} ${verdictBgClass(scoreResult.verdictColor)} px-3 py-1 text-sm font-semibold`}
           >
             {scoreResult.verdict}
           </Badge>
 
-          <p className="text-center text-xs text-muted-foreground">{scoreResult.summary}</p>
+          <p className="max-w-[18rem] text-center text-sm leading-relaxed text-muted-foreground">{scoreResult.summary}</p>
         </div>
 
         <Separator className="bg-border" />
 
         {/* Category breakdowns */}
         <div className="space-y-2">
-          <p className="text-xs font-sans font-semibold uppercase tracking-wider text-muted-foreground">
+          <p className="text-sm font-sans font-semibold uppercase tracking-wider text-muted-foreground">
             Categories
           </p>
           {scoreResult.categories.map((cat) => (
@@ -189,18 +189,18 @@ export function ScoreReport() {
           <>
             <Separator className="bg-border" />
             <div className="space-y-2">
-              <p className="text-xs font-sans font-semibold uppercase tracking-wider text-muted-foreground">
+              <p className="text-sm font-sans font-semibold uppercase tracking-wider text-muted-foreground">
                 Top improvements
               </p>
               {topImprovements.map((item, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-2 rounded-md border border-border bg-card px-2.5 py-2"
+                  className="flex items-start gap-2 rounded-md border border-border bg-card px-3 py-2.5"
                 >
-                  <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-muted text-[11px] font-bold text-foreground">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted text-xs font-bold text-foreground">
                     {i + 1}
                   </span>
-                  <span className="text-xs text-muted-foreground">{item}</span>
+                  <span className="text-sm leading-relaxed text-muted-foreground">{item}</span>
                 </div>
               ))}
             </div>

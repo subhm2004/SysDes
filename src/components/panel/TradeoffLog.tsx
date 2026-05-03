@@ -26,7 +26,7 @@ function getCategoryColor(category: TradeoffEntry["category"]) {
     case "scaling":
       return "border-emerald-500/30 bg-emerald-500/10 text-emerald-400";
     case "availability":
-      return "border-cyan-500/30 bg-cyan-500/10 text-cyan-400";
+      return "border-violet-500/30 bg-violet-500/10 text-violet-400";
     case "other":
       return "border-zinc-500/30 bg-zinc-500/10 text-zinc-400";
   }
@@ -68,7 +68,7 @@ export function TradeoffLog() {
   return (
     <div className="space-y-3">
       <div className="flex items-center justify-between">
-        <p className="text-xs font-sans font-semibold uppercase tracking-wider text-muted-foreground">
+        <p className="text-sm font-sans font-semibold uppercase tracking-wider text-muted-foreground">
           Your trade-offs
         </p>
         {!formOpen && (
@@ -76,41 +76,41 @@ export function TradeoffLog() {
             variant="outline"
             size="sm"
             onClick={() => setFormOpen(true)}
-            className="h-6 gap-1 border-border px-2 text-xs text-muted-foreground hover:bg-muted hover:text-foreground"
+            className="h-8 gap-1 border-border px-2.5 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
           >
-            <Plus className="h-3 w-3" />
+            <Plus className="h-3.5 w-3.5" />
             Add
           </Button>
         )}
       </div>
 
       {formOpen && (
-        <div className="space-y-2 rounded-md border border-border bg-card p-2.5">
+        <div className="space-y-2.5 rounded-md border border-border bg-card p-3">
           <input
             type="text"
             placeholder="Decision (e.g. Chose Redis over Memcached)"
             value={decision}
             onChange={(e) => setDecision(e.target.value)}
-            className="w-full rounded-md border border-input bg-background px-2.5 py-1.5 text-xs text-foreground placeholder:text-muted-foreground outline-none focus:border-cyan-600"
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-500/30 dark:focus:border-violet-400"
           />
           <textarea
             placeholder="Rationale — why this choice?"
             value={rationale}
             onChange={(e) => setRationale(e.target.value)}
             rows={2}
-            className="w-full resize-none rounded-md border border-input bg-background px-2.5 py-1.5 text-xs text-foreground placeholder:text-muted-foreground outline-none focus:border-cyan-600"
+            className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-500/30 dark:focus:border-violet-400"
           />
           <textarea
             placeholder="Alternatives considered"
             value={alternatives}
             onChange={(e) => setAlternatives(e.target.value)}
             rows={2}
-            className="w-full resize-none rounded-md border border-input bg-background px-2.5 py-1.5 text-xs text-foreground placeholder:text-muted-foreground outline-none focus:border-cyan-600"
+            className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-500/30 dark:focus:border-violet-400"
           />
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as TradeoffEntry["category"])}
-            className="w-full rounded-md border border-input bg-background px-2.5 py-1.5 text-xs text-foreground outline-none focus:border-cyan-600"
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-500/30 dark:focus:border-violet-400"
           >
             {CATEGORIES.map((cat) => (
               <option key={cat} value={cat}>
@@ -124,7 +124,7 @@ export function TradeoffLog() {
               size="sm"
               onClick={handleSave}
               disabled={!decision.trim()}
-              className="h-6 border-cyan-700 px-3 text-xs text-cyan-400 hover:bg-cyan-900/30 hover:text-cyan-300 disabled:opacity-40"
+              className="h-8 border-violet-600 px-4 text-sm text-violet-700 hover:bg-violet-500/10 hover:text-violet-800 disabled:opacity-40 dark:text-violet-300 dark:hover:bg-violet-500/15 dark:hover:text-violet-200"
             >
               Save
             </Button>
@@ -132,7 +132,7 @@ export function TradeoffLog() {
               variant="outline"
               size="sm"
               onClick={handleCancel}
-              className="h-6 border-border px-3 text-xs text-muted-foreground hover:bg-muted hover:text-foreground"
+              className="h-8 border-border px-4 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
             >
               Cancel
             </Button>
@@ -141,7 +141,7 @@ export function TradeoffLog() {
       )}
 
       {entries.length === 0 && !formOpen && (
-        <p className="text-xs text-muted-foreground">
+        <p className="text-sm leading-relaxed text-muted-foreground">
           No trade-offs logged yet. Record your design decisions as you go.
         </p>
       )}
@@ -150,32 +150,32 @@ export function TradeoffLog() {
         {entries.map((entry) => (
           <div
             key={entry.id}
-            className="group rounded-md border border-border bg-card p-2.5"
+            className="group rounded-md border border-border bg-card p-3"
           >
             <div className="flex items-start justify-between gap-2">
-              <p className="text-xs font-medium text-foreground">{entry.decision}</p>
+              <p className="text-sm font-medium text-foreground">{entry.decision}</p>
               <button
                 type="button"
                 onClick={() => removeEntry(entry.id)}
                 className="shrink-0 rounded p-0.5 text-muted-foreground opacity-0 transition-opacity hover:text-rose-500 group-hover:opacity-100"
               >
-                <Trash2 className="h-3 w-3" />
+                <Trash2 className="h-4 w-4" />
               </button>
             </div>
             {entry.rationale && (
-              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                 {entry.rationale}
               </p>
             )}
             {entry.alternatives && (
-              <p className="mt-1 text-xs leading-relaxed text-muted-foreground/90">
+              <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground/90">
                 Alt: {entry.alternatives}
               </p>
             )}
-            <div className="mt-1.5">
+            <div className="mt-2">
               <Badge
                 variant="outline"
-                className={`h-4 px-1.5 text-[10px] font-medium ${getCategoryColor(entry.category)}`}
+                className={`h-5 px-2 text-xs font-medium ${getCategoryColor(entry.category)}`}
               >
                 {entry.category}
               </Badge>

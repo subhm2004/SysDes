@@ -26,7 +26,7 @@ const CATEGORY_ACCENT: Record<string, string> = {
   compute: "text-violet-600 dark:text-violet-400",
   storage: "text-amber-600 dark:text-amber-400",
   messaging: "text-emerald-600 dark:text-emerald-400",
-  infrastructure: "text-cyan-600 dark:text-cyan-400",
+  infrastructure: "text-violet-500 dark:text-violet-300",
 };
 
 const CATEGORY_BG: Record<string, string> = {
@@ -34,7 +34,7 @@ const CATEGORY_BG: Record<string, string> = {
   compute: "bg-violet-500/10 dark:bg-violet-400/10",
   storage: "bg-amber-500/10 dark:bg-amber-400/10",
   messaging: "bg-emerald-500/10 dark:bg-emerald-400/10",
-  infrastructure: "bg-cyan-500/10 dark:bg-cyan-400/10",
+  infrastructure: "bg-violet-500/8 dark:bg-violet-400/8",
 };
 
 const CATEGORY_BORDER: Record<string, string> = {
@@ -42,7 +42,7 @@ const CATEGORY_BORDER: Record<string, string> = {
   compute: "border-l-violet-500 dark:border-l-violet-400",
   storage: "border-l-amber-500 dark:border-l-amber-400",
   messaging: "border-l-emerald-500 dark:border-l-emerald-400",
-  infrastructure: "border-l-cyan-500 dark:border-l-cyan-400",
+  infrastructure: "border-l-violet-400 dark:border-l-violet-500",
 };
 
 interface ComponentPaletteProps {
@@ -134,7 +134,7 @@ export function ComponentPalette({ onCreateCustomComponent }: ComponentPalettePr
             placeholder="Search components..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full rounded-md border border-sidebar-border bg-background py-2 pl-9 pr-3 text-sm font-sans text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/20"
+            className="w-full rounded-md border border-sidebar-border bg-background py-2 pl-9 pr-3 text-sm font-sans text-foreground placeholder:text-muted-foreground outline-none transition-colors focus:border-violet-500 focus:ring-1 focus:ring-violet-500/25 dark:focus:border-violet-400"
           />
         </div>
         {query && (
@@ -151,11 +151,11 @@ export function ComponentPalette({ onCreateCustomComponent }: ComponentPalettePr
           <button
             type="button"
             onClick={onCreateCustomComponent}
-            className="group flex w-full items-center gap-2 rounded-md border border-dashed border-sidebar-border bg-sidebar-accent/30 px-2.5 py-2 text-sm font-sans text-sidebar-foreground transition-colors hover:border-cyan-500/40 hover:bg-sidebar-accent"
+            className="group flex w-full items-center gap-2.5 rounded-md border border-dashed border-violet-500/35 bg-violet-500/[0.06] px-3 py-2.5 text-base font-sans font-medium text-sidebar-foreground transition-colors hover:border-violet-500/55 hover:bg-violet-500/10 dark:border-violet-400/30 dark:bg-violet-500/[0.08] dark:hover:border-violet-400/50 dark:hover:bg-violet-500/15"
           >
-            <Sparkles className="h-4 w-4 shrink-0 text-cyan-600 dark:text-cyan-400" />
+            <Sparkles className="h-4 w-4 shrink-0 text-violet-600 dark:text-violet-400" strokeWidth={2.25} />
             <span className="flex-1 text-left">Create custom component</span>
-            <Plus className="h-3 w-3 shrink-0 text-sidebar-foreground/60 group-hover:text-cyan-600 dark:group-hover:text-cyan-400" />
+            <Plus className="h-4 w-4 shrink-0 text-sidebar-foreground/55 group-hover:text-violet-600 dark:group-hover:text-violet-400" strokeWidth={2.25} />
           </button>
         )}
         {COMPONENT_CATEGORIES.map((cat) => {
@@ -178,9 +178,9 @@ export function ComponentPalette({ onCreateCustomComponent }: ComponentPalettePr
               <div className="space-y-0.5">
                 {items.map((item) => {
                   const Icon = ICON_MAP[item.icon] ?? Server;
-                  const accent = CATEGORY_ACCENT[item.category] ?? "text-cyan-600 dark:text-cyan-400";
-                  const iconBg = CATEGORY_BG[item.category] ?? "bg-cyan-500/10 dark:bg-cyan-400/10";
-                  const borderColor = CATEGORY_BORDER[item.category] ?? "border-l-cyan-500 dark:border-l-cyan-400";
+                  const accent = CATEGORY_ACCENT[item.category] ?? "text-violet-600 dark:text-violet-400";
+                  const iconBg = CATEGORY_BG[item.category] ?? "bg-violet-500/10 dark:bg-violet-400/10";
+                  const borderColor = CATEGORY_BORDER[item.category] ?? "border-l-violet-500 dark:border-l-violet-400";
                   const concept = CONCEPT_LIBRARY[item.id];
                   const tipText = concept?.whenToUse[0] ?? item.description;
                   const isCustom = customIds.has(item.id);
@@ -201,7 +201,7 @@ export function ComponentPalette({ onCreateCustomComponent }: ComponentPalettePr
                               {item.label}
                             </span>
                             {isCustom && (
-                              <span className="shrink-0 rounded bg-cyan-500/15 px-1 text-[9px] font-semibold uppercase tracking-wider text-cyan-700 dark:text-cyan-400">
+                              <span className="shrink-0 rounded bg-violet-500/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-800 dark:text-violet-300">
                                 Custom
                               </span>
                             )}
@@ -214,7 +214,7 @@ export function ComponentPalette({ onCreateCustomComponent }: ComponentPalettePr
                                 e.stopPropagation();
                                 handleQuickAdd(item.id);
                               }}
-                              className="flex h-5 w-5 shrink-0 items-center justify-center rounded text-sidebar-foreground/55 opacity-70 transition-all hover:bg-sidebar-accent hover:text-cyan-600 hover:opacity-100 dark:hover:text-cyan-400 md:opacity-0 md:group-hover:opacity-100"
+                              className="flex h-5 w-5 shrink-0 items-center justify-center rounded text-sidebar-foreground/55 opacity-70 transition-all hover:bg-sidebar-accent hover:text-violet-600 hover:opacity-100 dark:hover:text-violet-400 md:opacity-0 md:group-hover:opacity-100"
                               title="Add to canvas"
                               aria-label={`Add ${item.label} to canvas`}
                             >

@@ -9,37 +9,43 @@ export function CanvasTabBar() {
   const switchTab = useCanvasStore((s) => s.switchTab);
   const closeTab = useCanvasStore((s) => s.closeTab);
 
-  // Don't render if only 1 tab (default "My Design")
-  if (tabs.length <= 1) return null;
-
   return (
-    <div className="flex h-10 shrink-0 items-center gap-0.5 border-b border-zinc-200 bg-zinc-100 px-2 overflow-x-auto dark:border-zinc-800 dark:bg-zinc-950">
+    <div className="flex h-11 shrink-0 items-center gap-1 overflow-x-auto border-b border-violet-200/60 bg-gradient-to-r from-[#faf8ff] via-zinc-50 to-[#faf8ff] px-2 dark:border-violet-500/15 dark:from-[#0f0d14] dark:via-zinc-950 dark:to-[#0f0d14]">
       {tabs.map((tab) => (
         <button
           key={tab.id}
+          type="button"
           onClick={() => switchTab(tab.id)}
-          className={`group flex h-8 items-center gap-1.5 rounded-md px-3 text-sm font-sans transition-colors ${
+          className={`group flex h-9 shrink-0 items-center gap-2 rounded-lg px-3 text-base font-sans font-semibold tracking-tight transition-colors ${
             tab.id === activeTabId
-              ? "bg-zinc-200 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100"
-              : "text-zinc-600 hover:bg-zinc-200/80 hover:text-zinc-900 dark:text-zinc-500 dark:hover:bg-zinc-900 dark:hover:text-zinc-300"
+              ? "bg-white text-violet-800 shadow-sm ring-1 ring-violet-500/30 dark:bg-violet-950/55 dark:text-violet-100 dark:ring-violet-400/25"
+              : "text-violet-950/70 hover:bg-violet-500/12 hover:text-violet-900 dark:text-violet-200/75 dark:hover:bg-violet-500/15 dark:hover:text-violet-50"
           }`}
         >
-          <span className="truncate max-w-[160px]">{tab.label}</span>
+          <span className="max-w-[200px] truncate font-sans">{tab.label}</span>
           {tab.readOnly && (
-            <span className="rounded bg-cyan-500/10 px-1.5 py-0.5 text-[10px] font-medium text-cyan-400">
+            <span className="shrink-0 rounded-md border border-violet-400/35 bg-violet-500/15 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-violet-700 dark:border-violet-400/25 dark:bg-violet-500/20 dark:text-violet-300">
               REF
             </span>
           )}
           {tab.id !== "my-design" && (
             <span
               role="button"
+              tabIndex={0}
               onClick={(e) => {
                 e.stopPropagation();
                 closeTab(tab.id);
               }}
-              className="ml-0.5 flex h-3.5 w-3.5 items-center justify-center rounded opacity-0 transition-opacity hover:bg-zinc-300 dark:hover:bg-zinc-700 group-hover:opacity-100"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.stopPropagation();
+                  closeTab(tab.id);
+                }
+              }}
+              className="ml-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md opacity-0 transition-opacity hover:bg-violet-500/15 dark:hover:bg-violet-500/20 group-hover:opacity-100"
+              aria-label={`Close ${tab.label}`}
             >
-              <X className="h-2.5 w-2.5" />
+              <X className="h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400" />
             </span>
           )}
         </button>

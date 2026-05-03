@@ -24,7 +24,7 @@ export function InterviewPhasePanel() {
   const phase = phases[currentPhase];
 
   return (
-    <div className="flex h-full w-full flex-1 flex-col md:w-[300px]">
+    <div className="flex h-full w-full flex-1 flex-col md:w-[320px]">
       {/* Phase header */}
       <div className="border-b border-zinc-800 px-3 py-3">
         <div className="flex items-center gap-2">

@@ -18,6 +18,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "SysDes — System Design Simulator",
   description: "Interactive system design interview simulator with real-time load testing and scoring",
+  icons: {
+    icon: [{ url: "/sysdes-icon.svg", type: "image/svg+xml" }],
+    apple: "/sysdes-icon.svg",
+  },
 };
 
 export const viewport: Viewport = {
@@ -33,7 +37,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const themeInit = `(function(){try{var k=${JSON.stringify(THEME_STORAGE_KEY)};var t=localStorage.getItem(k);if(t==="light"){document.documentElement.classList.remove("dark");document.documentElement.style.colorScheme="light";}else{document.documentElement.classList.add("dark");document.documentElement.style.colorScheme="dark";}}catch(e){document.documentElement.classList.add("dark");document.documentElement.style.colorScheme="dark";}})();`;
+  const themeInit = `(function(){try{var k=${JSON.stringify(THEME_STORAGE_KEY)};var r=document.documentElement;var t=localStorage.getItem(k);if(t==="light"){r.classList.remove("dark");r.style.colorScheme="light";r.dataset.sysdesTheme="light";}else{r.classList.add("dark");r.style.colorScheme="dark";r.dataset.sysdesTheme="dark";}}catch(e){var r=document.documentElement;r.classList.add("dark");r.style.colorScheme="dark";r.dataset.sysdesTheme="dark";}})();`;
 
   return (
     <html

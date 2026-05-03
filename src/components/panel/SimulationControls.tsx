@@ -73,7 +73,7 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
 
   return (
     <div className="space-y-5 font-sans">
-      <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+      <p className="text-base font-semibold uppercase tracking-wider text-muted-foreground">
         Simulation config
       </p>
 
@@ -87,7 +87,7 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
               setConfig({ requestsPerSec: v });
               setRpsDraft(String(v));
             }}
-            className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`rounded-full px-3.5 py-2 text-base font-medium transition-colors ${
               config.requestsPerSec === preset.value
                 ? accentSelected
                 : "border border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
@@ -99,11 +99,11 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
       </div>
 
       <div className="space-y-2">
-        <label htmlFor="sim-rps" className="text-sm text-muted-foreground">
+        <label htmlFor="sim-rps" className="text-base text-muted-foreground">
           Requests/sec
         </label>
         <div
-          className="flex h-10 w-full overflow-hidden rounded-lg border border-input bg-background shadow-sm transition-colors focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-500/20 dark:focus-within:border-violet-400 dark:focus-within:ring-violet-400/25"
+          className="flex h-11 w-full overflow-hidden rounded-lg border border-input bg-background shadow-sm transition-colors focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-500/20 dark:focus-within:border-violet-400 dark:focus-within:ring-violet-400/25"
         >
           <input
             id="sim-rps"
@@ -131,7 +131,7 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
                 bumpRps(-RPS_STEP);
               }
             }}
-            className="min-w-0 flex-1 border-0 bg-transparent px-3 font-mono text-sm tabular-nums text-foreground outline-none disabled:opacity-50"
+            className="min-w-0 flex-1 border-0 bg-transparent px-3 font-mono text-base tabular-nums text-foreground outline-none disabled:opacity-50"
           />
           <div className="flex h-full shrink-0 flex-col divide-y divide-border border-l border-input">
             <button
@@ -141,7 +141,7 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
               className="flex min-h-0 flex-1 items-center justify-center bg-muted/40 px-2 text-muted-foreground transition-colors hover:bg-violet-500/15 hover:text-violet-700 disabled:pointer-events-none disabled:opacity-40 dark:hover:text-violet-300"
               aria-label="Increase requests per second"
             >
-              <ChevronUp className="h-3.5 w-3.5" strokeWidth={2.25} aria-hidden />
+              <ChevronUp className="h-4 w-4" strokeWidth={2.25} aria-hidden />
             </button>
             <button
               type="button"
@@ -150,18 +150,18 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
               className="flex min-h-0 flex-1 items-center justify-center bg-muted/40 px-2 text-muted-foreground transition-colors hover:bg-violet-500/15 hover:text-violet-700 disabled:pointer-events-none disabled:opacity-40 dark:hover:text-violet-300"
               aria-label="Decrease requests per second"
             >
-              <ChevronDown className="h-3.5 w-3.5" strokeWidth={2.25} aria-hidden />
+              <ChevronDown className="h-4 w-4" strokeWidth={2.25} aria-hidden />
             </button>
           </div>
         </div>
-        <p className="text-[11px] text-muted-foreground">
+        <p className="text-xs text-muted-foreground sm:text-sm">
           {RPS_MIN.toLocaleString("en-US")}–{RPS_MAX.toLocaleString("en-US")}, step {RPS_STEP}
         </p>
       </div>
 
       <div className="space-y-2.5">
-        <label className="text-sm font-medium text-foreground">Simulation playback speed</label>
-        <p className="text-xs leading-relaxed text-muted-foreground">
+        <label className="text-base font-medium text-foreground">Simulation playback speed</label>
+        <p className="text-sm leading-relaxed text-muted-foreground">
           Multiplier for edge flow animation and run length. Lower (e.g. 0.25×) is slower and easier
           to see; higher (e.g. 4×) finishes quickly.
         </p>
@@ -172,7 +172,7 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
               type="button"
               title={`${value}× playback`}
               onClick={() => setConfig({ speedMultiplier: value })}
-              className={`min-w-[3rem] rounded-full px-3 py-1.5 text-sm font-medium tabular-nums transition-colors ${
+              className={`min-w-[3rem] rounded-full px-3.5 py-2 text-base font-medium tabular-nums transition-colors ${
                 config.speedMultiplier === value
                   ? accentSelected
                   : "border border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
@@ -189,16 +189,16 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
       <Button
         onClick={onSimulate}
         disabled={isRunning}
-        className={`h-11 w-full gap-2 text-sm font-semibold ${accentSolid} disabled:opacity-50`}
+        className={`h-12 w-full gap-2 text-base font-semibold ${accentSolid} disabled:opacity-50`}
       >
         {isRunning ? (
           <>
-            <Loader2 className="h-4 w-4 shrink-0 animate-spin" />
+            <Loader2 className="h-5 w-5 shrink-0 animate-spin" />
             Running…
           </>
         ) : (
           <>
-            <Play className="h-4 w-4 shrink-0 translate-x-[0.5px]" strokeWidth={2.5} aria-hidden />
+            <Play className="h-5 w-5 shrink-0 translate-x-[0.5px]" strokeWidth={2.5} aria-hidden />
             Run
           </>
         )}

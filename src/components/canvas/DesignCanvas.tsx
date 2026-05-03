@@ -188,8 +188,8 @@ export function DesignCanvas({ onPickProblem, onLoadReference, onStartInterview 
       {isEmpty && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-4 pb-4 md:pb-0">
           <div className="pointer-events-auto flex w-full max-w-lg flex-col items-center gap-6 text-center">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-transparent shadow-[0_0_40px_-10px_rgba(6,182,212,0.4)]">
-              <Layers className="h-6 w-6 text-cyan-400" />
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-violet-500/25 bg-gradient-to-br from-violet-500/15 to-transparent shadow-[0_0_40px_-10px_rgba(124,92,252,0.38)] dark:border-violet-400/20 dark:from-violet-500/12 dark:shadow-[0_0_40px_-10px_rgba(167,139,250,0.28)]">
+              <Layers className="h-6 w-6 text-violet-600 dark:text-violet-400" />
             </div>
             <div className="space-y-1.5">
               <h1 className="text-base font-semibold tracking-tight text-zinc-900 md:text-lg dark:text-zinc-100">
@@ -264,13 +264,13 @@ function QuickStartCard({
       onClick={onClick}
       className={`group flex flex-col items-start gap-1.5 rounded-lg border bg-white/80 p-3 text-left transition-all hover:-translate-y-0.5 hover:bg-white dark:bg-zinc-900/60 dark:hover:bg-zinc-900 ${
         accent
-          ? "border-cyan-500/30 hover:border-cyan-400/60 hover:shadow-[0_0_24px_-8px_rgba(6,182,212,0.5)]"
+          ? "border-violet-500/35 hover:border-violet-400/55 hover:shadow-[0_0_24px_-8px_rgba(124,92,252,0.45)] dark:border-violet-400/30 dark:hover:border-violet-400/50 dark:hover:shadow-[0_0_24px_-8px_rgba(167,139,250,0.35)]"
           : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
       }`}
     >
       <span
         className={`flex h-6 w-6 items-center justify-center rounded-md ${
-          accent ? "bg-cyan-500/15 text-cyan-400" : "bg-zinc-200 text-zinc-600 group-hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-200"
+          accent ? "bg-violet-500/15 text-violet-600 dark:bg-violet-500/20 dark:text-violet-400" : "bg-zinc-200 text-zinc-600 group-hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-200"
         }`}
       >
         {icon}
