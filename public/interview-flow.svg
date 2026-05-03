@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 140" width="800" height="140">
+  <rect width="800" height="140" rx="12" fill="#09090b"/>
+
+  <text x="400" y="25" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#a1a1aa" font-weight="600" letter-spacing="2">6-PHASE INTERVIEW FLOW</text>
+
+  <!-- Phase connector line -->
+  <line x1="90" y1="70" x2="710" y2="70" stroke="#27272a" stroke-width="2"/>
+
+  <!-- Animated progress line -->
+  <line x1="90" y1="70" x2="90" y2="70" stroke="#22d3ee" stroke-width="2" stroke-linecap="round">
+    <animate attributeName="x2" values="90;214;338;462;586;710" dur="6s" fill="freeze" begin="0.5s"/>
+  </line>
+
+  <!-- Phase 1: Requirements -->
+  <g>
+    <circle cx="90" cy="70" r="16" fill="#09090b" stroke="#27272a" stroke-width="2"/>
+    <circle cx="90" cy="70" r="16" fill="#09090b" stroke="#22d3ee" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.5s"/>
+    </circle>
+    <text x="90" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#22d3ee" font-weight="700" opacity="0">
+      1
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="0.5s"/>
+    </text>
+    <text x="90" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a1a1aa" font-weight="500">Requirements</text>
+    <text x="90" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#52525b">5 min</text>
+  </g>
+
+  <!-- Phase 2: Estimation -->
+  <g>
+    <circle cx="214" cy="70" r="16" fill="#09090b" stroke="#27272a" stroke-width="2"/>
+    <circle cx="214" cy="70" r="16" fill="#09090b" stroke="#22d3ee" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="1.5s"/>
+    </circle>
+    <text x="214" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#71717a" font-weight="700">
+      2
+      <animate attributeName="fill" from="#71717a" to="#22d3ee" dur="0.3s" fill="freeze" begin="1.5s"/>
+    </text>
+    <text x="214" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a1a1aa" font-weight="500">Estimation</text>
+    <text x="214" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#52525b">5 min</text>
+  </g>
+
+  <!-- Phase 3: API Design -->
+  <g>
+    <circle cx="338" cy="70" r="16" fill="#09090b" stroke="#27272a" stroke-width="2"/>
+    <circle cx="338" cy="70" r="16" fill="#09090b" stroke="#22d3ee" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="2.5s"/>
+    </circle>
+    <text x="338" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#71717a" font-weight="700">
+      3
+      <animate attributeName="fill" from="#71717a" to="#22d3ee" dur="0.3s" fill="freeze" begin="2.5s"/>
+    </text>
+    <text x="338" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a1a1aa" font-weight="500">API Design</text>
+    <text x="338" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#52525b">5 min</text>
+  </g>
+
+  <!-- Phase 4: Data Model -->
+  <g>
+    <circle cx="462" cy="70" r="16" fill="#09090b" stroke="#27272a" stroke-width="2"/>
+    <circle cx="462" cy="70" r="16" fill="#09090b" stroke="#22d3ee" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="3.5s"/>
+    </circle>
+    <text x="462" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#71717a" font-weight="700">
+      4
+      <animate attributeName="fill" from="#71717a" to="#22d3ee" dur="0.3s" fill="freeze" begin="3.5s"/>
+    </text>
+    <text x="462" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a1a1aa" font-weight="500">Data Model</text>
+    <text x="462" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#52525b">5 min</text>
+  </g>
+
+  <!-- Phase 5: HLD -->
+  <g>
+    <circle cx="586" cy="70" r="16" fill="#09090b" stroke="#27272a" stroke-width="2"/>
+    <circle cx="586" cy="70" r="16" fill="#09090b" stroke="#22d3ee" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="4.5s"/>
+    </circle>
+    <text x="586" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#71717a" font-weight="700">
+      5
+      <animate attributeName="fill" from="#71717a" to="#22d3ee" dur="0.3s" fill="freeze" begin="4.5s"/>
+    </text>
+    <text x="586" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#e4e4e7" font-weight="600">HLD Canvas</text>
+    <text x="586" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#52525b">15 min</text>
+  </g>
+
+  <!-- Phase 6: Deep Dive -->
+  <g>
+    <circle cx="710" cy="70" r="16" fill="#09090b" stroke="#27272a" stroke-width="2"/>
+    <circle cx="710" cy="70" r="16" fill="#09090b" stroke="#22d3ee" stroke-width="2" opacity="0">
+      <animate attributeName="opacity" from="0" to="1" dur="0.3s" fill="freeze" begin="5.5s"/>
+    </circle>
+    <text x="710" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#71717a" font-weight="700">
+      6
+      <animate attributeName="fill" from="#71717a" to="#22d3ee" dur="0.3s" fill="freeze" begin="5.5s"/>
+    </text>
+    <text x="710" y="102" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" fill="#a1a1aa" font-weight="500">Deep Dive</text>
+    <text x="710" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="8" fill="#52525b">10 min</text>
+  </g>
+
+  <!-- Timer -->
+  <text x="400" y="135" text-anchor="middle" font-family="monospace" font-size="11" fill="#52525b">
+    Total: 45 minutes with color-coded time warnings
+  </text>
+</svg>
