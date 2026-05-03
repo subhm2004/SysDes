@@ -26,7 +26,7 @@ export function MetricsDisplay() {
           <p className="text-sm font-medium text-foreground">No simulation data</p>
           <p className="mt-1 max-w-[220px] text-sm leading-snug text-muted-foreground">
             Configure load above and click{" "}
-            <span className="font-medium text-violet-700 dark:text-violet-400">Run simulation</span> to see
+            <span className="font-medium text-violet-700 dark:text-violet-400">Run</span> to see
             metrics
           </p>
         </div>

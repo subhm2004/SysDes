@@ -51,8 +51,8 @@ export function CapacityCalculator() {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
-        <Calculator className="h-3.5 w-3.5 text-cyan-600 dark:text-cyan-500" />
-        <p className="text-xs font-sans font-semibold uppercase tracking-wider text-muted-foreground">
+        <Calculator className="h-3.5 w-3.5 text-violet-600 dark:text-violet-400" strokeWidth={2.25} aria-hidden />
+        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           Capacity estimation
         </p>
       </div>
@@ -108,9 +108,7 @@ export function CapacityCalculator() {
       <Separator className="bg-border" />
 
       {/* Results */}
-      <p className="text-xs font-sans font-semibold uppercase tracking-wider text-muted-foreground">
-        Estimates
-      </p>
+      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Estimates</p>
 
       <div className="space-y-2">
         <ResultRow
@@ -184,7 +182,7 @@ function InputField({ label, value, onChange, presets }: InputFieldProps) {
         <label htmlFor={inputId} className="text-xs text-muted-foreground">
           {label}
         </label>
-        <span className="font-mono text-xs text-cyan-600 dark:text-cyan-500">
+        <span className="font-mono text-xs font-medium text-violet-700 dark:text-violet-300">
           {formatNumber(value)}
         </span>
       </div>
@@ -196,7 +194,7 @@ function InputField({ label, value, onChange, presets }: InputFieldProps) {
           const v = Number(e.target.value);
           if (!isNaN(v) && v >= 0) onChange(v);
         }}
-        className="mb-1.5 w-full rounded-md border border-input bg-background px-2.5 py-1.5 font-mono text-xs text-foreground outline-none focus:border-cyan-500"
+        className="mb-1.5 w-full rounded-md border border-input bg-background px-2.5 py-1.5 font-mono text-xs text-foreground outline-none transition-colors focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:focus:border-violet-400 dark:focus:ring-violet-400/25"
       />
       <div className="flex gap-1">
         {presets.map((p) => (
@@ -206,7 +204,7 @@ function InputField({ label, value, onChange, presets }: InputFieldProps) {
             onClick={() => onChange(p.value)}
             className={`rounded-full px-2 py-0.5 text-[11px] font-medium transition-colors ${
               value === p.value
-                ? "bg-cyan-500/15 text-cyan-600 dark:text-cyan-500"
+                ? "border border-violet-500/40 bg-violet-500/15 text-violet-700 dark:border-violet-400/50 dark:text-violet-300"
                 : "border border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
             }`}
           >
@@ -230,7 +228,7 @@ function ResultRow({ label, value, highlight }: ResultRowProps) {
       <span className="text-xs text-muted-foreground">{label}</span>
       <span
         className={`font-mono text-xs font-medium ${
-          highlight ? "text-cyan-600 dark:text-cyan-500" : "text-foreground"
+          highlight ? "text-violet-700 dark:text-violet-300" : "text-foreground"
         }`}
       >
         {value}

@@ -6,7 +6,21 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { Info, Trash2, Lightbulb, ChevronDown, ChevronRight, CheckSquare, BookOpen, Target, AlertTriangle, MessageCircle, Layers } from "lucide-react";
+import {
+  Info,
+  Trash2,
+  Lightbulb,
+  ChevronDown,
+  ChevronRight,
+  CheckSquare,
+  BookOpen,
+  Target,
+  AlertTriangle,
+  MessageCircle,
+  Layers,
+  Play,
+  ClipboardCheck,
+} from "lucide-react";
 import { useCanvasStore, type ComponentNodeData, type CustomEdgeData } from "@/store/canvasStore";
 import { useAppStore } from "@/store/appStore";
 import { getProblemById } from "@/data/problems";
@@ -42,15 +56,17 @@ function RightTabs({ onSimulate }: { onSimulate: () => void }) {
           </TabsTrigger>
           <TabsTrigger
             value="simulation"
-            className="h-8 px-2.5 text-sm font-sans text-zinc-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
+            className="h-8 gap-1 px-2.5 text-sm font-sans text-zinc-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
           >
-            Simulate
+            <Play className="h-3.5 w-3.5 shrink-0 translate-x-[0.5px] opacity-90" strokeWidth={2.5} aria-hidden />
+            Run
           </TabsTrigger>
           <TabsTrigger
             value="score"
-            className="h-8 px-2.5 text-sm font-sans text-zinc-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
+            className="h-8 gap-1 px-2.5 text-sm font-sans text-zinc-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
           >
-            Score
+            <ClipboardCheck className="h-3.5 w-3.5 shrink-0 text-emerald-600 opacity-90 dark:text-emerald-400" strokeWidth={2.25} aria-hidden />
+            Evaluate
           </TabsTrigger>
           <TabsTrigger
             value="capacity"

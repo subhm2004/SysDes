@@ -122,7 +122,7 @@ export function AppShell() {
     const componentNodes = nodes.filter((n) => n.type !== "text") as Node<ComponentNodeData>[];
 
     if (componentNodes.length === 0) {
-      useAppStore.getState().showToast("No components to score", "info");
+      useAppStore.getState().showToast("No components to evaluate", "info");
       return;
     }
 
@@ -134,7 +134,7 @@ export function AppShell() {
     // On mobile, auto-open the right sheet so the score is visible
     if (isMobile) setMobileRightOpen(true);
 
-    useAppStore.getState().showToast("Design scored!", "success");
+    useAppStore.getState().showToast("Evaluation ready!", "success");
   }, [isMobile]);
 
   const handleClearCanvas = useCallback(() => {

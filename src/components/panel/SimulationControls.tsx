@@ -1,11 +1,20 @@
 "use client";
 
-import { Slider } from "@/components/ui/slider";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Play, Loader2 } from "lucide-react";
+import { ChevronDown, ChevronUp, Play, Loader2 } from "lucide-react";
 import { useSimulationStore } from "@/store/simulationStore";
 import { SIMULATION_SPEED_OPTIONS } from "@/types/simulation";
+
+const RPS_MIN = 100;
+const RPS_MAX = 500_000;
+const RPS_STEP = 100;
+
+function clampRps(n: number): number {
+  const stepped = Math.round(n / RPS_STEP) * RPS_STEP;
+  return Math.min(RPS_MAX, Math.max(RPS_MIN, stepped));
+}
 
 const PRESETS = [
   { label: "Light", value: 1000 },
@@ -27,6 +36,41 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
   const setConfig = useSimulationStore((s) => s.setConfig);
   const isRunning = useSimulationStore((s) => s.isRunning);
 
+  const [rpsDraft, setRpsDraft] = useState(String(config.requestsPerSec));
+  const [rpsFocused, setRpsFocused] = useState(false);
+
+  useEffect(() => {
+    if (!rpsFocused) setRpsDraft(String(config.requestsPerSec));
+  }, [config.requestsPerSec, rpsFocused]);
+
+  const commitRps = useCallback(
+    (raw: string) => {
+      const cleaned = raw.replace(/,/g, "").trim();
+      if (cleaned === "") {
+        setRpsDraft(String(config.requestsPerSec));
+        return;
+      }
+      const n = Number(cleaned);
+      if (Number.isNaN(n)) {
+        setRpsDraft(String(config.requestsPerSec));
+        return;
+      }
+      const next = clampRps(n);
+      setConfig({ requestsPerSec: next });
+      setRpsDraft(String(next));
+    },
+    [config.requestsPerSec, setConfig]
+  );
+
+  const bumpRps = useCallback(
+    (delta: number) => {
+      const next = clampRps(config.requestsPerSec + delta);
+      setConfig({ requestsPerSec: next });
+      setRpsDraft(String(next));
+    },
+    [config.requestsPerSec, setConfig]
+  );
+
   return (
     <div className="space-y-5 font-sans">
       <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
@@ -38,7 +82,11 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
           <button
             key={preset.label}
             type="button"
-            onClick={() => setConfig({ requestsPerSec: preset.value })}
+            onClick={() => {
+              const v = clampRps(preset.value);
+              setConfig({ requestsPerSec: v });
+              setRpsDraft(String(v));
+            }}
             className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
               config.requestsPerSec === preset.value
                 ? accentSelected
@@ -50,23 +98,65 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
         ))}
       </div>
 
-      <div className="space-y-3">
-        <div>
-          <div className="mb-2 flex items-center justify-between gap-2">
-            <label className="text-sm text-muted-foreground">Requests/sec</label>
-            <span className="font-mono text-sm font-semibold text-violet-700 tabular-nums dark:text-violet-400">
-              {new Intl.NumberFormat("en-US").format(config.requestsPerSec)}
-            </span>
-          </div>
-          <Slider
-            value={[config.requestsPerSec]}
-            onValueChange={(v) => setConfig({ requestsPerSec: Array.isArray(v) ? v[0] : v })}
-            min={100}
-            max={500000}
-            step={100}
-            className=""
+      <div className="space-y-2">
+        <label htmlFor="sim-rps" className="text-sm text-muted-foreground">
+          Requests/sec
+        </label>
+        <div
+          className="flex h-10 w-full overflow-hidden rounded-lg border border-input bg-background shadow-sm transition-colors focus-within:border-violet-500 focus-within:ring-2 focus-within:ring-violet-500/20 dark:focus-within:border-violet-400 dark:focus-within:ring-violet-400/25"
+        >
+          <input
+            id="sim-rps"
+            type="text"
+            inputMode="numeric"
+            autoComplete="off"
+            disabled={isRunning}
+            value={rpsDraft}
+            onChange={(e) => setRpsDraft(e.target.value)}
+            onFocus={() => setRpsFocused(true)}
+            onBlur={() => {
+              setRpsFocused(false);
+              commitRps(rpsDraft);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.currentTarget.blur();
+              }
+              if (e.key === "ArrowUp") {
+                e.preventDefault();
+                bumpRps(RPS_STEP);
+              }
+              if (e.key === "ArrowDown") {
+                e.preventDefault();
+                bumpRps(-RPS_STEP);
+              }
+            }}
+            className="min-w-0 flex-1 border-0 bg-transparent px-3 font-mono text-sm tabular-nums text-foreground outline-none disabled:opacity-50"
           />
+          <div className="flex h-full shrink-0 flex-col divide-y divide-border border-l border-input">
+            <button
+              type="button"
+              disabled={isRunning || config.requestsPerSec >= RPS_MAX}
+              onClick={() => bumpRps(RPS_STEP)}
+              className="flex min-h-0 flex-1 items-center justify-center bg-muted/40 px-2 text-muted-foreground transition-colors hover:bg-violet-500/15 hover:text-violet-700 disabled:pointer-events-none disabled:opacity-40 dark:hover:text-violet-300"
+              aria-label="Increase requests per second"
+            >
+              <ChevronUp className="h-3.5 w-3.5" strokeWidth={2.25} aria-hidden />
+            </button>
+            <button
+              type="button"
+              disabled={isRunning || config.requestsPerSec <= RPS_MIN}
+              onClick={() => bumpRps(-RPS_STEP)}
+              className="flex min-h-0 flex-1 items-center justify-center bg-muted/40 px-2 text-muted-foreground transition-colors hover:bg-violet-500/15 hover:text-violet-700 disabled:pointer-events-none disabled:opacity-40 dark:hover:text-violet-300"
+              aria-label="Decrease requests per second"
+            >
+              <ChevronDown className="h-3.5 w-3.5" strokeWidth={2.25} aria-hidden />
+            </button>
+          </div>
         </div>
+        <p className="text-[11px] text-muted-foreground">
+          {RPS_MIN.toLocaleString("en-US")}–{RPS_MAX.toLocaleString("en-US")}, step {RPS_STEP}
+        </p>
       </div>
 
       <div className="space-y-2.5">
@@ -104,12 +194,12 @@ export function SimulationControls({ onSimulate }: SimulationControlsProps) {
         {isRunning ? (
           <>
             <Loader2 className="h-4 w-4 shrink-0 animate-spin" />
-            Simulating...
+            Running…
           </>
         ) : (
           <>
-            <Play className="h-4 w-4 shrink-0" />
-            Run simulation
+            <Play className="h-4 w-4 shrink-0 translate-x-[0.5px]" strokeWidth={2.5} aria-hidden />
+            Run
           </>
         )}
       </Button>

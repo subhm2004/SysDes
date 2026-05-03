@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { CheckCircle2, AlertCircle, ChevronDown, ChevronRight, Trophy } from "lucide-react";
+import { CheckCircle2, AlertCircle, ChevronDown, ChevronRight, ClipboardCheck } from "lucide-react";
 import { useState } from "react";
 import { useSimulationStore } from "@/store/simulationStore";
 import type { CategoryScore } from "@/types/scoring";
@@ -99,13 +99,13 @@ export function ScoreReport() {
     return (
       <div className="flex flex-col items-center gap-3 py-10 text-center">
         <div className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-muted">
-          <Trophy className="h-4 w-4 text-muted-foreground" />
+          <ClipboardCheck className="h-4 w-4 text-emerald-600/80 dark:text-emerald-400/90" strokeWidth={2.25} />
         </div>
         <div>
           <p className="text-xs font-medium text-foreground">Ready to evaluate</p>
           <p className="mt-1 max-w-[220px] text-xs text-muted-foreground">
             Design your system on the canvas, then click{" "}
-            <span className="text-cyan-600 dark:text-cyan-500">Score</span> to see how you did
+            <span className="font-medium text-emerald-600 dark:text-emerald-400">Evaluate</span> in the toolbar to see how you did
           </p>
         </div>
       </div>

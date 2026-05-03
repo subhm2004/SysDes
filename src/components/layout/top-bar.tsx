@@ -4,9 +4,9 @@ import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Play,
-  Trophy,
+  ClipboardCheck,
   ChevronDown,
-  Zap,
+  LayoutGrid,
   PanelLeft,
   PanelRight,
   Trash2,
@@ -21,7 +21,6 @@ import {
   Plus,
   MoreHorizontal,
   Heart,
-  LayoutGrid,
   BookOpen,
   Share2,
   Wand2,
@@ -233,12 +232,16 @@ export function TopBar({
         </button>
 
         <div className="flex min-w-0 items-center gap-2">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-violet-100 dark:bg-violet-950/80">
-            <Zap className="h-4 w-4 text-violet-600 dark:text-violet-400" />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/15 to-violet-600/10 ring-1 ring-violet-500/20 dark:from-violet-400/10 dark:to-violet-600/5 dark:ring-violet-400/15">
+            <LayoutGrid className="h-[18px] w-[18px] text-violet-600 dark:text-violet-300" strokeWidth={2.25} />
           </div>
-          <div className="hidden min-w-0 flex-col leading-tight sm:flex">
-            <span className="truncate text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-100">{BRAND.name}</span>
-            <span className="truncate text-[11px] font-medium text-zinc-500 dark:text-zinc-400">{BRAND.studioTagline}</span>
+          <div className="flex min-w-0 flex-col leading-tight">
+            <span className="truncate text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-base md:text-lg">
+              {BRAND.name}
+            </span>
+            <span className="hidden truncate text-xs font-medium text-zinc-500 sm:block dark:text-zinc-400">
+              {BRAND.studioTagline}
+            </span>
           </div>
         </div>
 
@@ -625,19 +628,21 @@ export function TopBar({
         <Button
           size="sm"
           onClick={onSimulate}
+          title="Run load simulation (⌘↵)"
           className="h-9 gap-1.5 bg-violet-600 px-3 text-xs font-semibold text-white shadow-sm hover:bg-violet-500"
         >
-          <Play className="h-3.5 w-3.5" />
-          Simulate
+          <Play className="h-4 w-4 shrink-0 translate-x-[0.5px]" strokeWidth={2.5} aria-hidden />
+          Run
         </Button>
         <Button
           size="sm"
           variant="outline"
           onClick={onScore}
+          title="Evaluate design (⌘⇧S)"
           className="h-9 gap-1.5 border-zinc-200 bg-white px-2.5 text-xs font-semibold text-zinc-800 shadow-sm hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800 sm:px-3"
         >
-          <Trophy className="h-3.5 w-3.5" />
-          <span className="hidden sm:inline">Score</span>
+          <ClipboardCheck className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" strokeWidth={2.25} />
+          <span className="hidden sm:inline">Evaluate</span>
         </Button>
 
         <button

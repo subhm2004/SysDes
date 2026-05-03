@@ -1,6 +1,5 @@
 <div align="center">
 
-<!-- Banner: swap href below if you publish a portfolio or repo URL -->
 <a href="#sysdes--system-design-interview-simulator">
   <img src="public/banner.svg" alt="SysDes — System Design Interview Simulator" width="900"/>
 </a>
@@ -22,7 +21,7 @@
 
 ### SysDes — System Design Interview Simulator
 
-**Design · Simulate · Score · Ship**
+**Design · Run · Evaluate · Ship**
 
 *Hands-on system design practice — not passive reading.*
 
@@ -281,8 +280,8 @@ npm run dev
 
 | Shortcut | Action |
 |----------|--------|
-| `Ctrl+Enter` | Run simulation |
-| `Ctrl+Shift+S` | Score design |
+| `Ctrl+Enter` | Run (simulate traffic) |
+| `Ctrl+Shift+S` | Evaluate design |
 | `Ctrl+S` | Save design |
 | `Ctrl+O` | Load design |
 | `Ctrl+E` | Export PNG |

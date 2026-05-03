@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useHydrationSafeReducedMotion } from "@/hooks/useHydrationSafeReducedMotion";
 import {
   Activity,
   BookOpen,
@@ -25,6 +26,7 @@ import {
 import type { LucideIcon } from "lucide-react";
 import { BRAND } from "@/lib/brand";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { LandingArchBackdrop } from "@/components/landing/LandingArchBackdrop";
 
 type PricingPlan = {
   name: string;
@@ -128,48 +130,38 @@ const PRICING: PricingPlan[] = [
     priceInr: 0,
     period: "month",
     priceHint: "Forever self-hosted · no card",
-    desc: "Self-host, full studio, 35+ problems, simulation & scoring.",
+    desc: "SysDes is open source — clone, run locally, and use the full studio with no paywall.",
     features: [
-      "Full studio self-hosted — designs, simulation, scoring & interview mode",
-      "Fork, extend, and run locally with no paywall",
+      "Full studio — designs, simulation, scoring & interview mode",
+      "Fork, extend, and self-host; all core features stay free",
     ],
     cta: "Open Studio",
     href: "/studio",
-  },
-  {
-    name: "Plus",
-    priceInr: 299,
-    period: "month",
-    compareAt: "₹499",
-    promoLine: "Waitlist: lock ₹299/m vs. ₹499 list — cloud sync & backups when we ship.",
-    desc: "Planned cloud tier on top of the free studio. Core stays open source; you pay only for Plus when it launches.",
-    features: [
-      "Cloud sync, backup & shared workspaces when Plus launches (planned)",
-      "Template packs, exports & email support — waitlist perks at launch",
-    ],
-    cta: "Pay",
-    href: "/studio",
     highlighted: true,
-    badge: "Recommended",
+    badge: "Open source",
   },
 ];
 
 const FAQS = [
   {
-    q: "Is the app really free?",
-    a: "Yes. The studio is open source — clone, run locally, and use all core features. Plus is an optional future cloud tier; nothing is paywalled in the self-hosted version today.",
-  },
-  {
-    q: "Why show prices in INR?",
-    a: "We default to Indian Rupees for clarity for local users and teams. You can self-host for ₹0; paid tiers are optional add-ons when we ship cloud features.",
+    q: "Is SysDes actually free and open source?",
+    a: "Yes. You can clone the repository, run it on your machine, and use the full studio—canvas, simulation, scoring, interview mode, and the component library—with no payment wall and no mandatory signup. There isn’t a hidden “Pro” tier in this codebase.",
   },
   {
     q: "Do I need an account?",
-    a: "No account required for local use. Your designs live in your browser / machine depending on how you deploy.",
+    a: "Not for typical local use. Your work stays in the browser (with persistence via local storage) unless you deploy or sync things yourself. If you add your own auth or backend later, that’s entirely up to you.",
   },
   {
-    q: "How is this different from drawing on a whiteboard?",
-    a: "You get real components, directed edges, load simulation, and automated scoring — closer to how you’ll defend a design in an interview.",
+    q: "How is this better than a blank whiteboard?",
+    a: "You drag real building blocks—DNS, load balancers, caches, queues, databases—and wire them like in a real architecture discussion. Then you can stress the diagram with configurable load, see bottlenecks, and get structured feedback across scalability, availability, latency, cost, and trade-offs—the same dimensions interviewers care about.",
+  },
+  {
+    q: "What about the AI assistant?",
+    a: "Optional. Wire up your own Google Gemini API key in `.env` if you want AI help on the canvas; nothing is billed through SysDes itself. No key means no AI calls—everything else still works offline-first.",
+  },
+  {
+    q: "Can I fork or self-host it?",
+    a: "Absolutely—that’s the point. Fork the repo, adapt it for your team, or deploy it internally. Follow the license in the repository and the README for setup; contributions and issues are welcome if you want to improve the project for everyone.",
   },
 ];
 
@@ -179,33 +171,39 @@ function formatInr(n: number) {
 }
 
 export function LandingPage() {
-  const prefersReducedMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
 
   return (
-    <div className="relative overflow-x-hidden bg-background text-foreground">
+    <div
+      className="relative overflow-x-hidden bg-background text-foreground"
+      suppressHydrationWarning
+    >
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-card focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-foreground focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring"
       >
         Skip to main content
       </a>
-      <div
-        className="pointer-events-none fixed inset-0 -z-10 bg-background"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, color-mix(in oklab, var(--primary) 12%, transparent) 1px, transparent 1px),
-            linear-gradient(to bottom, color-mix(in oklab, var(--primary) 12%, transparent) 1px, transparent 1px)
-          `,
-          backgroundSize: "48px 48px",
-        }}
-      />
+      <div className="landing-page-grid-bg landing-page-grid-bg--motion pointer-events-none fixed inset-0 -z-10 bg-background" />
       <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(ellipse_90%_60%_at_50%_-18%,color-mix(in_oklab,var(--primary)_18%,transparent),transparent_58%)] dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_-10%,color-mix(in_oklab,var(--primary)_22%,transparent),transparent_55%)]" />
-      {/* Ambient orbs */}
-      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-40 left-1/2 h-[min(520px,90vw)] w-[min(900px,120vw)] -translate-x-1/2 rounded-[50%] bg-primary/18 blur-[100px] dark:bg-primary/12" />
-        <div className="absolute top-[28%] -right-24 h-[min(380px,70vw)] w-[min(380px,70vw)] rounded-full bg-violet-500/14 blur-[88px] dark:bg-violet-400/10" />
-        <div className="absolute bottom-[5%] -left-20 h-72 w-72 rounded-full bg-sky-500/10 blur-[80px] dark:bg-sky-400/8" />
+      {/* Slow conic wash — reads as a soft “live” studio light */}
+      <div
+        className="landing-conic-aurora landing-conic-aurora-layer pointer-events-none fixed inset-[-50%] -z-10 opacity-[0.26] dark:opacity-[0.42]"
+        aria-hidden
+      />
+      {/* Ambient orbs — gentle CSS motion (honors prefers-reduced-motion) */}
+      <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden>
+        <div className="landing-aurora-blob-a absolute -top-40 left-1/2 h-[min(520px,90vw)] w-[min(900px,120vw)] -translate-x-1/2 rounded-[50%] bg-primary/18 blur-[100px] will-change-transform dark:bg-primary/12" />
+        <div className="landing-aurora-blob-b absolute top-[28%] -right-24 h-[min(380px,70vw)] w-[min(380px,70vw)] rounded-full bg-violet-500/14 blur-[88px] will-change-transform dark:bg-violet-400/10" />
+        <div className="landing-aurora-blob-c absolute bottom-[5%] -left-20 h-[min(340px,55vw)] w-[min(340px,55vw)] rounded-full bg-sky-500/11 blur-[84px] will-change-transform dark:bg-sky-400/9" />
       </div>
+      {/* Fine grain over gradients */}
+      <div
+        className="landing-bg-grain pointer-events-none fixed inset-0 -z-10 opacity-[0.04] mix-blend-overlay dark:opacity-[0.055]"
+        aria-hidden
+      />
+
+      <LandingArchBackdrop reduceMotion={reduceMotion} />
 
       <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 shadow-[0_1px_0_0_color-mix(in_oklab,var(--foreground)_4%,transparent)] backdrop-blur-xl dark:bg-background/75">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4 sm:gap-4 sm:px-6">
@@ -225,7 +223,7 @@ export function LandingPage() {
                 ["#about", "About"],
                 ["#capabilities", "Capabilities"],
                 ["#testimonials", "Testimonials"],
-                ["#pricing", "Pricing"],
+                ["#pricing", "Open source"],
                 ["#faq", "FAQ"],
               ] as const
             ).map(([href, label]) => (
@@ -246,8 +244,8 @@ export function LandingPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-2 text-xs font-semibold text-foreground/90 shadow-sm transition-colors hover:border-border hover:bg-muted/50 sm:text-sm"
-              whileHover={prefersReducedMotion ? undefined : { y: -1 }}
-              whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
+              whileHover={reduceMotion ? undefined : { y: -1 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.98 }}
             >
               <Github className="h-4 w-4" />
               <span className="hidden sm:inline">GitHub</span>
@@ -269,19 +267,19 @@ export function LandingPage() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           <motion.div
             className="space-y-8"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             <motion.div
               className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-gradient-to-r from-primary/12 via-primary/8 to-violet-500/10 px-3.5 py-1.5 text-xs font-semibold text-primary shadow-sm backdrop-blur-sm dark:from-primary/15 dark:via-primary/10 sm:text-sm"
-              initial={prefersReducedMotion ? false : { opacity: 0, y: -6 }}
+              initial={reduceMotion ? false : { opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.05, duration: 0.4 }}
             >
               <Sparkles className="h-3.5 w-3.5 shrink-0 opacity-90" />
               <span className="relative flex h-2 w-2 shrink-0">
-                {!prefersReducedMotion ? (
+                {!reduceMotion ? (
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/50 opacity-75 dark:bg-emerald-400/40" />
                 ) : null}
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400" />
@@ -302,7 +300,7 @@ export function LandingPage() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <motion.div whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <motion.div whileHover={reduceMotion ? undefined : { scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link
                   href="/studio"
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-violet-600 px-5 py-3 text-sm font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-[filter] hover:brightness-105"
@@ -316,7 +314,7 @@ export function LandingPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border border-border/80 bg-card/90 px-5 py-3 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary/25 hover:bg-secondary/80"
-                whileHover={prefersReducedMotion ? undefined : { y: -2 }}
+                whileHover={reduceMotion ? undefined : { y: -2 }}
               >
                 <Github className="h-4 w-4" />
                 View on GitHub
@@ -343,13 +341,13 @@ export function LandingPage() {
           <motion.div
             id="preview"
             className="scroll-mt-24"
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
+            initial={reduceMotion ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.12, ease: "easeOut" }}
           >
             <motion.div
               className="rounded-2xl border border-border/70 bg-card/95 p-1 shadow-2xl shadow-black/[0.07] ring-1 ring-border/40 backdrop-blur-md dark:bg-card/90 dark:shadow-black/40"
-              whileHover={prefersReducedMotion ? undefined : { y: -4, boxShadow: "0 25px 50px -12px color-mix(in oklab, var(--primary) 12%, transparent)" }}
+              whileHover={reduceMotion ? undefined : { y: -4, boxShadow: "0 25px 50px -12px color-mix(in oklab, var(--primary) 12%, transparent)" }}
               transition={{ type: "spring", stiffness: 300, damping: 24 }}
             >
               <div className="flex items-center gap-2 rounded-t-[14px] border-b border-border/60 bg-muted/40 px-3 py-2.5 dark:bg-muted/25">
@@ -377,13 +375,7 @@ export function LandingPage() {
                 </div>
               </div>
 
-              <div
-                className="relative overflow-hidden rounded-xl border border-border/60 bg-gradient-to-b from-muted/60 to-muted/30 dark:from-muted/30 dark:to-background/40"
-                style={{
-                  backgroundImage: `radial-gradient(color-mix(in oklab, var(--muted-foreground) 22%, transparent) 1px, transparent 1px)`,
-                  backgroundSize: "18px 18px",
-                }}
-              >
+              <div className="landing-preview-dot-grid relative overflow-hidden rounded-xl border border-border/60 bg-gradient-to-b from-muted/60 to-muted/30 dark:from-muted/30 dark:to-background/40">
                 <div className="flex min-h-[220px] flex-col items-center justify-center gap-4 p-6 sm:flex-row sm:justify-between sm:px-8">
                   <MockNode label="Users" sub="10k RPS" delay={0} />
                   <FlowArrow />
@@ -427,11 +419,11 @@ export function LandingPage() {
               <motion.div
                 key={c.t}
                 className="group relative overflow-hidden rounded-2xl border border-border/80 bg-card p-5 shadow-sm transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5"
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ delay: i * 0.08, duration: 0.4 }}
-                whileHover={prefersReducedMotion ? undefined : { y: -3 }}
+                whileHover={reduceMotion ? undefined : { y: -3 }}
               >
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
                 <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-primary/5 text-primary transition-transform group-hover:scale-110">
@@ -479,12 +471,11 @@ export function LandingPage() {
         </section>
 
         <section id="pricing" className="scroll-mt-24 border-t border-border/80 py-16 sm:py-20">
-          <h3 className="text-center text-2xl font-bold text-foreground sm:text-3xl">Simple pricing in INR</h3>
+          <h3 className="text-center text-2xl font-bold text-foreground sm:text-3xl">Free &amp; open source</h3>
           <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
-            Self-host for ₹0 today. Plus (₹299/m) is on the waitlist — prices are indicative for India billing (GST may
-            apply later).
+            Self-host the full studio for ₹0 — no subscription, no payment gate. Fork the repo and run it anywhere.
           </p>
-          <div className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-2 sm:items-stretch">
+          <div className="mx-auto mt-10 grid max-w-md gap-8 sm:max-w-lg sm:items-stretch">
             {PRICING.map((plan, i) => {
               const featured = Boolean(plan.highlighted);
               const solidCta = plan.priceInr > 0;
@@ -499,7 +490,7 @@ export function LandingPage() {
                       ? "z-10 border-primary bg-gradient-to-b from-primary/12 to-card shadow-lg shadow-primary/10 ring-1 ring-primary/25 hover:border-primary"
                       : "border-border bg-card hover:border-primary/55"
                   }`}
-                  initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+                  initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
@@ -565,13 +556,15 @@ export function LandingPage() {
             })}
           </div>
           <p className="mt-6 text-center text-xs text-muted-foreground">
-            All amounts in INR (₹). Plus features are not live yet — use Open Studio for the current open-source build.
+            Open source — use and modify the project under the terms of its repository license.
           </p>
         </section>
 
         <section id="faq" className="scroll-mt-24 border-t border-border/80 py-16 sm:py-20">
           <h3 className="text-center text-2xl font-bold text-foreground sm:text-3xl">FAQ</h3>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">Quick answers before you open the studio.</p>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-muted-foreground">
+            Licensing, privacy, AI, and how SysDes compares to a plain canvas—before you open the studio.
+          </p>
           <div className="mx-auto mt-10 max-w-2xl space-y-2">
             {FAQS.map((item) => (
               <FaqItem key={item.q} question={item.q} answer={item.a} />
@@ -580,44 +573,31 @@ export function LandingPage() {
         </section>
 
         <motion.section
-          className="relative mt-4 overflow-hidden rounded-2xl border border-white/15 px-6 py-12 text-center text-white shadow-2xl shadow-violet-950/25 ring-1 ring-white/10 sm:py-14 dark:border-white/10 dark:shadow-black/40"
-          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.98 }}
+          className="relative mt-4 overflow-hidden rounded-2xl border border-border/80 bg-gradient-to-b from-card to-muted/20 px-6 py-12 text-center shadow-sm ring-1 ring-border/40 sm:py-14"
+          initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
         >
-          {/* Base wash — multi-stop for depth */}
+          {/* Muted accent — very low opacity so it stays easy on the eyes */}
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-br from-violet-400 via-primary to-indigo-900 dark:from-violet-500 dark:via-violet-600 dark:to-violet-950"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_0%,color-mix(in_oklab,var(--primary)_8%,transparent),transparent_70%)]"
             aria-hidden
           />
           <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-violet-600/25 to-white/15 dark:via-violet-500/20 dark:to-white/10"
-            aria-hidden
-          />
-          {/* Soft blobs */}
-          <div
-            className="pointer-events-none absolute -left-[20%] -top-[40%] h-[min(420px,90vw)] w-[min(420px,90vw)] rounded-full bg-fuchsia-400/30 blur-[80px] dark:bg-fuchsia-500/20"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute -bottom-[35%] -right-[15%] h-[min(380px,85vw)] w-[min(380px,85vw)] rounded-full bg-indigo-600/40 blur-[72px] dark:bg-indigo-500/25"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_115%,color-mix(in_oklab,white_28%,transparent),transparent_60%)] dark:bg-[radial-gradient(ellipse_70%_50%_at_50%_110%,color-mix(in_oklab,white_12%,transparent),transparent_58%)]"
+            className="pointer-events-none absolute -bottom-24 left-1/2 h-48 w-[min(90%,28rem)] -translate-x-1/2 rounded-full bg-violet-500/[0.06] blur-3xl dark:bg-violet-400/[0.05]"
             aria-hidden
           />
           <div className="relative z-10">
-            <h3 className="text-2xl font-bold tracking-tight drop-shadow-sm sm:text-3xl">
+            <h3 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               Ready to draw your next system?
             </h3>
-            <p className="mx-auto mt-3 max-w-lg text-sm text-white/90 sm:text-base">
+            <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground sm:text-base">
               No signup for local use — open the studio or star the repo on GitHub.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
                 href="/studio"
-                className="inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-violet-700 shadow-lg shadow-black/15 transition-[filter,transform] hover:bg-white/95 active:scale-[0.98] dark:text-violet-800"
+                className="inline-flex items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-[filter,transform] hover:brightness-110 active:scale-[0.98]"
               >
                 Open studio
               </Link>
@@ -625,7 +605,7 @@ export function LandingPage() {
                 href={BRAND.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/45 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-md transition-colors hover:border-white/60 hover:bg-white/18"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-border bg-background/80 px-6 py-3 text-sm font-semibold text-foreground shadow-sm backdrop-blur-sm transition-colors hover:border-primary/30 hover:bg-muted/60"
               >
                 <Github className="h-4 w-4" />
                 Star on GitHub
@@ -723,16 +703,16 @@ function MockNode({
   className?: string;
   delay?: number;
 }) {
-  const prefersReducedMotion = useReducedMotion();
+  const reduceMotion = useHydrationSafeReducedMotion();
   return (
     <motion.div
       className={`flex w-[100px] flex-col items-center gap-1 rounded-xl border bg-card px-2 py-3 text-center shadow-sm ${
         highlight ? "border-primary/50 ring-2 ring-primary/15" : "border-border"
       } ${className}`}
-      initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
+      initial={reduceMotion ? false : { opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3 + delay, duration: 0.4 }}
-      whileHover={prefersReducedMotion ? undefined : { y: -2, boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.08)" }}
+      whileHover={reduceMotion ? undefined : { y: -2, boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.08)" }}
     >
       <Server className={`h-4 w-4 ${highlight ? "text-primary" : "text-muted-foreground/80"}`} />
       <span className="text-xs font-semibold text-foreground">{label}</span>
