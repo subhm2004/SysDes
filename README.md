@@ -25,7 +25,7 @@
 
 *Hands-on system design practice — not passive reading.*
 
-[Quick Start](#quick-start) · [Features](#features) · [At a glance](#at-a-glance) · [35 Problems](#35-design-problems) · [Tech Stack](#tech-stack) · [Contributing](#contributing)
+[Quick Start](#quick-start) · [Features](#features) · [AI assistant](#ai-assistant) · [At a glance](#at-a-glance) · [35 Problems](#35-design-problems) · [Tech Stack](#tech-stack) · [Contributing](#contributing)
 
 </div>
 
@@ -188,6 +188,19 @@ Select any component for:
 
 ---
 
+### AI assistant
+
+SysDes ships with an **AI assistant** (Google **Gemini**) so you can **chat in the studio** about the system you are drawing—not just static docs.
+
+- **Natural conversation** — Ask trade-off questions, “what should I add here?”, interview-style follow-ups, or plain explanations; answers are grounded in a **live summary of your canvas** (nodes and how they connect).
+- **Suggestions and coaching** — Get concise guidance on scalability, failure modes, bottlenecks, and how to improve the diagram before you run simulate/score.
+- **Canvas-aware edits** — When you ask to change the architecture, the model can return **structured operations** (e.g. add components from the built-in catalog, connect edges, add notes, or clear the canvas). Valid operations are **applied to the diagram** for you, with toasts if something could not be applied.
+- **Concept-only mode** — If you only want an explanation, the assistant can reply **without** modifying the canvas.
+
+**Setup:** copy `.env.example` to `.env` and set `GEMINI_API_KEY` ([Google AI Studio](https://aistudio.google.com/apikey)). Optionally override `GEMINI_MODEL`; otherwise the app tries a small chain of current Gemini models. Without a key, the chat API is disabled and returns a clear configuration error.
+
+---
+
 ### Trade-off decision log
 
 **14** built-in comparison cards: SQL vs NoSQL, sync vs async, monolith vs microservices, REST vs gRPC, partitioning strategies, delivery semantics, and more. Log your own calls with rationale during practice.
@@ -294,6 +307,7 @@ npm run dev
 
 | Layer | Technology |
 |-------|------------|
+| AI (chat + canvas ops) | Google Gemini API (`@google/generative-ai`) |
 | Framework | Next.js 16 (App Router) |
 | UI | React 19 + TypeScript |
 | Canvas | `@xyflow/react` (React Flow v12) |
@@ -311,6 +325,7 @@ npm run dev
 src/
 ├── app/
 ├── components/
+│   ├── ai/
 │   ├── canvas/
 │   ├── dialogs/
 │   ├── interview/
