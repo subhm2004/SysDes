@@ -1,0 +1,109 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, BarChart3, GitBranch, Zap } from "lucide-react";
+import { smoothScrollToId } from "@/lib/smoothScroll";
+import { useHydrationSafeReducedMotion } from "@/hooks/useHydrationSafeReducedMotion";
+
+const STATS = [
+  { value: "500K", unit: "QPS", label: "Max simulation throughput" },
+  { value: "5", unit: "axes", label: "Scoring rubric dimensions" },
+  { value: "35+", unit: "problems", label: "Real-world design scenarios" },
+  { value: "45", unit: "min", label: "Phased interview timer" },
+] as const;
+
+export function LandingEvidenceSection() {
+  const reduceMotion = useHydrationSafeReducedMotion();
+
+  return (
+    <section className="relative w-full overflow-hidden px-[5%] py-20 sm:py-28 max-lg:px-4">
+      <div className="landing-pixa-purple-blob pointer-events-none absolute right-[10%] top-[10%] h-[220px] w-[220px] opacity-50" aria-hidden />
+      <div className="landing-pixa-purple-blob pointer-events-none absolute left-[5%] bottom-[5%] h-[160px] w-[160px] opacity-35" aria-hidden />
+
+      <motion.div
+        className="landing-evidence-panel relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-landing"
+        initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Inner radial glow */}
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_50%_0%,rgb(99_102_241/0.2),transparent_70%)]"
+          aria-hidden
+        />
+
+        <div className="relative z-10 px-6 py-14 text-center sm:px-12 sm:py-16">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-indigo-500 dark:text-indigo-300">
+            Why SysDes
+          </p>
+          <h2 className="mt-4 font-sans text-3xl font-bold leading-tight tracking-tight text-(--landing-fg) max-md:text-2xl sm:text-4xl lg:text-5xl">
+            Ship interview-ready designs
+            <br />
+            <span className="bg-linear-to-r from-indigo-400 via-violet-400 to-emerald-400 bg-clip-text font-bold text-transparent">
+              with evidence, not arrows
+            </span>
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-landing-muted sm:text-lg">
+            Run production-style load through your topology, see real bottlenecks on the canvas,
+            and get scored on the same five axes Staff+ engineering panels use.
+          </p>
+
+          {/* Stats grid */}
+          <div className="mt-12 grid grid-cols-2 gap-0 overflow-hidden rounded-2xl border border-landing sm:grid-cols-4">
+            {STATS.map((s, i) => (
+              <motion.div
+                key={s.label}
+                className="flex flex-col items-center justify-center gap-1.5 border-r border-b border-landing px-4 py-8 last:border-r-0 sm:border-b-0 even:border-r-0 sm:even:border-r"
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08, duration: 0.4 }}
+              >
+                <p className="font-sans text-4xl font-bold tabular-nums leading-none tracking-tight text-(--landing-fg) sm:text-5xl lg:text-6xl">
+                  {s.value}
+                </p>
+                <p className="text-sm font-semibold text-indigo-500 dark:text-indigo-300">{s.unit}</p>
+                <p className="mt-0.5 text-xs leading-tight text-landing-muted">{s.label}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/studio"
+              className="landing-btn-primary group inline-flex items-center gap-2 rounded-2xl px-7 py-3.5 text-base font-semibold"
+            >
+              Open the studio
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <a
+              href="#scoring"
+              className="inline-flex items-center gap-2 rounded-2xl border border-landing px-6 py-3.5 text-sm font-semibold text-(--landing-fg) transition-colors hover:bg-landing-accent-muted"
+              onClick={(e) => {
+                e.preventDefault();
+                smoothScrollToId("scoring");
+                window.history.pushState(null, "", "#scoring");
+              }}
+            >
+              <BarChart3 className="h-4 w-4 text-landing-accent" />
+              See the rubric
+            </a>
+          </div>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-landing-muted sm:text-sm">
+            <span className="inline-flex items-center gap-1.5">
+              <GitBranch className="h-3.5 w-3.5 text-indigo-500" />
+              Live topological flow
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Zap className="h-3.5 w-3.5 text-emerald-500" />
+              Instant bottleneck feedback
+            </span>
+          </div>
+        </div>
+      </motion.div>
+    </section>
+  );
+}
