@@ -104,7 +104,7 @@ export function AiChatPanel({ open, onClose }: AiChatPanelProps) {
     >
       <div className="flex shrink-0 items-center justify-between gap-2 border-b border-zinc-200 px-3 py-2.5 dark:border-zinc-800">
         <div className="flex items-center gap-2">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-violet-100 text-violet-600 dark:bg-violet-950 dark:text-violet-300">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-cyan-100 text-cyan-600 dark:bg-cyan-950 dark:text-cyan-300">
             <Sparkles className="h-4 w-4" />
           </span>
           <div>
@@ -134,7 +134,7 @@ export function AiChatPanel({ open, onClose }: AiChatPanelProps) {
             key={`${i}-${msg.role}`}
             className={`max-w-[95%] rounded-xl px-3 py-2 text-sm leading-relaxed ${
               msg.role === "user"
-                ? "ml-auto bg-violet-600 text-white"
+                ? "ml-auto bg-cyan-600 text-white"
                 : "mr-auto border border-zinc-200 bg-zinc-50 text-zinc-800 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200"
             }`}
           >
@@ -162,14 +162,14 @@ export function AiChatPanel({ open, onClose }: AiChatPanelProps) {
             }}
             placeholder="Ask or describe diagram changes…"
             rows={2}
-            className="min-h-[44px] flex-1 resize-none rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 outline-none ring-violet-500/30 placeholder:text-zinc-400 focus:border-violet-400 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
+            className="min-h-[44px] flex-1 resize-none rounded-lg border border-zinc-200 bg-white px-3 py-2 text-sm text-zinc-900 outline-none ring-cyan-500/30 placeholder:text-zinc-400 focus:border-cyan-400 focus:ring-2 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100"
             disabled={loading}
           />
           <Button
             type="button"
             onClick={() => void send()}
             disabled={loading || !input.trim()}
-            className="h-11 shrink-0 self-end bg-violet-600 hover:bg-violet-500"
+            className="h-11 shrink-0 self-end bg-cyan-600 hover:bg-cyan-500"
           >
             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
           </Button>

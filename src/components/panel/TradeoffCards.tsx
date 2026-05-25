@@ -43,7 +43,7 @@ export function TradeoffCards() {
                   <div className="grid grid-cols-2 gap-2">
                     {/* Option A */}
                     <div className="space-y-2">
-                      <p className="text-sm font-semibold text-violet-500 dark:text-violet-400">
+                      <p className="text-sm font-semibold text-cyan-500 dark:text-cyan-400">
                         {card.optionA.name}
                       </p>
                       <div>
@@ -107,7 +107,7 @@ export function TradeoffCards() {
                   {/* When to choose */}
                   <div className="space-y-2 border-t border-border pt-3">
                     <div>
-                      <p className="text-xs font-medium text-violet-600 dark:text-violet-400">
+                      <p className="text-xs font-medium text-cyan-600 dark:text-cyan-400">
                         Choose {card.optionA.name} when:
                       </p>
                       <p className="mt-1 text-sm leading-relaxed text-muted-foreground">

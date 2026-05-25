@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { CheckCircle2, AlertCircle, ChevronDown, ChevronRight, ClipboardCheck } from "lucide-react";
 import { useState } from "react";
 import { useSimulationStore } from "@/store/simulationStore";
+import { STUDIO_COPY } from "@/lib/studio-copy";
 import type { CategoryScore } from "@/types/scoring";
 
 function CategorySection({ category }: { category: CategoryScore }) {
@@ -102,10 +103,11 @@ export function ScoreReport() {
           <ClipboardCheck className="h-5 w-5 text-emerald-600/80 dark:text-emerald-400/90" strokeWidth={2.25} />
         </div>
         <div>
-          <p className="text-base font-medium text-foreground">Ready to evaluate</p>
+          <p className="text-base font-medium text-foreground">{STUDIO_COPY.score.emptyTitle}</p>
           <p className="mt-1 max-w-[240px] text-sm leading-relaxed text-muted-foreground">
-            Design your system on the canvas, then click{" "}
-            <span className="font-medium text-emerald-600 dark:text-emerald-400">Evaluate</span> in the toolbar to see how you did
+            {STUDIO_COPY.score.emptyBody}{" "}
+            <span className="font-medium text-emerald-600 dark:text-emerald-400">{STUDIO_COPY.score.emptyCta}</span>{" "}
+            {STUDIO_COPY.score.emptySuffix}
           </p>
         </div>
       </div>

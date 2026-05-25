@@ -27,6 +27,7 @@ import {
   Wand2,
 } from "lucide-react";
 import { BRAND } from "@/lib/brand";
+import { STUDIO_COPY } from "@/lib/studio-copy";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { useAppStore } from "@/store/appStore";
 import { useCanvasStore } from "@/store/canvasStore";
@@ -234,11 +235,11 @@ export function TopBar({
 
         <Link
           href="/"
-          className="flex min-w-0 items-center gap-2 rounded-lg outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-violet-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-offset-zinc-900"
+          className="flex min-w-0 items-center gap-2 rounded-lg outline-none transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-cyan-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-offset-zinc-900"
           title={`${BRAND.name} — back to home`}
         >
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500/15 to-violet-600/10 ring-1 ring-violet-500/20 dark:from-violet-400/10 dark:to-violet-600/5 dark:ring-violet-400/15">
-            <LayoutGrid className="h-[18px] w-[18px] text-violet-600 dark:text-violet-300" strokeWidth={2.25} />
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/15 to-cyan-600/10 ring-1 ring-cyan-500/20 dark:from-cyan-400/10 dark:to-cyan-600/5 dark:ring-cyan-400/15">
+            <LayoutGrid className="h-[18px] w-[18px] text-cyan-600 dark:text-cyan-300" strokeWidth={2.25} />
           </div>
           <div className="flex min-w-0 flex-col leading-tight">
             <span className="truncate text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-base md:text-lg">
@@ -302,7 +303,7 @@ export function TopBar({
                     className="flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-xs text-zinc-700 transition-colors hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"
                   >
                     <BookOpen className="h-3.5 w-3.5 text-zinc-500" />
-                    Problems library
+                    {STUDIO_COPY.toolbar.problemsLibrary}
                   </button>
                 )}
                 <button
@@ -327,7 +328,7 @@ export function TopBar({
                     }}
                     className="flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-xs text-zinc-700 transition-colors hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-800"
                   >
-                    <Wand2 className="h-3.5 w-3.5 text-violet-500" />
+                    <Wand2 className="h-3.5 w-3.5 text-cyan-500" />
                     AI assistant
                   </button>
                 )}
@@ -418,7 +419,7 @@ export function TopBar({
           <button
             type="button"
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex w-full min-w-0 items-center justify-between gap-2 rounded-xl border border-zinc-200 bg-white px-2.5 py-1.5 text-left text-xs font-medium text-zinc-800 shadow-sm transition-colors hover:border-violet-200 hover:bg-violet-50/50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-violet-800 dark:hover:bg-violet-950/40 sm:px-3 sm:py-2 sm:text-sm"
+            className="flex w-full min-w-0 items-center justify-between gap-2 rounded-xl border border-zinc-200 bg-white px-2.5 py-1.5 text-left text-xs font-medium text-zinc-800 shadow-sm transition-colors hover:border-cyan-200 hover:bg-cyan-50/50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-cyan-800 dark:hover:bg-cyan-950/40 sm:px-3 sm:py-2 sm:text-sm"
           >
             <span className="min-w-0 truncate">{currentProblem?.title ?? "Select problem"}</span>
             <ChevronDown className="h-4 w-4 shrink-0 text-zinc-400" />
@@ -433,7 +434,7 @@ export function TopBar({
                     setDropdownOpen(false);
                     onCreateProblem();
                   }}
-                  className="flex w-full items-center gap-1.5 border-b border-zinc-200 px-3 py-2 text-left text-xs font-medium text-violet-600 transition-colors hover:bg-violet-50 dark:border-zinc-700 dark:text-violet-400 dark:hover:bg-zinc-800"
+                  className="flex w-full items-center gap-1.5 border-b border-zinc-200 px-3 py-2 text-left text-xs font-medium text-cyan-600 transition-colors hover:bg-cyan-50 dark:border-zinc-700 dark:text-cyan-400 dark:hover:bg-zinc-800"
                 >
                   <Plus className="h-3 w-3" />
                   Create Custom Problem
@@ -448,12 +449,12 @@ export function TopBar({
                     }}
                     className={`flex w-full items-center gap-1.5 px-3 py-2 text-left text-xs transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 ${
                       problem.id === selectedProblemId
-                        ? "text-violet-600 dark:text-violet-400"
+                        ? "text-cyan-600 dark:text-cyan-400"
                         : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                     }`}
                   >
                     <span className="flex-1 truncate">{problem.title}</span>
-                    <span className="shrink-0 rounded bg-violet-100 px-1 py-0.5 text-[9px] font-medium text-violet-700 dark:bg-violet-950 dark:text-violet-300">
+                    <span className="shrink-0 rounded bg-cyan-100 px-1 py-0.5 text-[9px] font-medium text-cyan-700 dark:bg-cyan-950 dark:text-cyan-300">
                       Custom
                     </span>
                   </button>
@@ -469,7 +470,7 @@ export function TopBar({
                     }}
                     className={`flex w-full px-3 py-2 text-left text-xs transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 ${
                       problem.id === selectedProblemId
-                        ? "text-violet-600 dark:text-violet-400"
+                        ? "text-cyan-600 dark:text-cyan-400"
                         : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100"
                     }`}
                   >
@@ -505,7 +506,7 @@ export function TopBar({
         <button
           type="button"
           onClick={onStartInterview}
-          className="hidden h-9 w-9 items-center justify-center rounded-lg border border-violet-200 bg-violet-50 text-violet-600 transition-colors hover:bg-violet-100 dark:border-violet-900 dark:bg-violet-950/60 dark:text-violet-300 dark:hover:bg-violet-950 md:flex"
+          className="hidden h-9 w-9 items-center justify-center rounded-lg border border-cyan-200 bg-cyan-50 text-cyan-600 transition-colors hover:bg-cyan-100 dark:border-cyan-900 dark:bg-cyan-950/60 dark:text-cyan-300 dark:hover:bg-cyan-950 md:flex"
           title="Practice interview"
         >
           <GraduationCap className="h-4 w-4" />
@@ -524,8 +525,8 @@ export function TopBar({
             onClick={onToggleAiChat}
             className={`flex h-9 w-9 items-center justify-center rounded-lg border transition-colors md:hidden ${
               aiChatOpen
-                ? "border-violet-400 bg-violet-100 text-violet-700 dark:border-violet-600 dark:bg-violet-950 dark:text-violet-200"
-                : "border-violet-200 bg-violet-50 text-violet-600 dark:border-violet-900 dark:bg-violet-950/60 dark:text-violet-300"
+                ? "border-cyan-400 bg-cyan-100 text-cyan-700 dark:border-cyan-600 dark:bg-cyan-950 dark:text-cyan-200"
+                : "border-cyan-200 bg-cyan-50 text-cyan-600 dark:border-cyan-900 dark:bg-cyan-950/60 dark:text-cyan-300"
             }`}
             title="AI assistant"
           >
@@ -538,8 +539,8 @@ export function TopBar({
             onClick={onToggleAiChat}
             className={`hidden h-9 w-9 items-center justify-center rounded-lg border transition-colors md:flex ${
               aiChatOpen
-                ? "border-violet-400 bg-violet-100 text-violet-700 dark:border-violet-600 dark:bg-violet-950 dark:text-violet-200"
-                : "border-violet-200 bg-violet-50 text-violet-600 hover:bg-violet-100 dark:border-violet-900 dark:bg-violet-950/60 dark:text-violet-300 dark:hover:bg-violet-950"
+                ? "border-cyan-400 bg-cyan-100 text-cyan-700 dark:border-cyan-600 dark:bg-cyan-950 dark:text-cyan-200"
+                : "border-cyan-200 bg-cyan-50 text-cyan-600 hover:bg-cyan-100 dark:border-cyan-900 dark:bg-cyan-950/60 dark:text-cyan-300 dark:hover:bg-cyan-950"
             }`}
             title="AI assistant (Gemini)"
           >
@@ -633,21 +634,21 @@ export function TopBar({
         <Button
           size="sm"
           onClick={onSimulate}
-          title="Run load simulation (⌘↵)"
-          className="h-9 gap-1.5 bg-violet-600 px-3 text-xs font-semibold text-white shadow-sm hover:bg-violet-500"
+          title={STUDIO_COPY.toolbar.runTitle}
+          className="h-9 gap-1.5 px-3 text-xs font-semibold shadow-sm"
         >
           <Play className="h-4 w-4 shrink-0 translate-x-[0.5px]" strokeWidth={2.5} aria-hidden />
-          Run
+          {STUDIO_COPY.toolbar.run}
         </Button>
         <Button
           size="sm"
           variant="outline"
           onClick={onScore}
-          title="Evaluate design (⌘⇧S)"
+          title={STUDIO_COPY.toolbar.evaluateTitle}
           className="h-9 gap-1.5 border-zinc-200 bg-white px-2.5 text-xs font-semibold text-zinc-800 shadow-sm hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800 sm:px-3"
         >
           <ClipboardCheck className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400" strokeWidth={2.25} />
-          <span className="hidden sm:inline">Evaluate</span>
+          <span className="hidden sm:inline">{STUDIO_COPY.toolbar.evaluate}</span>
         </Button>
 
         <button

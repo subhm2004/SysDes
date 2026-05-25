@@ -12,10 +12,10 @@ type ComponentNode = Node<ComponentNodeData, "component">;
 
 const CATEGORY_COLORS: Record<string, { icon: string }> = {
   networking: { icon: "text-blue-500 dark:text-blue-400" },
-  compute: { icon: "text-violet-600 dark:text-violet-400" },
+  compute: { icon: "text-cyan-600 dark:text-cyan-400" },
   storage: { icon: "text-amber-600 dark:text-amber-400" },
   messaging: { icon: "text-emerald-600 dark:text-emerald-400" },
-  infrastructure: { icon: "text-violet-500 dark:text-violet-300" },
+  infrastructure: { icon: "text-cyan-500 dark:text-cyan-300" },
 };
 
 const STATUS_DOT: Record<string, string> = {
@@ -70,7 +70,7 @@ function ComponentNodeInner({ id, data, selected }: NodeProps<ComponentNode>) {
         relative flex flex-col items-center gap-1.5 rounded-lg border border-border bg-card px-4 py-3.5
         text-card-foreground shadow-sm transition-colors
         ${isBottleneck ? "border-rose-500/60" : ""}
-        ${selected ? "border-violet-500 ring-1 ring-violet-500/30" : ""}
+        ${selected ? "border-cyan-500 ring-1 ring-cyan-500/30" : ""}
       `}
     >
       {/* Status indicator dot */}
@@ -97,7 +97,7 @@ function ComponentNodeInner({ id, data, selected }: NodeProps<ComponentNode>) {
                 setEditing(false);
               }
             }}
-            className="max-w-[7.5rem] border-b border-violet-500 bg-transparent text-sm font-semibold text-foreground outline-none"
+            className="max-w-[7.5rem] border-b border-cyan-500 bg-transparent text-sm font-semibold text-foreground outline-none"
           />
         ) : (
           <span
@@ -116,7 +116,7 @@ function ComponentNodeInner({ id, data, selected }: NodeProps<ComponentNode>) {
 
       {/* Replicas badge */}
       {replicas > 1 && (
-        <span className="absolute -left-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-violet-600 px-1 text-[10px] font-bold text-white dark:bg-violet-500">
+        <span className="absolute -left-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-cyan-600 px-1 text-[10px] font-bold text-white dark:bg-cyan-500">
           ×{replicas}
         </span>
       )}

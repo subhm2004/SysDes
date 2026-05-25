@@ -51,7 +51,7 @@ export function CapacityCalculator() {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-2">
-        <Calculator className="h-4 w-4 text-violet-600 dark:text-violet-400" strokeWidth={2.25} aria-hidden />
+        <Calculator className="h-4 w-4 text-cyan-600 dark:text-cyan-400" strokeWidth={2.25} aria-hidden />
         <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
           Capacity estimation
         </p>
@@ -182,7 +182,7 @@ function InputField({ label, value, onChange, presets }: InputFieldProps) {
         <label htmlFor={inputId} className="text-sm text-muted-foreground">
           {label}
         </label>
-        <span className="font-mono text-sm font-medium text-violet-700 dark:text-violet-300">
+        <span className="font-mono text-sm font-medium text-cyan-700 dark:text-cyan-300">
           {formatNumber(value)}
         </span>
       </div>
@@ -194,7 +194,7 @@ function InputField({ label, value, onChange, presets }: InputFieldProps) {
           const v = Number(e.target.value);
           if (!isNaN(v) && v >= 0) onChange(v);
         }}
-        className="mb-1.5 w-full rounded-md border border-input bg-background px-3 py-2 font-mono text-sm text-foreground outline-none transition-colors focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:focus:border-violet-400 dark:focus:ring-violet-400/25"
+        className="mb-1.5 w-full rounded-md border border-input bg-background px-3 py-2 font-mono text-sm text-foreground outline-none transition-colors focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 dark:focus:border-cyan-400 dark:focus:ring-cyan-400/25"
       />
       <div className="flex flex-wrap gap-1">
         {presets.map((p) => (
@@ -204,7 +204,7 @@ function InputField({ label, value, onChange, presets }: InputFieldProps) {
             onClick={() => onChange(p.value)}
             className={`rounded-full px-2.5 py-1 text-xs font-medium transition-colors sm:text-sm ${
               value === p.value
-                ? "border border-violet-500/40 bg-violet-500/15 text-violet-700 dark:border-violet-400/50 dark:text-violet-300"
+                ? "border border-cyan-500/40 bg-cyan-500/15 text-cyan-700 dark:border-cyan-400/50 dark:text-cyan-300"
                 : "border border-border bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
             }`}
           >
@@ -228,7 +228,7 @@ function ResultRow({ label, value, highlight }: ResultRowProps) {
       <span className="text-sm text-muted-foreground">{label}</span>
       <span
         className={`font-mono text-sm font-medium ${
-          highlight ? "text-violet-700 dark:text-violet-300" : "text-foreground"
+          highlight ? "text-cyan-700 dark:text-cyan-300" : "text-foreground"
         }`}
       >
         {value}

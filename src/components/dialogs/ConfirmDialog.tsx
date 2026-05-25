@@ -41,7 +41,7 @@ export function ConfirmDialog({
 
   const confirmClass = danger
     ? "bg-rose-600 shadow-lg shadow-rose-600/30 hover:bg-rose-500 dark:bg-rose-600 dark:hover:bg-rose-500"
-    : "bg-violet-600 shadow-lg shadow-violet-600/25 hover:bg-violet-500 dark:bg-violet-600 dark:hover:bg-violet-500";
+    : "bg-cyan-600 shadow-lg shadow-cyan-600/25 hover:bg-cyan-500 dark:bg-cyan-600 dark:hover:bg-cyan-500";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center px-4">

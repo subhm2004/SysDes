@@ -5,5 +5,5 @@ export default function StudioLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  return <div className="h-dvh overflow-hidden">{children}</div>;
+  return <div className="studio-app h-dvh overflow-hidden">{children}</div>;
 }

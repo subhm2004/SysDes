@@ -49,18 +49,18 @@ export function InterviewStartDialog({ open, onClose }: InterviewStartDialogProp
 
       {/* Dialog */}
       <div
-        className="relative z-10 w-full max-w-md rounded-xl border border-violet-500/25 bg-gradient-to-b from-[#16131f] to-[#0f0d14] p-7 shadow-2xl shadow-violet-950/40 ring-1 ring-violet-400/10"
+        className="relative z-10 w-full max-w-md rounded-xl border border-border bg-card p-7 shadow-2xl ring-1 ring-cyan-500/15"
         role="dialog"
         aria-labelledby="interview-start-title"
         aria-modal="true"
       >
         <h2
           id="interview-start-title"
-          className="text-lg font-semibold tracking-tight text-zinc-50 sm:text-xl"
+          className="text-lg font-semibold tracking-tight text-foreground sm:text-xl"
         >
           Practice Interview Mode
         </h2>
-        <p className="mt-2 text-sm leading-relaxed text-zinc-400 sm:text-[0.9375rem]">
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-[0.9375rem]">
           Simulate a {totalMinutes}-minute system design interview with guided phases.
           A timer will track your progress through each phase.
         </p>
@@ -70,16 +70,16 @@ export function InterviewStartDialog({ open, onClose }: InterviewStartDialogProp
           {phases.map((phase, i) => (
             <div
               key={phase.name}
-              className="flex items-center gap-3 rounded-lg border border-violet-500/10 bg-violet-950/25 px-3.5 py-2.5"
+              className="flex items-center gap-3 rounded-lg border border-border bg-muted/50 px-3.5 py-2.5"
             >
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-violet-500/20 text-violet-200 ring-1 ring-violet-400/25 sm:h-9 sm:w-9">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-500/15 text-cyan-600 ring-1 ring-cyan-500/25 dark:text-cyan-300 sm:h-9 sm:w-9">
                 {PHASE_ICONS[phase.icon] ?? <span className="text-sm font-medium">{i + 1}</span>}
               </div>
               <div className="min-w-0 flex-1">
-                <p className="text-sm font-medium text-zinc-100">{phase.name}</p>
-                <p className="mt-0.5 text-xs leading-snug text-zinc-500">{phase.description}</p>
+                <p className="text-sm font-medium text-foreground">{phase.name}</p>
+                <p className="mt-0.5 text-xs leading-snug text-muted-foreground">{phase.description}</p>
               </div>
-              <span className="shrink-0 font-mono text-xs tabular-nums text-violet-300/80">
+              <span className="shrink-0 font-mono text-xs tabular-nums text-cyan-600/90 dark:text-cyan-400/90">
                 {phase.targetMinutes} min
               </span>
             </div>
@@ -91,14 +91,14 @@ export function InterviewStartDialog({ open, onClose }: InterviewStartDialogProp
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg px-3.5 py-2 text-sm text-zinc-400 transition-colors hover:bg-violet-500/10 hover:text-violet-100"
+            className="rounded-lg px-3.5 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             I&apos;ll practice freely
           </button>
           <button
             type="button"
             onClick={handleStart}
-            className="rounded-lg bg-[#7c5cfc] px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-600/25 transition-colors hover:bg-[#9070ff]"
+            className="rounded-lg bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground shadow-lg shadow-cyan-600/20 transition-colors hover:bg-primary/90"
           >
             Start Interview
           </button>

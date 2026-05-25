@@ -4,6 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { useSimulationStore } from "@/store/simulationStore";
 import { useCanvasStore } from "@/store/canvasStore";
 import { Activity } from "lucide-react";
+import { STUDIO_COPY } from "@/lib/studio-copy";
 
 const STATUS_COLOR: Record<string, string> = {
   healthy: "bg-emerald-500",
@@ -23,11 +24,11 @@ export function MetricsDisplay() {
           <Activity className="h-5 w-5 text-muted-foreground" />
         </div>
         <div>
-          <p className="text-base font-medium text-foreground">No simulation data</p>
+          <p className="text-base font-medium text-foreground">{STUDIO_COPY.metrics.emptyTitle}</p>
           <p className="mt-1 max-w-[240px] text-base leading-snug text-muted-foreground">
-            Configure load above and click{" "}
-            <span className="font-medium text-violet-700 dark:text-violet-400">Run</span> to see
-            metrics
+            {STUDIO_COPY.metrics.emptyPrefix}{" "}
+            <span className="font-medium text-cyan-700 dark:text-cyan-400">{STUDIO_COPY.metrics.emptyCta}</span>{" "}
+            {STUDIO_COPY.metrics.emptySuffix}
           </p>
         </div>
       </div>

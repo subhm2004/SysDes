@@ -21,6 +21,7 @@ import { BookOpen, GraduationCap, Layers, MousePointer2, Sparkles } from "lucide
 import { CanvasTabBar } from "./CanvasTabBar";
 import { PenOverlay } from "./PenOverlay";
 import { PenToolbar } from "./PenToolbar";
+import { STUDIO_COPY } from "@/lib/studio-copy";
 
 /** Studio canvas: nodes and edges are native `@xyflow/react` `Node` / `Edge` values from the store. */
 
@@ -188,35 +189,35 @@ export function DesignCanvas({ onPickProblem, onLoadReference, onStartInterview 
       {isEmpty && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-4 pb-4 md:pb-0">
           <div className="pointer-events-auto flex w-full max-w-lg flex-col items-center gap-6 text-center">
-            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-violet-500/25 bg-gradient-to-br from-violet-500/15 to-transparent shadow-[0_0_40px_-10px_rgba(124,92,252,0.38)] dark:border-violet-400/20 dark:from-violet-500/12 dark:shadow-[0_0_40px_-10px_rgba(167,139,250,0.28)] sm:h-[4.25rem] sm:w-[4.25rem]">
-              <Layers className="h-7 w-7 text-violet-600 dark:text-violet-400 sm:h-8 sm:w-8" />
+            <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-500/25 bg-gradient-to-br from-cyan-500/15 to-transparent shadow-[0_0_40px_-10px_rgba(124,92,252,0.38)] dark:border-cyan-400/20 dark:from-cyan-500/12 dark:shadow-[0_0_40px_-10px_rgba(167,139,250,0.28)] sm:h-[4.25rem] sm:w-[4.25rem]">
+              <Layers className="h-7 w-7 text-cyan-600 dark:text-cyan-400 sm:h-8 sm:w-8" />
             </div>
             <div className="space-y-2">
               <h1 className="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-100">
-                Build an architecture that scales
+                {STUDIO_COPY.canvas.empty.title}
               </h1>
               <p className="mx-auto max-w-md text-sm leading-relaxed text-zinc-600 sm:text-base dark:text-zinc-400">
-                Pick a problem, drop infrastructure components onto the canvas, and get scored the way an interviewer would evaluate you.
+                {STUDIO_COPY.canvas.empty.subtitle}
               </p>
             </div>
 
             <div className="grid w-full gap-2.5 sm:grid-cols-3">
               <QuickStartCard
                 icon={<BookOpen className="h-4 w-4 sm:h-5 sm:w-5" />}
-                title="Pick a problem"
-                hint="35 real interview questions"
+                title={STUDIO_COPY.canvas.quickStart.pickProblem.title}
+                hint={STUDIO_COPY.canvas.quickStart.pickProblem.hint}
                 onClick={onPickProblem}
               />
               <QuickStartCard
                 icon={<Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />}
-                title="Load reference"
-                hint="Open a sample solution"
+                title={STUDIO_COPY.canvas.quickStart.loadReference.title}
+                hint={STUDIO_COPY.canvas.quickStart.loadReference.hint}
                 onClick={onLoadReference}
               />
               <QuickStartCard
                 icon={<GraduationCap className="h-4 w-4 sm:h-5 sm:w-5" />}
-                title="Practice interview"
-                hint="Timed 6-phase mock"
+                title={STUDIO_COPY.canvas.quickStart.interview.title}
+                hint={STUDIO_COPY.canvas.quickStart.interview.hint}
                 onClick={onStartInterview}
                 accent
               />
@@ -225,17 +226,17 @@ export function DesignCanvas({ onPickProblem, onLoadReference, onStartInterview 
             <div className="hidden flex-wrap items-center justify-center gap-3 text-sm text-zinc-600 md:flex dark:text-zinc-400">
               <span className="flex items-center gap-2">
                 <MousePointer2 className="h-4 w-4 shrink-0 text-zinc-500 dark:text-zinc-500" />
-                Drag from the sidebar
+                {STUDIO_COPY.canvas.hints.dragSidebar}
               </span>
               <span className="text-zinc-400 dark:text-zinc-600">·</span>
               <span className="flex items-center gap-1.5">
                 <kbd className="rounded-md border border-zinc-300 bg-zinc-200 px-2 py-1 font-mono text-xs dark:border-zinc-600 dark:bg-zinc-800">⌘E</kbd>
-                export
+                {STUDIO_COPY.canvas.hints.export}
               </span>
               <span className="text-zinc-400 dark:text-zinc-600">·</span>
               <span className="flex items-center gap-1.5">
                 <kbd className="rounded-md border border-zinc-300 bg-zinc-200 px-2 py-1 font-mono text-xs dark:border-zinc-600 dark:bg-zinc-800">⌘↵</kbd>
-                simulate
+                {STUDIO_COPY.canvas.hints.simulate}
               </span>
             </div>
           </div>
@@ -265,13 +266,13 @@ function QuickStartCard({
       onClick={onClick}
       className={`group flex flex-col items-start gap-2 rounded-xl border bg-white/80 p-3.5 text-left transition-all hover:-translate-y-0.5 hover:bg-white dark:bg-zinc-900/60 dark:hover:bg-zinc-900 sm:p-4 ${
         accent
-          ? "border-violet-500/35 hover:border-violet-400/55 hover:shadow-[0_0_24px_-8px_rgba(124,92,252,0.45)] dark:border-violet-400/30 dark:hover:border-violet-400/50 dark:hover:shadow-[0_0_24px_-8px_rgba(167,139,250,0.35)]"
+          ? "border-cyan-500/35 hover:border-cyan-400/55 hover:shadow-[0_0_24px_-8px_rgba(124,92,252,0.45)] dark:border-cyan-400/30 dark:hover:border-cyan-400/50 dark:hover:shadow-[0_0_24px_-8px_rgba(167,139,250,0.35)]"
           : "border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
       }`}
     >
       <span
         className={`flex h-8 w-8 items-center justify-center rounded-lg sm:h-9 sm:w-9 ${
-          accent ? "bg-violet-500/15 text-violet-600 dark:bg-violet-500/20 dark:text-violet-400" : "bg-zinc-200 text-zinc-600 group-hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-200"
+          accent ? "bg-cyan-500/15 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-400" : "bg-zinc-200 text-zinc-600 group-hover:text-zinc-900 dark:bg-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-200"
         }`}
       >
         {icon}

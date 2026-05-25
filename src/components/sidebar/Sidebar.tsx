@@ -5,6 +5,7 @@ import { ComponentPalette } from "./ComponentPalette";
 import { ProblemSelector } from "./ProblemSelector";
 import { LearningPath } from "./LearningPath";
 import { useAppStore } from "@/store/appStore";
+import { STUDIO_COPY } from "@/lib/studio-copy";
 
 interface SidebarProps {
   open?: boolean;
@@ -26,13 +27,13 @@ function SidebarTabs({
     <Tabs value={activeLeftTab} onValueChange={(v) => setActiveLeftTab(v as typeof activeLeftTab)} className="flex flex-1 flex-col min-h-0">
       <TabsList className="mx-2 mt-2 flex min-h-11 w-full max-w-none shrink-0 gap-0.5 p-1">
         <TabsTrigger value="components" className="h-9 min-w-0 flex-1 px-2 text-base font-sans after:hidden">
-          Components
+          {STUDIO_COPY.leftSidebar.tabs.components}
         </TabsTrigger>
         <TabsTrigger value="problems" className="h-9 min-w-0 flex-1 px-2 text-base font-sans after:hidden">
-          Problems
+          {STUDIO_COPY.leftSidebar.tabs.problems}
         </TabsTrigger>
         <TabsTrigger value="learn" className="h-9 min-w-0 flex-1 px-2 text-base font-sans after:hidden">
-          Learn
+          {STUDIO_COPY.leftSidebar.tabs.learn}
         </TabsTrigger>
       </TabsList>
 

@@ -36,6 +36,7 @@ import { TradeoffLog } from "./TradeoffLog";
 import { TradeoffCards } from "./TradeoffCards";
 import { useInterviewStore } from "@/store/interviewStore";
 import { InterviewPhasePanel } from "@/components/interview/InterviewPhasePanel";
+import { STUDIO_COPY } from "@/lib/studio-copy";
 
 interface RightPanelProps {
   open?: boolean;
@@ -53,38 +54,38 @@ function RightTabs({ onSimulate }: { onSimulate: () => void }) {
         <TabsList className="h-auto min-h-10 w-max gap-0.5 bg-zinc-200 p-1 dark:bg-zinc-800">
           <TabsTrigger
             value="properties"
-            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-violet-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-violet-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
+            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-cyan-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-cyan-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
           >
-            <SlidersHorizontal className="h-4 w-4 shrink-0 text-violet-600 opacity-90 dark:text-violet-400" strokeWidth={2.25} aria-hidden />
-            Props
+            <SlidersHorizontal className="h-4 w-4 shrink-0 text-cyan-600 opacity-90 dark:text-cyan-400" strokeWidth={2.25} aria-hidden />
+            {STUDIO_COPY.rightPanel.tabs.properties}
           </TabsTrigger>
           <TabsTrigger
             value="simulation"
-            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-violet-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-violet-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
+            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-cyan-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-cyan-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
           >
-            <Play className="h-4 w-4 shrink-0 translate-x-[0.5px] text-violet-600 opacity-90 dark:text-violet-400" strokeWidth={2.5} aria-hidden />
-            Run
+            <Play className="h-4 w-4 shrink-0 translate-x-[0.5px] text-cyan-600 opacity-90 dark:text-cyan-400" strokeWidth={2.5} aria-hidden />
+            {STUDIO_COPY.rightPanel.tabs.simulation}
           </TabsTrigger>
           <TabsTrigger
             value="score"
-            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-violet-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-violet-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
+            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-cyan-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-cyan-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
           >
-            <ClipboardCheck className="h-4 w-4 shrink-0 text-violet-600 opacity-90 dark:text-violet-400" strokeWidth={2.25} aria-hidden />
-            Evaluate
+            <ClipboardCheck className="h-4 w-4 shrink-0 text-cyan-600 opacity-90 dark:text-cyan-400" strokeWidth={2.25} aria-hidden />
+            {STUDIO_COPY.rightPanel.tabs.score}
           </TabsTrigger>
           <TabsTrigger
             value="capacity"
-            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-violet-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-violet-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
+            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-cyan-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-cyan-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
           >
-            <Gauge className="h-4 w-4 shrink-0 text-violet-600 opacity-90 dark:text-violet-400" strokeWidth={2.25} aria-hidden />
-            Capacity
+            <Gauge className="h-4 w-4 shrink-0 text-cyan-600 opacity-90 dark:text-cyan-400" strokeWidth={2.25} aria-hidden />
+            {STUDIO_COPY.rightPanel.tabs.capacity}
           </TabsTrigger>
           <TabsTrigger
             value="tradeoffs"
-            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-violet-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-violet-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
+            className="h-9 gap-1 px-3 text-base font-sans text-zinc-600 after:bg-cyan-600 data-[state=active]:bg-white data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:after:bg-cyan-400 dark:data-[state=active]:bg-zinc-700 dark:data-[state=active]:text-zinc-100"
           >
-            <Scale className="h-4 w-4 shrink-0 text-violet-600 opacity-90 dark:text-violet-400" strokeWidth={2.25} aria-hidden />
-            Trade-offs
+            <Scale className="h-4 w-4 shrink-0 text-cyan-600 opacity-90 dark:text-cyan-400" strokeWidth={2.25} aria-hidden />
+            {STUDIO_COPY.rightPanel.tabs.tradeoffs}
           </TabsTrigger>
         </TabsList>
       </div>
@@ -194,7 +195,7 @@ function EdgePropertiesPanel() {
             value={data.label ?? ""}
             onChange={(e) => updateEdgeData(selectedEdge.id, { label: e.target.value })}
             placeholder="e.g. /api/users"
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600/50"
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-600/50"
           />
         </div>
 
@@ -204,7 +205,7 @@ function EdgePropertiesPanel() {
           <select
             value={data.protocol ?? "http"}
             onChange={(e) => updateEdgeData(selectedEdge.id, { protocol: e.target.value as CustomEdgeData["protocol"] })}
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-600/50"
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-600/50"
           >
             {protocols.map((p) => (
               <option key={p} value={p}>
@@ -223,7 +224,7 @@ function EdgePropertiesPanel() {
               onClick={() => updateEdgeData(selectedEdge.id, { async: false })}
               className={`flex-1 rounded-md border px-2.5 py-2 text-sm font-medium transition-colors ${
                 !data.async
-                  ? "border-violet-500/35 bg-violet-600/15 text-violet-700 dark:text-violet-400"
+                  ? "border-cyan-500/35 bg-cyan-600/15 text-cyan-700 dark:text-cyan-400"
                   : "border-border bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >
@@ -234,7 +235,7 @@ function EdgePropertiesPanel() {
               onClick={() => updateEdgeData(selectedEdge.id, { async: true })}
               className={`flex-1 rounded-md border px-2.5 py-2 text-sm font-medium transition-colors ${
                 data.async
-                  ? "border-violet-500/35 bg-violet-600/15 text-violet-700 dark:text-violet-400"
+                  ? "border-cyan-500/35 bg-cyan-600/15 text-cyan-700 dark:text-cyan-400"
                   : "border-border bg-muted text-muted-foreground hover:bg-muted/80"
               }`}
             >
@@ -269,7 +270,7 @@ function PropertiesTab() {
       {problem && (
         <div className="space-y-2.5">
           <p className="text-sm font-sans font-semibold uppercase tracking-wider text-muted-foreground">
-            Requirements — {problem.title}
+            {STUDIO_COPY.rightPanel.requirementsTitle(problem.title)}
           </p>
           <div className="space-y-2">
             {[
@@ -357,7 +358,7 @@ function PropertiesTab() {
               <div>
                 <div className="mb-1.5 flex items-center justify-between">
                   <label className="text-sm text-muted-foreground">Replicas</label>
-                  <span className="font-mono text-sm tabular-nums text-violet-600 dark:text-violet-400">
+                  <span className="font-mono text-sm tabular-nums text-cyan-600 dark:text-cyan-400">
                     {data.replicas as number}
                   </span>
                 </div>
@@ -414,8 +415,8 @@ function PropertiesTab() {
         <EdgePropertiesPanel />
       ) : (
         <div className="flex flex-col items-center gap-4 py-8 text-center">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-violet-500/20 bg-violet-500/5">
-            <Info className="h-5 w-5 text-violet-600/80 dark:text-violet-400/90" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cyan-500/20 bg-cyan-500/5">
+            <Info className="h-5 w-5 text-cyan-600/80 dark:text-cyan-400/90" />
           </div>
           <div className="max-w-[16rem]">
             <p className="text-sm font-semibold text-foreground">No component selected</p>
@@ -436,7 +437,7 @@ function ConstraintsSection({ constraints }: { constraints: string[] }) {
   return (
     <div className="space-y-2">
       <p className="text-sm font-sans font-semibold uppercase tracking-wider text-muted-foreground">
-        Constraints
+        {STUDIO_COPY.rightPanel.sections.constraints}
       </p>
       <div className="space-y-2">
         {shown.map((c, i) => (
@@ -450,7 +451,7 @@ function ConstraintsSection({ constraints }: { constraints: string[] }) {
         <button
           type="button"
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1 text-sm text-violet-600 transition-colors hover:text-violet-500 dark:text-violet-400 dark:hover:text-violet-300"
+          className="flex items-center gap-1 text-sm text-cyan-600 transition-colors hover:text-cyan-500 dark:text-cyan-400 dark:hover:text-cyan-300"
         >
           {expanded ? (
             <>
@@ -487,7 +488,7 @@ function HintsSection({ hints }: { hints: { title: string; content: string }[] }
   return (
     <div className="space-y-2">
       <p className="text-sm font-sans font-semibold uppercase tracking-wider text-muted-foreground">
-        Hints
+        {STUDIO_COPY.rightPanel.sections.hints}
       </p>
       <div className="space-y-2">
         {hints.map((hint, i) => (
@@ -555,18 +556,18 @@ function LearnSection({ componentId, label }: { componentId: string; label: stri
       label: "Interview tips",
       icon: MessageCircle,
       items: concept.interviewTips,
-      accent: "text-violet-400",
-      bgAccent: "bg-violet-400/10",
-      borderAccent: "border-violet-500/30",
+      accent: "text-cyan-400",
+      bgAccent: "bg-cyan-400/10",
+      borderAccent: "border-cyan-500/30",
     },
     {
       key: "patterns",
       label: "Common patterns",
       icon: Layers,
       items: concept.commonPatterns.map((p) => p.name),
-      accent: "text-violet-400",
-      bgAccent: "bg-violet-400/10",
-      borderAccent: "border-violet-500/30",
+      accent: "text-cyan-400",
+      bgAccent: "bg-cyan-400/10",
+      borderAccent: "border-cyan-500/30",
     },
   ];
 
@@ -577,7 +578,7 @@ function LearnSection({ componentId, label }: { componentId: string; label: stri
         onClick={() => setExpanded(!expanded)}
         className="flex w-full items-center gap-2 rounded-md border border-border bg-muted/50 px-3 py-2.5 text-left transition-colors hover:bg-muted"
       >
-        <BookOpen className="h-4 w-4 shrink-0 text-violet-600 dark:text-violet-400" />
+        <BookOpen className="h-4 w-4 shrink-0 text-cyan-600 dark:text-cyan-400" />
         <span className="flex-1 text-sm font-medium text-foreground">Learn about {label}</span>
         {expanded ? (
           <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground" />

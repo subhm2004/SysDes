@@ -26,7 +26,7 @@ function getCategoryColor(category: TradeoffEntry["category"]) {
     case "scaling":
       return "border-emerald-500/30 bg-emerald-500/10 text-emerald-400";
     case "availability":
-      return "border-violet-500/30 bg-violet-500/10 text-violet-400";
+      return "border-cyan-500/30 bg-cyan-500/10 text-cyan-400";
     case "other":
       return "border-zinc-500/30 bg-zinc-500/10 text-zinc-400";
   }
@@ -91,26 +91,26 @@ export function TradeoffLog() {
             placeholder="Decision (e.g. Chose Redis over Memcached)"
             value={decision}
             onChange={(e) => setDecision(e.target.value)}
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-500/30 dark:focus:border-violet-400"
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400"
           />
           <textarea
             placeholder="Rationale — why this choice?"
             value={rationale}
             onChange={(e) => setRationale(e.target.value)}
             rows={2}
-            className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-500/30 dark:focus:border-violet-400"
+            className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400"
           />
           <textarea
             placeholder="Alternatives considered"
             value={alternatives}
             onChange={(e) => setAlternatives(e.target.value)}
             rows={2}
-            className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-500/30 dark:focus:border-violet-400"
+            className="w-full resize-none rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400"
           />
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value as TradeoffEntry["category"])}
-            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-violet-600 focus:ring-1 focus:ring-violet-500/30 dark:focus:border-violet-400"
+            className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground outline-none focus:border-cyan-600 focus:ring-1 focus:ring-cyan-500/30 dark:focus:border-cyan-400"
           >
             {CATEGORIES.map((cat) => (
               <option key={cat} value={cat}>
@@ -124,7 +124,7 @@ export function TradeoffLog() {
               size="sm"
               onClick={handleSave}
               disabled={!decision.trim()}
-              className="h-8 border-violet-600 px-4 text-sm text-violet-700 hover:bg-violet-500/10 hover:text-violet-800 disabled:opacity-40 dark:text-violet-300 dark:hover:bg-violet-500/15 dark:hover:text-violet-200"
+              className="h-8 border-cyan-600 px-4 text-sm text-cyan-700 hover:bg-cyan-500/10 hover:text-cyan-800 disabled:opacity-40 dark:text-cyan-300 dark:hover:bg-cyan-500/15 dark:hover:text-cyan-200"
             >
               Save
             </Button>

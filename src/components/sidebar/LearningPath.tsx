@@ -134,7 +134,7 @@ export function LearningPath() {
                   {/* Progress bar */}
                   <div className="mt-1.5 h-1 w-full rounded-full bg-sidebar-accent">
                     <div
-                      className={`h-1 rounded-full transition-all ${TIER_BAR_COLORS[tier.name] ?? "bg-violet-500"}`}
+                      className={`h-1 rounded-full transition-all ${TIER_BAR_COLORS[tier.name] ?? "bg-cyan-500"}`}
                       style={{ width: `${progressPct}%` }}
                     />
                   </div>
@@ -163,7 +163,7 @@ export function LearningPath() {
                           isSelected
                             ? "border border-sidebar-border bg-background text-foreground shadow-sm"
                             : isRecommended
-                              ? "border border-violet-500/25 bg-violet-500/[0.08] hover:bg-violet-500/15 dark:border-violet-500/35 dark:bg-violet-950/30 dark:hover:bg-violet-950/45"
+                              ? "border border-cyan-500/25 bg-cyan-500/[0.08] hover:bg-cyan-500/15 dark:border-cyan-500/35 dark:bg-cyan-950/30 dark:hover:bg-cyan-950/45"
                               : "border border-transparent text-sidebar-foreground hover:bg-sidebar-accent"
                         }`}
                       >
@@ -175,8 +175,8 @@ export function LearningPath() {
                               onClick={(e) => toggleCompleted(pid, e)}
                               className={`h-4 w-4 shrink-0 rounded border transition-colors ${
                                 isCompleted
-                                  ? "border-violet-600 bg-violet-600 dark:border-violet-500 dark:bg-violet-500"
-                                  : "border-border hover:border-violet-500/50"
+                                  ? "border-cyan-600 bg-cyan-600 dark:border-cyan-500 dark:bg-cyan-500"
+                                  : "border-border hover:border-cyan-500/50"
                               }`}
                             >
                               {isCompleted && (
@@ -197,7 +197,7 @@ export function LearningPath() {
                                 isCompleted
                                   ? "text-sidebar-foreground/55 line-through"
                                   : isSelected
-                                    ? "text-violet-700 dark:text-violet-400"
+                                    ? "text-cyan-700 dark:text-cyan-400"
                                     : "text-sidebar-foreground"
                               }`}
                             >

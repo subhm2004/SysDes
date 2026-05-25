@@ -47,7 +47,7 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
         <button
           type="button"
           onClick={onCreateProblem}
-          className="flex w-full items-center gap-2 rounded-md border border-dashed border-sidebar-border px-2.5 py-2.5 text-left text-base font-sans font-medium text-violet-700 transition-colors hover:border-violet-500/40 hover:bg-sidebar-accent dark:text-violet-400"
+          className="flex w-full items-center gap-2 rounded-md border border-dashed border-sidebar-border px-2.5 py-2.5 text-left text-base font-sans font-medium text-cyan-700 transition-colors hover:border-cyan-500/40 hover:bg-sidebar-accent dark:text-cyan-400"
         >
           <Plus className="h-4 w-4 shrink-0" />
           Create Custom Problem
@@ -77,7 +77,7 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
               <span
                 className={`flex-1 truncate text-base font-sans font-medium leading-snug ${
                   problem.id === selectedProblemId
-                    ? "text-violet-700 dark:text-violet-400"
+                    ? "text-cyan-700 dark:text-cyan-400"
                     : "text-sidebar-foreground"
                 }`}
               >
@@ -86,7 +86,7 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
               <div className="flex items-center gap-1">
                 <Badge
                   variant="outline"
-                  className="h-5 shrink-0 border-violet-500/30 bg-violet-500/10 px-2 text-xs font-medium text-violet-800 dark:text-violet-400"
+                  className="h-5 shrink-0 border-cyan-500/30 bg-cyan-500/10 px-2 text-xs font-medium text-cyan-800 dark:text-cyan-400"
                 >
                   Custom
                 </Badge>
@@ -140,7 +140,7 @@ export function ProblemSelector({ onCreateProblem }: ProblemSelectorProps) {
               <span
                 className={`min-w-0 flex-1 text-left text-base font-sans font-medium leading-snug ${
                   problem.id === selectedProblemId
-                    ? "text-violet-700 dark:text-violet-400"
+                    ? "text-cyan-700 dark:text-cyan-400"
                     : "text-sidebar-foreground"
                 }`}
               >
