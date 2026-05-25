@@ -25,7 +25,7 @@
 
 *Hands-on system design practice — not passive reading.*
 
-[Quick Start](#quick-start) · [Features](#features) · [AI assistant](#ai-assistant) · [At a glance](#at-a-glance) · [35 Problems](#35-design-problems) · [Tech Stack](#tech-stack) · [Contributing](#contributing)
+[Quick Start](#quick-start) · [Features](#features) · [Studio](#studio) · [AI assistant](#ai-assistant) · [At a glance](#at-a-glance) · [35 Problems](#35-design-problems) · [Tech Stack](#tech-stack)
 
 </div>
 
@@ -35,7 +35,7 @@
 
 | | | | |
 |:---:|:---:|:---:|:---:|
-| **30** | **35** | **5** | **500K** |
+| **36** | **35** | **5** | **500K** |
 | Components | Design problems | Score categories | Max QPS (CDN tier) |
 | DNS → cache → queues → data | Easy → Expert | 100-point rubric | Configurable load |
 
@@ -61,7 +61,7 @@ Think of it as a **flight simulator** for system design rounds.
 <tr>
 <td width="50%">
 
-### 30 Infrastructure Components
+### 36 Infrastructure Components
 
 Everything you need for interview-grade diagrams:
 
@@ -69,9 +69,11 @@ Everything you need for interview-grade diagrams:
 
 **Compute** — App Server, Auth Service, WebSocket Server, Task Scheduler, Stream Processor, Notification Service
 
-**Storage** — SQL DB, NoSQL DB, Cache/Redis, Object Storage, Search/ES, Graph DB, Time-Series DB, Data Warehouse, File Store
+**Storage** — SQL DB, NoSQL DB, Cache/Redis, Object Storage, Search/ES, Graph DB, Time-Series DB, Data Warehouse, File Store, Vector DB, Geospatial Index
 
-**Infrastructure** — Message Queue, Service Mesh, Monitoring, Service Discovery, Distributed Lock, Circuit Breaker, Coordination Service
+**Messaging** — Message Queue, Pub/Sub
+
+**Infrastructure** — Service Mesh, Monitoring, Service Discovery, Distributed Lock, Circuit Breaker, Coordination Service, Config Service, ID Generator, Sharded Counter
 
 **Special** — Custom Component (double-click to rename)
 
@@ -207,6 +209,24 @@ SysDes ships with an **AI assistant** (Google **Gemini**) so you can **chat in t
 
 ---
 
+### Landing page
+
+Marketing site at `/` — hero with live architecture preview, feature bento, score showcase, problem library teaser, pricing, and FAQ. Neutral dark theme with cyan accents; **Open Studio** jumps straight into the canvas.
+
+---
+
+## Studio
+
+The workspace at `/studio` is where you practice:
+
+- **Canvas tabs** — *My Design* plus optional **reference** tabs (read-only solutions with a REF badge)
+- **Shortcuts** — Button on the **left of the tab bar**; press **`?`** anytime for the full shortcut list
+- **Pen overlay** — Draw annotations on the canvas (pen, eraser, colors, stroke width)
+- **Persisted state** — Designs, tabs, and sidebar preferences survive reloads (Zustand + localStorage)
+- **Centralized copy** — Studio labels live in `src/lib/studio-copy.ts` for easy tweaks
+
+---
+
 ### Learning path
 
 | Tier | Examples | Focus |
@@ -280,26 +300,39 @@ npm run dev
 
 Open **http://localhost:3000** for the landing page, or **http://localhost:3000/studio** for the canvas.
 
-If you clone from a remote later, use your own URL:
+Clone from GitHub:
 
 ```bash
-git clone <your-repo-url>
-cd sysdes   # or your checkout folder name
+git clone https://github.com/subhm2004/SysDes.git
+cd SysDes
 npm install
 npm run dev
 ```
 
+### Environment (optional — AI chat)
+
+```bash
+cp .env.example .env
+# Add GEMINI_API_KEY from https://aistudio.google.com/apikey
+```
+
+Without a key, the studio works fully; only the AI assistant is disabled.
+
 ### Keyboard shortcuts
+
+On macOS use **⌘** instead of **Ctrl**. Open the full list from the tab bar (**Shortcuts**) or press **`?`**.
 
 | Shortcut | Action |
 |----------|--------|
-| `Ctrl+Enter` | Run (simulate traffic) |
-| `Ctrl+Shift+S` | Evaluate design |
-| `Ctrl+S` | Save design |
-| `Ctrl+O` | Load design |
-| `Ctrl+E` | Export PNG |
+| `Ctrl+Enter` / `⌘↵` | Run (simulate traffic) |
+| `Ctrl+Shift+S` / `⌘⇧S` | Evaluate design |
+| `Ctrl+S` / `⌘S` | Save design |
+| `Ctrl+O` / `⌘O` | Load design |
+| `Ctrl+E` / `⌘E` | Export PNG |
+| `?` | Keyboard shortcuts panel |
 | `Delete` | Remove selected node |
-| `Escape` | Deselect |
+| `Escape` | Close panel / deselect |
+| Middle mouse drag | Pan canvas |
 
 ---
 
@@ -323,36 +356,32 @@ npm run dev
 
 ```
 src/
-├── app/
+├── app/                    # Next.js routes (/, /studio)
 ├── components/
-│   ├── ai/
-│   ├── canvas/
-│   ├── dialogs/
-│   ├── interview/
-│   ├── layout/
-│   ├── panel/
-│   ├── sidebar/
-│   └── ui/
-├── data/
-│   ├── components.ts
-│   ├── problems.ts
-│   ├── conceptLibrary.ts
-│   ├── interviewData.ts
-│   ├── tradeoffCards.ts
-│   └── learningPath.ts
-├── engine/
-│   └── simulator.ts
-├── scoring/
-│   ├── scorer.ts
-│   └── rules/
-├── store/
-│   ├── appStore.ts
-│   ├── canvasStore.ts
-│   ├── simulationStore.ts
-│   ├── savedDesignsStore.ts
-│   ├── interviewStore.ts
-│   └── tradeoffStore.ts
-└── types/
+│   ├── ai/                 # Gemini chat panel
+│   ├── canvas/             # React Flow, tabs, pen overlay
+│   ├── dialogs/            # Save/load, shortcuts, confirm
+│   ├── interview/          # Timed interview mode
+│   ├── landing/            # Marketing page sections
+│   ├── layout/             # App shell, top bar
+│   ├── panel/              # Run, score, capacity, trade-offs
+│   ├── sidebar/            # Palette, problems, learning path
+│   └── ui/                 # shadcn primitives
+├── data/                   # Components, problems, concepts, …
+├── engine/simulator.ts     # Traffic propagation
+├── lib/
+│   ├── brand.ts
+│   └── studio-copy.ts      # Studio UI strings
+├── scoring/                # Rubric + rules
+└── store/                  # Zustand (canvas, sim, pen, …)
 ```
+
+---
+
+## Author
+
+Built by **Shubham** — [github.com/subhm2004/SysDes](https://github.com/subhm2004/SysDes)
+
+Feedback and PRs welcome. If SysDes helps your interview prep, a ⭐ on the repo is appreciated.
 
 
