@@ -29,9 +29,15 @@ interface DesignCanvasProps {
   onPickProblem?: () => void;
   onLoadReference?: () => void;
   onStartInterview?: () => void;
+  onOpenShortcuts?: () => void;
 }
 
-export function DesignCanvas({ onPickProblem, onLoadReference, onStartInterview }: DesignCanvasProps = {}) {
+export function DesignCanvas({
+  onPickProblem,
+  onLoadReference,
+  onStartInterview,
+  onOpenShortcuts,
+}: DesignCanvasProps = {}) {
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   const { screenToFlowPosition } = useReactFlow();
 
@@ -135,7 +141,7 @@ export function DesignCanvas({ onPickProblem, onLoadReference, onStartInterview 
 
   return (
     <div ref={reactFlowWrapper} className="relative flex-1 flex flex-col">
-      <CanvasTabBar />
+      <CanvasTabBar onOpenShortcuts={onOpenShortcuts} />
       <div className="relative flex-1">
       <ReactFlow
         className="h-full w-full bg-zinc-100 dark:bg-zinc-950"

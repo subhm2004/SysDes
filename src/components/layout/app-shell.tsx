@@ -27,6 +27,7 @@ import { SupportDialog } from "@/components/dialogs/SupportDialog";
 import { AiChatPanel } from "@/components/ai/AiChatPanel";
 import { useInterviewStore } from "@/store/interviewStore";
 import { useIsMobile } from "@/hooks/useBreakpoint";
+import { KeyboardShortcutsDialog } from "@/components/dialogs/KeyboardShortcutsDialog";
 
 export function AppShell() {
   const isMobile = useIsMobile();
@@ -46,6 +47,7 @@ export function AppShell() {
   const [createComponentDialogOpen, setCreateComponentDialogOpen] = useState(false);
   const [supportDialogOpen, setSupportDialogOpen] = useState(false);
   const [aiChatOpen, setAiChatOpen] = useState(false);
+  const [shortcutsOpen, setShortcutsOpen] = useState(false);
 
   // Auto-open support dialog when URL has ?support=1 (used by the README link)
   useEffect(() => {
@@ -220,6 +222,12 @@ export function AppShell() {
         return;
       }
 
+      if (e.key === "?" && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        e.preventDefault();
+        setShortcutsOpen(true);
+        return;
+      }
+
       if (e.key === "Delete" || e.key === "Backspace") {
         const { selectedNodeId, deleteNode } = useCanvasStore.getState();
         if (selectedNodeId) {
@@ -249,7 +257,8 @@ export function AppShell() {
       }
 
       if (e.key === "Escape") {
-        if (aiChatOpen) setAiChatOpen(false);
+        if (shortcutsOpen) setShortcutsOpen(false);
+        else if (aiChatOpen) setAiChatOpen(false);
         else if (mobileSidebarOpen) setMobileSidebarOpen(false);
         else if (mobileRightOpen) setMobileRightOpen(false);
         else useCanvasStore.getState().setSelectedNode(null);
@@ -258,7 +267,7 @@ export function AppShell() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleSimulate, handleScore, mobileSidebarOpen, mobileRightOpen, aiChatOpen]);
+  }, [handleSimulate, handleScore, mobileSidebarOpen, mobileRightOpen, aiChatOpen, shortcutsOpen]);
 
   useEffect(() => {
     if (!timerRunning) return;
@@ -302,6 +311,7 @@ export function AppShell() {
             onPickProblem={handlePickProblem}
             onLoadReference={handleLoadReference}
             onStartInterview={() => setInterviewDialogOpen(true)}
+            onOpenShortcuts={() => setShortcutsOpen(true)}
           />
 
           {/* Desktop inline right panel (hidden on mobile) */}
@@ -393,6 +403,7 @@ export function AppShell() {
         <CreateProblemDialog open={createProblemDialogOpen} onClose={() => setCreateProblemDialogOpen(false)} />
         <CreateComponentDialog open={createComponentDialogOpen} onClose={() => setCreateComponentDialogOpen(false)} />
         <SupportDialog open={supportDialogOpen} onClose={() => setSupportDialogOpen(false)} />
+        <KeyboardShortcutsDialog open={shortcutsOpen} onClose={() => setShortcutsOpen(false)} />
       </div>
     </ReactFlowProvider>
   );

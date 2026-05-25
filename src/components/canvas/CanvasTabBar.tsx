@@ -2,15 +2,22 @@
 
 import { X } from "lucide-react";
 import { useCanvasStore } from "@/store/canvasStore";
+import { CanvasShortcutsStrip } from "@/components/canvas/CanvasShortcutsStrip";
 
-export function CanvasTabBar() {
+type CanvasTabBarProps = {
+  onOpenShortcuts?: () => void;
+};
+
+export function CanvasTabBar({ onOpenShortcuts }: CanvasTabBarProps) {
   const tabs = useCanvasStore((s) => s.tabs);
   const activeTabId = useCanvasStore((s) => s.activeTabId);
   const switchTab = useCanvasStore((s) => s.switchTab);
   const closeTab = useCanvasStore((s) => s.closeTab);
 
   return (
-    <div className="flex h-11 shrink-0 items-center gap-1 overflow-x-auto border-b border-border bg-muted/30 px-2 dark:bg-zinc-950/80">
+    <div className="flex h-11 shrink-0 items-center border-b border-border bg-muted/30 pl-2 dark:bg-zinc-950/80">
+      <CanvasShortcutsStrip onOpenShortcuts={onOpenShortcuts} />
+      <div className="flex min-w-0 flex-1 items-center gap-1 overflow-x-auto py-0 pr-2">
       {tabs.map((tab) => (
         <button
           key={tab.id}
@@ -50,6 +57,7 @@ export function CanvasTabBar() {
           )}
         </button>
       ))}
+      </div>
     </div>
   );
 }

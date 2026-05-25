@@ -87,4 +87,30 @@ export const STUDIO_COPY = {
     emptyCta: "Run",
     emptySuffix: "to see metrics",
   },
+  shortcuts: {
+    title: "Keyboard shortcuts",
+    hint: "Press ? anytime in the studio to open this panel.",
+    toolbarTitle: "Shortcuts",
+    items: [
+      {
+        group: "Canvas",
+        rows: [
+          { label: "Delete selected node", keys: ["Delete"] },
+          { label: "Pan canvas", keys: ["Middle drag"] },
+        ],
+      },
+      {
+        group: "Studio",
+        rows: [
+          { label: "Run simulation", keys: ["Mod", "Enter"] },
+          { label: "Evaluate design", keys: ["Mod", "Shift", "S"] },
+          { label: "Save design", keys: ["Mod", "S"] },
+          { label: "Load design", keys: ["Mod", "O"] },
+          { label: "Export PNG", keys: ["Mod", "E"] },
+          { label: "Keyboard shortcuts", keys: ["?"] },
+          { label: "Close panel / deselect", keys: ["Esc"] },
+        ],
+      },
+    ],
+  },
 } as const;
