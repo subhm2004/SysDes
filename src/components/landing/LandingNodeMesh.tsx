@@ -56,8 +56,8 @@ export function LandingNodeMesh() {
       const h = window.innerHeight;
       context.clearRect(0, 0, w, h);
 
-      const nodeFill = dark ? "rgba(124,92,252,0.25)" : "rgba(91,33,182,0.22)";
-      const lineBase = dark ? 0.08 : 0.06;
+      const nodeFill = dark ? "oklch(0.65 0.19 285 / 0.28)" : "oklch(0.55 0.24 285 / 0.2)";
+      const lineBase = dark ? 0.1 : 0.07;
 
       for (let i = 0; i < nodes.length; i++) {
         const n = nodes[i];
@@ -76,7 +76,7 @@ export function LandingNodeMesh() {
             context.beginPath();
             context.moveTo(n.x, n.y);
             context.lineTo(m.x, m.y);
-            context.strokeStyle = dark ? `rgba(124,92,252,${a})` : `rgba(91,33,182,${a})`;
+            context.strokeStyle = dark ? `oklch(0.65 0.19 285 / ${a})` : `oklch(0.55 0.24 285 / ${a})`;
             context.lineWidth = 0.5;
             context.stroke();
           }

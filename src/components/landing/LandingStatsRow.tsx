@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 const ITEMS = [
   { target: 30, suffix: "", label: "Components" },
-  { target: 35, suffix: "", label: "Design problems" },
-  { target: 5, suffix: "", label: "Score categories" },
-  { target: 500, suffix: "K", label: "Max QPS (CDN tier)" },
+  { target: 35, suffix: "", label: "Problems" },
+  { target: 5, suffix: "", label: "Score axes" },
+  { target: 500, suffix: "K", label: "Max QPS" },
 ] as const;
 
 function useCountUp(active: boolean, target: number, suffix: string, durationMs: number) {
@@ -31,11 +32,11 @@ function useCountUp(active: boolean, target: number, suffix: string, durationMs:
   return `${v}${suffix}`;
 }
 
-export function LandingStatsRow() {
+export function LandingStatsRow({ className, floating }: { className?: string; floating?: boolean }) {
   const [active, setActive] = useState(false);
 
   useEffect(() => {
-    const t = window.setTimeout(() => setActive(true), 400);
+    const t = window.setTimeout(() => setActive(true), 500);
     return () => clearTimeout(t);
   }, []);
 
@@ -46,16 +47,19 @@ export function LandingStatsRow() {
   const vals = [d0, d1, d2, d3];
 
   return (
-    <div className="mx-auto mt-16 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-violet-500/20 bg-violet-500/15 dark:border-violet-400/20 dark:bg-violet-500/10 sm:grid-cols-4">
+    <div
+      className={cn(
+        "grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-landing bg-landing-accent-soft sm:grid-cols-4",
+        floating && "bg-landing-surface shadow-xl shadow-[var(--landing-accent-glow)] backdrop-blur-xl",
+        className,
+      )}
+    >
       {ITEMS.map((item, i) => (
-        <div
-          key={item.label}
-          className="bg-background/95 px-4 py-6 text-center dark:bg-[#0a0a0f]/95"
-        >
-          <span className="text-3xl font-medium tracking-tight text-violet-600 dark:text-[#b8a8ff] sm:text-4xl">
-            {vals[i]}
-          </span>
-          <div className="mt-1 text-sm text-muted-foreground">{item.label}</div>
+        <div key={item.label} className="bg-landing-surface px-4 py-5 text-center sm:py-6">
+          <span className="landing-gradient-text text-3xl font-bold tracking-tight sm:text-4xl">{vals[i]}</span>
+          <div className="mt-1 text-xs font-medium uppercase tracking-wide text-landing-muted sm:text-sm">
+            {item.label}
+          </div>
         </div>
       ))}
     </div>

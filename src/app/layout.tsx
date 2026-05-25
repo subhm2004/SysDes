@@ -37,15 +37,21 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const themeInit = `(function(){try{var k=${JSON.stringify(THEME_STORAGE_KEY)};var r=document.documentElement;var t=localStorage.getItem(k);if(t==="light"){r.classList.remove("dark");r.style.colorScheme="light";r.dataset.sysdesTheme="light";}else{r.classList.add("dark");r.style.colorScheme="dark";r.dataset.sysdesTheme="dark";}}catch(e){var r=document.documentElement;r.classList.add("dark");r.style.colorScheme="dark";r.dataset.sysdesTheme="dark";}})();`;
+  const themeInit = `(function(){try{var h=document.head;if(h&&!h.querySelector('meta[name="darkreader-lock"]')){var l=document.createElement("meta");l.name="darkreader-lock";h.appendChild(l);}}catch(e){}try{var k=${JSON.stringify(THEME_STORAGE_KEY)};var r=document.documentElement;var t=localStorage.getItem(k);if(t==="light"){r.classList.remove("dark");r.style.colorScheme="light";r.dataset.sysdesTheme="light";}else{r.classList.add("dark");r.style.colorScheme="dark";r.dataset.sysdesTheme="dark";}}catch(e){var r=document.documentElement;r.classList.add("dark");r.style.colorScheme="dark";r.dataset.sysdesTheme="dark";}})();`;
 
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
       suppressHydrationWarning
     >
-      <body className="min-h-full overflow-x-hidden bg-background text-foreground">
+      <head>
+        <meta name="darkreader-lock" />
+      </head>
+      <body
+        className="min-h-full overflow-x-hidden bg-background text-foreground"
+        suppressHydrationWarning
+      >
         <Script id="theme-init" strategy="beforeInteractive">
           {themeInit}
         </Script>

@@ -20,7 +20,7 @@ function readCanvasIsDark(): boolean {
   return document.documentElement.classList.contains("dark");
 }
 
-const CANVAS_H = 420;
+const CANVAS_H = 380;
 
 type NodeDef = {
   id: string;
@@ -182,7 +182,7 @@ export function LandingFlowCanvas({ className }: { className?: string }) {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
 
-      ctx.fillStyle = isDark ? "#0a0a12" : "#faf8ff";
+      ctx.fillStyle = isDark ? "oklch(0.1 0.03 285)" : "oklch(0.975 0.014 285)";
       ctx.fillRect(0, 0, W, H);
 
       ctx.strokeStyle = isDark ? "rgba(124,92,252,0.04)" : "rgba(91,66,216,0.08)";
@@ -262,12 +262,12 @@ export function LandingFlowCanvas({ className }: { className?: string }) {
         ctx.fill();
 
         ctx.font = "500 13px ui-sans-serif, system-ui, sans-serif";
-        ctx.fillStyle = isDark ? "rgba(220,210,255,0.9)" : "#312e81";
+        ctx.fillStyle = isDark ? "oklch(0.82 0.08 285)" : "oklch(0.35 0.12 285)";
         ctx.textAlign = "center";
         ctx.fillText(n.label, x + w / 2, y + h / 2 - 3);
 
         ctx.font = "11px ui-sans-serif, system-ui, sans-serif";
-        ctx.fillStyle = isDark ? "rgba(180,160,255,0.38)" : "rgba(91,79,178,0.52)";
+        ctx.fillStyle = isDark ? "oklch(0.72 0.06 285 / 0.75)" : "oklch(0.45 0.08 285 / 0.7)";
         ctx.fillText(n.sub, x + w / 2, y + h / 2 + 12);
       });
 
@@ -296,7 +296,7 @@ export function LandingFlowCanvas({ className }: { className?: string }) {
 
         ctx.beginPath();
         ctx.arc(px, py, p.size * 0.45, 0, Math.PI * 2);
-        ctx.fillStyle = isDark ? "#fff" : "#faf8ff";
+        ctx.fillStyle = isDark ? "oklch(0.96 0.01 285)" : "oklch(0.975 0.014 285)";
         ctx.fill();
       }
 
@@ -317,33 +317,33 @@ export function LandingFlowCanvas({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-2xl border-[0.5px] border-violet-300/45 bg-[#faf8ff] font-sans shadow-sm shadow-violet-500/10 dark:border-violet-400/25 dark:bg-[#0a0a12] dark:shadow-none",
+        "overflow-hidden bg-landing-surface font-sans",
         className,
       )}
     >
-      <div className="flex items-center gap-2 border-b border-violet-200/70 bg-white/85 px-4 py-2.5 backdrop-blur-sm dark:border-violet-500/[0.12] dark:bg-[#111120]">
+      <div className="flex items-center gap-2 border-b border-landing bg-landing-surface-2/90 px-4 py-2.5 backdrop-blur-sm">
         <span className="h-[11px] w-[11px] shrink-0 rounded-full bg-[#ff5f57]" />
         <span className="h-[11px] w-[11px] shrink-0 rounded-full bg-[#febc2e]" />
         <span className="h-[11px] w-[11px] shrink-0 rounded-full bg-[#28c840]" />
-        <span className="ml-2 truncate text-sm tracking-[0.04em] text-slate-500 dark:text-[rgba(180,160,255,0.35)]">
+        <span className="ml-2 truncate text-sm tracking-[0.04em] text-landing-muted">
           {BRAND.name} Studio — URL Shortener · Traffic simulation running
         </span>
       </div>
 
       <div ref={wrapRef} className="relative w-full min-w-0" style={{ height: CANVAS_H }}>
         <canvas ref={canvasRef} className="absolute inset-0 block h-full w-full" />
-        <div className="pointer-events-none absolute right-4 top-3 rounded-lg border border-violet-200/80 bg-white/90 px-3.5 py-2 text-sm text-slate-600 shadow-sm dark:border-violet-500/20 dark:bg-violet-500/[0.08] dark:text-[rgba(180,160,255,0.6)] dark:shadow-none">
-          <span className="block text-xl font-medium text-violet-600 dark:text-[#9070ff]">{qpsDisplay}</span>
+        <div className="pointer-events-none absolute right-4 top-3 rounded-lg border border-landing bg-landing-surface px-3.5 py-2 text-sm text-landing-muted shadow-sm">
+          <span className="block text-xl font-medium text-landing-accent">{qpsDisplay}</span>
           req/s inbound
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-violet-200/60 bg-white/70 px-4 py-3 backdrop-blur-sm dark:border-violet-500/10 dark:bg-[#0d0d1a] sm:px-5">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-landing bg-landing-surface-2/80 px-4 py-3 backdrop-blur-sm sm:px-5">
         <LegendItem color="#7c5cfc" label="HTTP request" />
         <LegendItem color="#2dc89a" label="Cache hit" />
         <LegendItem color="#f5a623" label="DB write" />
         <LegendItem color="#5aa8f0" label="CDN serve" />
-        <div className="ml-auto flex items-center gap-1.5 text-sm text-slate-500 dark:text-[rgba(180,160,255,0.4)]">
+        <div className="ml-auto flex items-center gap-1.5 text-sm text-landing-muted">
           <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff5f57]" />
           Bottleneck
         </div>
@@ -352,10 +352,22 @@ export function LandingFlowCanvas({ className }: { className?: string }) {
   );
 }
 
+const LEGEND_DOT_CLASS: Record<string, string> = {
+  "#7c5cfc": "bg-[#7c5cfc]",
+  "#2dc89a": "bg-[#2dc89a]",
+  "#f5a623": "bg-[#f5a623]",
+  "#5aa8f0": "bg-[#5aa8f0]",
+};
+
 function LegendItem({ color, label }: { color: string; label: string }) {
   return (
-    <div className="flex items-center gap-1.5 text-sm text-slate-600 dark:text-[rgba(180,160,255,0.4)]">
-      <span className="h-[7px] w-[7px] shrink-0 rounded-full" style={{ background: color }} />
+    <div className="flex items-center gap-1.5 text-sm text-landing-muted">
+      <span
+        className={cn(
+          "h-[7px] w-[7px] shrink-0 rounded-full",
+          LEGEND_DOT_CLASS[color] ?? "bg-muted-foreground",
+        )}
+      />
       {label}
     </div>
   );
