@@ -70,7 +70,7 @@ router.get("/:id", async (req: Request, res: Response) => {
       .from(savedDesigns)
       .where(
         and(
-          eq(savedDesigns.id, req.params.id),
+          eq(savedDesigns.id, req.params.id as string),
           eq(savedDesigns.userId, req.user!.userId)
         )
       )
@@ -99,7 +99,7 @@ router.put("/:id", async (req: Request, res: Response) => {
       .from(savedDesigns)
       .where(
         and(
-          eq(savedDesigns.id, req.params.id),
+          eq(savedDesigns.id, req.params.id as string),
           eq(savedDesigns.userId, req.user!.userId)
         )
       )
@@ -121,7 +121,7 @@ router.put("/:id", async (req: Request, res: Response) => {
         annotations: annotations !== undefined ? annotations : existing[0].annotations,
         updatedAt: new Date(),
       })
-      .where(eq(savedDesigns.id, req.params.id));
+      .where(eq(savedDesigns.id, req.params.id as string));
 
     res.json({ message: "Design updated" });
   } catch (err) {
@@ -139,7 +139,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
       .from(savedDesigns)
       .where(
         and(
-          eq(savedDesigns.id, req.params.id),
+          eq(savedDesigns.id, req.params.id as string),
           eq(savedDesigns.userId, req.user!.userId)
         )
       )
@@ -150,7 +150,7 @@ router.delete("/:id", async (req: Request, res: Response) => {
       return;
     }
 
-    await db.delete(savedDesigns).where(eq(savedDesigns.id, req.params.id));
+    await db.delete(savedDesigns).where(eq(savedDesigns.id, req.params.id as string));
 
     res.json({ message: "Design deleted" });
   } catch (err) {

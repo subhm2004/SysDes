@@ -128,7 +128,7 @@ router.get("/problem/:problemId", async (req: Request, res: Response) => {
       .where(
         and(
           eq(scores.userId, req.user!.userId),
-          eq(scores.problemId, req.params.problemId),
+          eq(scores.problemId, req.params.problemId as string),
         ),
       )
       .orderBy(desc(scores.createdAt))
