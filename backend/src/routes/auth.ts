@@ -30,6 +30,8 @@ router.get("/google", (_req: Request, res: Response) => {
     return;
   }
 
+  console.log("[auth/google] callback_url =", `${BACKEND_URL}/api/auth/google/callback`);
+
   const oauth2Client = getOAuth2Client();
   const url = oauth2Client.generateAuthUrl({
     access_type: "offline",
