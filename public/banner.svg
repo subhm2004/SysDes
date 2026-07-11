@@ -1,0 +1,118 @@
+<svg width="900" height="280" viewBox="0 0 900 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="900" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f0f13"/>
+      <stop offset="100%" stop-color="#13111e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="500" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a5b4fc"/>
+      <stop offset="50%" stop-color="#e0e7ff"/>
+      <stop offset="100%" stop-color="#67e8f9"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <radialGradient id="orb1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="280" fill="url(#bg)" rx="16"/>
+
+  <!-- Subtle border -->
+  <rect width="900" height="280" rx="16" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1"/>
+
+  <!-- Ambient orbs -->
+  <ellipse cx="160" cy="140" rx="200" ry="180" fill="url(#orb1)"/>
+  <ellipse cx="750" cy="130" rx="180" ry="160" fill="url(#orb2)"/>
+
+  <!-- Grid dots pattern -->
+  <g opacity="0.12">
+    <pattern id="dots" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.2" fill="#6366f1"/>
+    </pattern>
+    <rect width="900" height="280" rx="16" fill="url(#dots)"/>
+  </g>
+
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="900" height="3" rx="1.5" fill="url(#accent)" opacity="0.9"/>
+
+  <!-- Logo mark -->
+  <g transform="translate(340, 52)">
+    <!-- Outer ring -->
+    <circle cx="110" cy="26" r="22" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.5"/>
+    <!-- S D icon blocks -->
+    <rect x="94" y="13" width="14" height="14" rx="3" fill="#6366f1" opacity="0.9"/>
+    <rect x="112" y="13" width="14" height="14" rx="3" fill="#22d3ee" opacity="0.9"/>
+    <!-- Label -->
+    <text x="110" y="56" text-anchor="middle" font-family="'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="10" font-weight="600" letter-spacing="4" fill="#6366f1" opacity="0.8">SYSDES</text>
+  </g>
+
+  <!-- Main Title -->
+  <text
+    x="450"
+    y="130"
+    text-anchor="middle"
+    font-family="'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="52"
+    font-weight="700"
+    letter-spacing="-1"
+    fill="url(#titleGrad)"
+  >SysDes</text>
+
+  <!-- Subtitle -->
+  <text
+    x="450"
+    y="168"
+    text-anchor="middle"
+    font-family="'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="17"
+    font-weight="400"
+    letter-spacing="0.5"
+    fill="#94a3b8"
+  >System Design Interview Simulator</text>
+
+  <!-- Divider -->
+  <line x1="350" y1="188" x2="550" y2="188" stroke="url(#accent)" stroke-width="1" stroke-opacity="0.4"/>
+
+  <!-- Feature pills -->
+  <g transform="translate(450, 215)" text-anchor="middle">
+    <!-- Design -->
+    <rect x="-215" y="-14" width="90" height="26" rx="13" fill="#6366f1" fill-opacity="0.15" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="-170" y="3.5" text-anchor="middle" font-family="'SF Pro Text', -apple-system, sans-serif" font-size="11.5" font-weight="500" fill="#a5b4fc">✦ Design</text>
+
+    <!-- Simulate -->
+    <rect x="-108" y="-14" width="98" height="26" rx="13" fill="#0ea5e9" fill-opacity="0.12" stroke="#0ea5e9" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="-59" y="3.5" text-anchor="middle" font-family="'SF Pro Text', -apple-system, sans-serif" font-size="11.5" font-weight="500" fill="#7dd3fc">⚡ Simulate</text>
+
+    <!-- Evaluate -->
+    <rect x="3" y="-14" width="100" height="26" rx="13" fill="#8b5cf6" fill-opacity="0.13" stroke="#8b5cf6" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="53" y="3.5" text-anchor="middle" font-family="'SF Pro Text', -apple-system, sans-serif" font-size="11.5" font-weight="500" fill="#c4b5fd">🤖 Evaluate</text>
+
+    <!-- Track -->
+    <rect x="117" y="-14" width="82" height="26" rx="13" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.35" stroke-width="1"/>
+    <text x="158" y="3.5" text-anchor="middle" font-family="'SF Pro Text', -apple-system, sans-serif" font-size="11.5" font-weight="500" fill="#6ee7b7">📊 Track</text>
+  </g>
+
+  <!-- Bottom credit -->
+  <text
+    x="450"
+    y="260"
+    text-anchor="middle"
+    font-family="'SF Pro Text', -apple-system, sans-serif"
+    font-size="11"
+    fill="#475569"
+    letter-spacing="1"
+  >Built by Shubham · Next.js · Express · Neon · ReactFlow</text>
+</svg>
