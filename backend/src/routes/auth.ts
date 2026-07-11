@@ -10,7 +10,7 @@ const router = Router();
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "";
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:3000";
-const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${process.env.PORT || 4000}`;
+const BACKEND_URL = process.env.BACKEND_URL || process.env.RENDER_EXTERNAL_URL || `http://localhost:${process.env.PORT || 4000}`;
 
 function getOAuth2Client() {
   return new google.auth.OAuth2(
