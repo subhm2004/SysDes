@@ -33,6 +33,14 @@
 
 ---
 
+## Demo
+
+<div align="center">
+  <img src="public/demo.gif" alt="SysDes Demo" width="900"/>
+</div>
+
+---
+
 ## At a glance
 
 | | | | | |
