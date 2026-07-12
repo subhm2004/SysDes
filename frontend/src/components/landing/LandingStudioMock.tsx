@@ -59,7 +59,7 @@ export function LandingStudioMock() {
           <LandingFlowCanvas className="border-0 shadow-none" />
         </div>
         <div className="flex items-center justify-between gap-2 border-t border-landing bg-(--landing-surface-2) px-4 py-2.5">
-          <span className="truncate text-xs text-landing-muted">URL Shortener · 84K req/s</span>
+          <span className="truncate text-xs text-landing-muted">URL Shortener · simulation running</span>
           <span className="landing-btn-primary inline-flex items-center gap-1 rounded-lg px-3 py-1.5 text-xs font-semibold">
             Run simulation
             <ArrowRight className="h-3 w-3" />

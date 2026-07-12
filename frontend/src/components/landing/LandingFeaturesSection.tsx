@@ -21,16 +21,16 @@ type Feature = {
 const TOP: Feature[] = [
   {
     Icon: LayoutGrid,
-    title: "30 production components",
-    desc: "DNS, CDN, load balancers, Kafka, Redis, SQL — each with realistic throughput and latency numbers.",
+    title: "36 infrastructure components",
+    desc: "DNS, CDN, load balancers, Kafka, Redis, SQL — everything you need, ready to place and connect.",
     accent: "group-hover:from-indigo-500/15 group-hover:via-indigo-500/5",
     spotColor: "bg-indigo-500/20",
     iconBg: "bg-indigo-500/15 text-indigo-500 dark:text-indigo-300",
   },
   {
     Icon: Activity,
-    title: "Topological simulation",
-    desc: "QPS flows through your graph. Watch caches, queues, and DBs saturate in real time.",
+    title: "Live traffic simulation",
+    desc: "Watch traffic move through your diagram and see exactly where it slows down or breaks.",
     accent: "group-hover:from-emerald-500/15 group-hover:via-emerald-500/5",
     spotColor: "bg-emerald-500/20",
     iconBg: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
@@ -58,13 +58,13 @@ const BOTTOM: Feature[] = [
   {
     Icon: Timer,
     title: "Interview mode & scoring",
-    desc: "Run a realistic 45-minute loop with six timed phases, then evaluate on the same five-axis rubric panels use.",
+    desc: "Practice a full 45-minute interview with six timed phases, then get an AI score on five key areas.",
     accent: "group-hover:from-indigo-500/15 group-hover:via-indigo-500/5",
     spotColor: "bg-indigo-500/20",
     iconBg: "bg-indigo-500/15 text-indigo-500 dark:text-indigo-300",
     tags: [
       { Icon: Timer, label: "6 interview phases" },
-      { Icon: Activity, label: "5-axis rubric" },
+      { Icon: Activity, label: "5 score areas" },
     ],
   },
 ];
@@ -158,7 +158,7 @@ export function LandingFeaturesSection() {
             </span>
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-landing-muted">
-            Canvas, simulation, rubric, and interview pacing — one studio, no tab switching.
+            Design, simulate, score, and practice interviews — all in one studio, no tab switching.
           </p>
         </motion.div>
 

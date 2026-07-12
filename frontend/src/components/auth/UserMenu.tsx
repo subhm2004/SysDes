@@ -62,7 +62,7 @@ export function UserMenu() {
         className="flex h-9 items-center gap-2 rounded-lg border border-zinc-200 bg-white px-4 text-sm font-medium text-zinc-700 shadow-sm transition-all hover:bg-zinc-50 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-800/80 dark:text-zinc-200 dark:hover:bg-zinc-800"
       >
         <GoogleIcon />
-        <span className="whitespace-nowrap">Sign in with Google</span>
+        <span className="whitespace-nowrap">Sign in</span>
       </a>
     );
   }

@@ -8,13 +8,13 @@ import { useHydrationSafeReducedMotion } from "@/hooks/useHydrationSafeReducedMo
 const FEATURES: { Icon: LucideIcon; title: string; desc: string }[] = [
   {
     Icon: LayoutGrid,
-    title: "30 production components",
-    desc: "DNS, CDN, load balancers, Kafka, Redis, SQL — each with benchmark QPS and latency.",
+    title: "36 infrastructure components",
+    desc: "DNS, CDN, load balancers, Kafka, Redis, SQL — everything you need for any interview problem.",
   },
   {
     Icon: Activity,
-    title: "Live topological simulation",
-    desc: "QPS flows through your graph. Watch caches, queues, and DBs saturate in real time.",
+    title: "Live traffic simulation",
+    desc: "Watch traffic move through your diagram. See exactly where things slow down or break.",
   },
   {
     Icon: Sparkles,

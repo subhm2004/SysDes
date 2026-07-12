@@ -7,10 +7,10 @@ import { smoothScrollToId } from "@/lib/smoothScroll";
 import { useHydrationSafeReducedMotion } from "@/hooks/useHydrationSafeReducedMotion";
 
 const STATS = [
-  { value: "500K", unit: "QPS", label: "Max simulation throughput" },
-  { value: "5", unit: "axes", label: "Scoring rubric dimensions" },
-  { value: "35+", unit: "problems", label: "Real-world design scenarios" },
-  { value: "45", unit: "min", label: "Phased interview timer" },
+  { value: "36", unit: "+", label: "Infrastructure components" },
+  { value: "5", unit: "areas", label: "AI scoring dimensions" },
+  { value: "35+", unit: "problems", label: "Real interview questions" },
+  { value: "45", unit: "min", label: "Full interview practice" },
 ] as const;
 
 export function LandingEvidenceSection() {
@@ -47,7 +47,7 @@ export function LandingEvidenceSection() {
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-landing-muted sm:text-lg">
             Run production-style load through your topology, see real bottlenecks on the canvas,
-            and get scored on the same five axes Staff+ engineering panels use.
+            and get a clear score that tells you exactly what to improve.
           </p>
 
           {/* Stats grid */}
@@ -88,14 +88,14 @@ export function LandingEvidenceSection() {
               }}
             >
               <BarChart3 className="h-4 w-4 text-landing-accent" />
-              See the rubric
+              See how scoring works
             </a>
           </div>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-landing-muted sm:text-sm">
             <span className="inline-flex items-center gap-1.5">
               <GitBranch className="h-3.5 w-3.5 text-indigo-500" />
-              Live topological flow
+              Live traffic simulation
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Zap className="h-3.5 w-3.5 text-emerald-500" />

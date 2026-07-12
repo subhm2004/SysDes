@@ -65,7 +65,7 @@ export function LandingHero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            Open source · Free forever · Sign in with Google
+            Open source · Free forever · No credit card needed
             <ChevronRight className="h-3 w-3 opacity-60" />
           </motion.a>
 
@@ -94,10 +94,10 @@ export function LandingHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.25, duration: 0.6 }}
           >
-            Drag production components onto an interactive canvas, run real traffic up to{" "}
-            <span className="font-semibold text-(--landing-fg)">500K QPS</span>, and get
-            instant AI scoring on the exact five-axis rubric{" "}
-            <span className="font-semibold text-(--landing-fg)">FAANG panels</span> use.
+            Draw your system on a canvas, watch traffic flow through it, and get instant
+            AI feedback on exactly where your design{" "}
+            <span className="font-semibold text-(--landing-fg)">breaks under pressure</span>.
+            Practice like it's the real interview.
           </motion.p>
 
           {/* Live status */}

@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 const MESSAGES = [
-  "Routing: Client → CDN → API",
-  "Cache hit on Redis · 1ms",
-  "Load test at 84K req/s",
-  "Replica sync · 12ms lag",
+  "Client → CDN → Load Balancer → API",
+  "Cache hit · instant response",
+  "Bottleneck detected at database layer",
+  "AI evaluation complete · score 78/100",
 ] as const;
 
 export function LandingHeroStatus() {

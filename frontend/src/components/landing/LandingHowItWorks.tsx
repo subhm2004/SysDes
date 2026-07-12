@@ -22,7 +22,7 @@ const STEPS: { step: string; Icon: LucideIcon; title: string; desc: string }[] =
     step: "03",
     Icon: Play,
     title: "Run load & iterate",
-    desc: "Stress the diagram, read your rubric, fix bottlenecks until the design holds up.",
+    desc: "Run traffic through your design, see where it breaks, get a score, and improve.",
   },
 ];
 

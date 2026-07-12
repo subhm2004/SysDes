@@ -17,14 +17,14 @@ import { useHydrationSafeReducedMotion } from "@/hooks/useHydrationSafeReducedMo
 
 const INCLUDED = [
   { Icon: LayoutGrid, label: "Full design canvas", detail: "30 production-grade components" },
-  { Icon: Activity, label: "Load simulation", detail: "Up to 500K QPS on your topology" },
+  { Icon: Activity, label: "Traffic simulation", detail: "Watch load flow through your diagram" },
   { Icon: Timer, label: "Interview mode", detail: "45-min phased timers" },
   { Icon: Sparkles, label: "AI architect", detail: "Optional — your Gemini key" },
 ] as const;
 
 const PERKS = [
   "35 system design problems",
-  "5-axis scoring & verdict bands",
+  "AI scoring across 5 areas",
   "Fork, extend & self-host",
   "No signup for local use",
 ] as const;

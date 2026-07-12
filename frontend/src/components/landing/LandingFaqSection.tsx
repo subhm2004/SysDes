@@ -17,7 +17,7 @@ const FAQS = [
   },
   {
     q: "How is this better than a whiteboard?",
-    a: "You model real components, run load through the topology, see bottlenecks, and get scored on five rubric axes.",
+    a: "You build your system on a canvas, run traffic through it to find bottlenecks, and get an AI score on five key areas.",
   },
   {
     q: "What about AI?",
