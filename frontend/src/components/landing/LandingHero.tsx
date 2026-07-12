@@ -65,7 +65,7 @@ export function LandingHero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            Open source · Free forever · No credit card needed
+            Open source · Free forever
             <ChevronRight className="h-3 w-3 opacity-60" />
           </motion.a>
 
