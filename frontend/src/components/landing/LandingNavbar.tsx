@@ -94,7 +94,7 @@ export function LandingNavbar() {
         {!loggedIn && (
           <Link
             href="/studio"
-            className="landing-btn-primary flex h-9 items-center gap-2 rounded-lg px-4 text-sm font-semibold transition-transform duration-300 hover:translate-x-0.5"
+            className="landing-btn-primary flex h-9 items-center gap-2 rounded-lg px-4 text-sm font-semibold whitespace-nowrap transition-transform duration-300 hover:translate-x-0.5"
             onClick={() => setOpen(false)}
           >
             <span>Open studio</span>
